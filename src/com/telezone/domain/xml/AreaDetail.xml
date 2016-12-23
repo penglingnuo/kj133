@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AreaDetail">
+	<typeAlias alias="AreaDetail"
+		type="com.telezone.domain.classes.AreaDetail" />
+	<typeAlias alias="AreaInfo"
+		type="com.telezone.domain.classes.AreaInfo" />
+
+	<select id="selectAreaDetailByAreaName" parameterClass="AreaInfo"
+		resultClass="AreaDetail">
+		select * from areadetail where areaname = #areaname#
+	</select>
+
+	<select id="selectAreaDetailByParameter" parameterClass="AreaInfo"
+		resultClass="AreaDetail">
+		select * from areadetail
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="areaname">
+				areaname = #areaname#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<select id="selectAreaDetailByList" parameterClass="AreaInfo"
+		resultClass="AreaDetail">
+		select * from areadetail
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and">
+				pointid in
+				<iterate property="pointlist" open="(" close=")"
+					conjunction=",">
+					#pointlist[]#
+				</iterate>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="addAreaDetail" parameterClass="AreaDetail">
+		insert into AreaDetail ( areaname, type, pointid ) values(
+		#areaname#,#type#,#pointid# )
+	</insert>
+
+</sqlMap>

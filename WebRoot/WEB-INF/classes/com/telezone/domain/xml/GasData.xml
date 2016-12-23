@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="GasData">
+	<typeAlias alias="GasData"
+		type="com.telezone.domain.classes.GasData" />
+
+	<select id="selectGasData" resultClass="GasData">
+		<![CDATA[
+			select cr.cardreaderid,go.gasover,
+				gd.gasconcentration,
+				gai.info as [state]
+				from cardreader cr
+				left join GasOver go
+				on cr.cardreaderid = go.recordid
+				left join gasdata gd
+				on cr.cardreaderid = gd.cardreaderid
+				left join gasalarminfo gai				
+				on gd.[state] = gai.[state]
+				where GasIgnore = 1 
+				and go.gasover < gd.gasconcentration
+		]]>
+	</select>
+</sqlMap>

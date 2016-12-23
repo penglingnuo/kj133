@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="GBK" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="IntranetInfo">
+	<typeAlias alias="IntranetInfo"
+		type="com.telezone.domain.classes.IntranetInfo" />
+	
+
+	<select id="selectCountList" resultClass="IntranetInfo">
+		select countall,countwailai,countleader,countmiddleleader,countstaffer,0 countcar,'正常' flag from 
+
+		(select distinct count(*) countall,1 a from WorkattendanceEx we,staffer s where s.stafferid=we.stafferid and uptime is null and downtime>=GetDate()-1 ) a ,
+		
+		(select distinct count (*) countwailai,1 b from WorkattendanceEx we,staffer s where uptime is null and s.stafferid=we.stafferid and s.worktype='参观者' and downtime>=GetDate()-1) b,
+		
+		(select distinct count (*) countleader,1 c from WorkattendanceEx we,staffer s where uptime is null and  s.stafferid=we.stafferid and s.worktype='矿领导' and downtime>=GetDate()-1) c,
+		
+		(select distinct count (*) countmiddleleader,1 d from WorkattendanceEx we,staffer s where uptime is null and  s.stafferid=we.stafferid and s.worktype='班组长' and downtime>=GetDate()-1) d,
+		
+		(select distinct count (*) countstaffer,1 e from WorkattendanceEx we,staffer s where uptime is null and  s.stafferid=we.stafferid and s.worktype not in('矿领导','班组长','参观者') and downtime>=GetDate()-1) e
+		
+		 where a.a=b.b and a.a=c.c and a.a=d.d and a.a=e.e
+	</select>
+</sqlMap>

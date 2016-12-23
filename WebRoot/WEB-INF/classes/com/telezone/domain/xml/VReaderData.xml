@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="VReaderData">
+	<typeAlias alias="VReaderData"
+		type="com.telezone.domain.classes.VReaderData" />
+	<typeAlias alias="SubstationBreak"
+		type="com.telezone.domain.classes.SubstationBreak" />
+
+
+	<parameterMap class="SubstationBreak"
+		id="proPermissionDevicePerson">
+		<parameter property="result" jdbcType="OTHER"
+			javaType="java.util.List" mode="OUT" />
+	</parameterMap>
+
+	<select id="getNearlyTwoDaysData" resultClass="VReaderData">
+		<![CDATA[
+			SELECT CardReaderID,State,RecordTime FROM V_ReaderData 
+				WHERE RecordTime>=GetDate() - 2.0  and state&0xf0 > 0
+					and (CardReaderID <> 9999 or state <> 255)
+					ORDER BY CardReaderid,RecordTime 
+		]]>
+	</select>
+	
+	<!-- 
+		<procedure id="shareDeviceToPerson"
+			parameterMap="proPermissionDevicePerson">
+			<![CDATA[
+				{call Calreaderhalt(?)}
+			]]>
+		</procedure>
+	 -->
+</sqlMap>

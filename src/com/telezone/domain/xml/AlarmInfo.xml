@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AlarmInfo">
+	<typeAlias alias="AlarmInfo"
+		type="com.telezone.domain.classes.AlarmInfo" />
+
+	<select id="selectAlarmInfo" resultClass="AlarmInfo">
+		select * from alarminfo order by recordid desc
+	</select>
+</sqlMap>

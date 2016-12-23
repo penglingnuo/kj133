@@ -1,0 +1,176 @@
+
+---
+1、注册Ocx控件
+
+regsvr32 d:\ocx\Moving.ocx
+regsvr32 d:\ocx\tyzh_main.ocx
+
+---权限表
+create table Popedom
+(
+  pid int identity(1,1),
+  phref varchar(200),
+  pname varchar(200),
+  pertain_to char(1),
+  primary key(pid)
+  
+) 
+--用户权限表
+create table  UserPopedom(
+  id int identity(1,1),
+  uid varchar(50),
+  pid int,
+  primary key(id)
+--------------------初始数据
+insert into ouser(userid,oname,opassword,departmentid,groupid,createtime) values('sys','sys','314F71','001','101',getDate())
+insert into odepartment(departmentid,dname,ddescription) values('001','信息部','信息中心')
+insert into ogroup(groupid,gname,gdescription,departmentid) values('101','信息中心','信息中心','001')
+
+--------------------
+
+insert into Popedom values(1,'accountManager.jsp','帐户管理','a')
+insert into Popedom values(2,'updatePassword.jsp','修改密码','a')
+insert into Popedom values(3,'emergency.jsp','避灾路线','a')
+insert into Popedom values(4,'popedom.do?method=init','权限管理','a')
+insert into Popedom values(5,'transitTrctic.jsp','通行策略设置','a')
+insert into Popedom values(6,'showOcx.do?method=ocxLoad','系统配置','a')
+insert into Popedom values(7,'stakeout.do?method=getList','自监视','a')
+insert into Popedom values(8,'bantype.do?method=initialization','班次设置','g')
+insert into Popedom values(9,'routDetail.jsp','巡检路线设置','g')
+insert into Popedom values(10,'log_manager.do?method=getWordlib','日志管理','g')
+insert into Popedom values(11,'sys_word.jsp','系统词库维护','g')
+insert into Popedom values(12,'mapManager.jsp','地图管理','b')
+insert into Popedom values(13,'editCard_index.jsp','编辑卡信息','b')
+insert into Popedom values(14,'editCardQuery.do?method=getWorktype','查询卡信息','b')
+insert into Popedom values(15,'employee.do?method=init','编辑员工信息','b')
+insert into Popedom values(16,'employeeQuery.do?method=init','查询员工信息','b')
+insert into Popedom values(17,'editViewReader.do?method=initialization','编辑分站信息','b')
+insert into Popedom values(18,'editViewReaderQuery.do?method=initialization','查询分站信息','b')
+insert into Popedom values(19,'localizer.do?method=initialization','编辑定位器信息','b')
+insert into Popedom values(20,'localizerQuery.do?method=initialization','查询定位器信息','b')
+insert into Popedom values(21,'viewReaderHistory.do?method=initialization','分站历史查询','b')
+insert into Popedom values(22,'viewLocatorHistory.do?method=initialization','定位器历史查询','b')
+insert into Popedom values(23,'addcheck_log.do?method=initialization','增加考勤记录','b')
+insert into Popedom values(24,'page_range.jsp','区域设置','b')
+insert into Popedom values(25,'pworksetIn.jsp','人员班制设置','b')
+insert into Popedom values(26,'showOcx.do?method=init','监控主界面','c')
+insert into Popedom values(27,'temperature.do?method=initialization','温度历史查询','d')
+insert into Popedom values(28,'moveArea_left.do?method=initialization','活动区域查询','d')
+insert into Popedom values(29,'on_load_idnex.jsp','在场信息查询','d')
+insert into Popedom values(30,'note.do?method=getWordlib','明细记录查询','d')
+insert into Popedom values(31,'historyNote.do?method=initialization','历史数据查询','d')
+insert into Popedom values(32,'areaStick.do?method=getWordlib','区域停留信息','d')
+insert into Popedom values(33,'department_time.do?method=init','部门时点查询','d')
+insert into Popedom values(34,'department_day.do?method=init','部门时段查询','d')
+insert into Popedom values(35,'Moves_path.do?method=init','移动轨迹查询','d')
+insert into Popedom values(36,'manamount_query.do?method=getWordlib','人数曲线查询','d')
+insert into Popedom values(37,'areatime_query.jsp','区域时段查询','d')
+insert into Popedom values(38,'card_batteries.do?method=getWorkType','卡电池报警查询','e')
+insert into Popedom values(39,'call_report.do?method=getGroup','呼救历史查询','e')
+insert into Popedom values(40,'standHelp.do?method=initialization','分站报警查询','e')
+insert into Popedom values(41,'overTime.do?method=initialization','入井超时查询','e')
+insert into Popedom values(42,'locator_batteries.do?method=iniaialization','定位器电池报警','e')
+insert into Popedom values(43,'noSignal.do?method=initialization','定位器无信号查询','e')
+insert into Popedom values(44,'abnormity_work.jsp','异常工作报警查询','e')
+insert into Popedom values(45,'overfreight_call.jsp','区域超员报警查询','e')
+insert into Popedom values(46,'area_overtime.jsp','区域超时报警查询','e')
+insert into Popedom values(47,'area_padlock.jsp','区域禁入报警查询','e')
+insert into Popedom values(48,'downwell.do?method=getWordlib','井下考勤明细','f')
+insert into Popedom values(49,'downWellCount.do?method=getWordlib','入井次数统计','f')
+insert into Popedom values(50,'employee_check_daily.do?method=initialization','员工考勤日报','f')
+insert into Popedom values(51,'department_daily.do?method=initialization','部门考勤日报','f')
+insert into Popedom values(52,'employee_menology.do?method=initialization','员工考勤月报','f')
+insert into Popedom values(53,'department_menology.do?method=initialization','部门考勤月报','f')
+insert into Popedom values(54,'downwell_menology.do?method=initialization','部门入井月报','f')
+insert into Popedom values(55,'unwork.do?method=getWordlib','未出勤人员明细','f')
+insert into Popedom values(56,'emphases_report.do?method=initialization','重点岗位日/月明细报','f')
+insert into Popedom values(57,'emphases_check_report.do?method=initialization','重点岗位日/月报','f')
+insert into Popedom values(58,'downWellCount_menology.do?method=initialization','入井次数月报','f')
+insert into Popedom values(59,'area_check_list.do?method=getWordlib','区域考勤明细','f')
+insert into Popedom values(60,'area_check_stat.do?method=getWordlib','区域考勤次数统计','f')
+insert into Popedom values(61,'unworkcar.do?method=getWordlib','时段未出勤车辆统计','h')
+insert into Popedom values(62,'car_move_log.do?method=getWordlib','单车运行记录查询','h')
+insert into Popedom values(63,'car_life_report.do?method=getWordlib','车辆班次日/月明细表','h')
+insert into Popedom values(64,'outcar_life_report.do?method=getWordlib','车辆出车日/月报','h')
+insert into Popedom values(65,'car_check_menology.do?method=getWordlib','车辆考勤月览表','h')
+
+
+
+insert into userpopedom values('sys',1)
+insert into userpopedom values('sys',2)
+insert into userpopedom values('sys',3)
+insert into userpopedom values('sys',4)
+insert into userpopedom values('sys',5)
+insert into userpopedom values('sys',6)
+insert into userpopedom values('sys',7)
+insert into userpopedom values('sys',8)
+insert into userpopedom values('sys',9)
+insert into userpopedom values('sys',10)
+insert into userpopedom values('sys',11)
+insert into userpopedom values('sys',12)
+insert into userpopedom values('sys',13)
+insert into userpopedom values('sys',14)
+insert into userpopedom values('sys',15)
+insert into userpopedom values('sys',16)
+insert into userpopedom values('sys',17)
+insert into userpopedom values('sys',18)
+insert into userpopedom values('sys',19)
+insert into userpopedom values('sys',20)
+insert into userpopedom values('sys',21)
+insert into userpopedom values('sys',22)
+insert into userpopedom values('sys',23)
+insert into userpopedom values('sys',24)
+insert into userpopedom values('sys',25)
+insert into userpopedom values('sys',26)
+insert into userpopedom values('sys',27)
+insert into userpopedom values('sys',28)
+insert into userpopedom values('sys',29)
+insert into userpopedom values('sys',30)
+insert into userpopedom values('sys',31)
+insert into userpopedom values('sys',32)
+insert into userpopedom values('sys',33)
+insert into userpopedom values('sys',34)
+insert into userpopedom values('sys',35)
+insert into userpopedom values('sys',36)
+insert into userpopedom values('sys',37)
+insert into userpopedom values('sys',38)
+insert into userpopedom values('sys',39)
+insert into userpopedom values('sys',40)
+insert into userpopedom values('sys',41)
+insert into userpopedom values('sys',42)
+insert into userpopedom values('sys',43)
+insert into userpopedom values('sys',43)
+insert into userpopedom values('sys',44)
+insert into userpopedom values('sys',45)
+insert into userpopedom values('sys',46)
+insert into userpopedom values('sys',47)
+insert into userpopedom values('sys',48)
+insert into userpopedom values('sys',49)
+insert into userpopedom values('sys',50)
+insert into userpopedom values('sys',51)
+insert into userpopedom values('sys',52)
+insert into userpopedom values('sys',53)
+insert into userpopedom values('sys',54)
+insert into userpopedom values('sys',55)
+insert into userpopedom values('sys',56)
+insert into userpopedom values('sys',57)
+insert into userpopedom values('sys',58)
+insert into userpopedom values('sys',59)
+insert into userpopedom values('sys',60)
+insert into userpopedom values('sys',61)
+insert into userpopedom values('sys',62)
+insert into userpopedom values('sys',63)
+insert into userpopedom values('sys',64)
+insert into userpopedom values('sys',65)
+
+
+
+insert into webinitialize values('Provider=SQLOLEDB.1;Password=123;Persist Security Info=True;User ID=sa;Initial Catalog=tyzh;Data Source=192.168.1.34','192.168.1.100',1,34567,60,720,1080,1,0)
+ 其中 Password=123       指得是 数据库密码
+      User ID=sa                  数据库登陆名
+      Initial Catalog=tyzh        数据库名
+      Data Source=192.168.1.34'   数据库所在的ip
+      '192.168.1.100'             采集服务器ip
+
+ 
+	 

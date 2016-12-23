@@ -1,0 +1,1653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="Search_TransitTrctic_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_transitTrctic"
+				type="com.kj133.entity.Search_TransitTrctic">
+			</form-property>
+		</form-bean><!-- 通行策略设置 -->
+
+		<form-bean name="Search_NoSingnal_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_nosingal"
+				type="com.kj133.entity.Search_NoSingnal">
+			</form-property>
+		</form-bean><!--无信号 -->
+
+		<form-bean name="Search_Temperature_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_temperature"
+				type="com.kj133.entity.Search_Temperature">
+			</form-property>
+		</form-bean><!--温度 -->
+
+		<form-bean name="Seach_DownWellCount_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_downwellcount"
+				type="com.kj133.entity.Search_DownWellCount">
+			</form-property>
+		</form-bean><!-- 下井次数统计--><!--未出勤人员明细 -->
+
+		<form-bean name="Search_eidtCard_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_eidtCard"
+				type="com.kj133.entity.Search_eidtCard">
+			</form-property>
+		</form-bean><!-- 编辑卡 -->
+
+		<form-bean name="Search_locator_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_locator"
+				type="com.kj133.entity.Search_locator">
+			</form-property>
+		</form-bean><!-- 编辑定位器 -->
+		<form-bean name="Search_addchecklog_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_addchecklog"
+				type="com.kj133.entity.Search_addcheck_log">
+			</form-property>
+		</form-bean><!-- 增加考勤记录 -->
+
+		<form-bean name="Search_ViewReader_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_viewreader"
+				type="com.kj133.entity.Search_ViewReader">
+			</form-property>
+		</form-bean><!-- 编辑分站 -->
+
+		<form-bean name="Search_ViewReaderHistory_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_viewreaderhistory"
+				type="com.kj133.entity.Search_ViewReaderHistory">
+			</form-property>
+		</form-bean><!-- 分站历史查询 -->
+
+		<form-bean name="Search_ViewLocatorHistory_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_viewrlocatorhistory"
+				type="com.kj133.entity.Search_ViewLocatorHistory">
+			</form-property>
+		</form-bean><!-- 定位器历史查询 -->
+
+		<form-bean name="Search_ShuaKa_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_shuaka"
+				type="com.kj133.entity.Search_ShuaKa">
+			</form-property>
+		</form-bean><!-- 刷卡,井下,移动轨迹，管技 -->
+
+		<form-bean name="Search_AreaCheckList_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_areachecklist"
+				type="com.kj133.entity.Search_AreaCheckList">
+			</form-property>
+		</form-bean><!-- 区域考勤明细 -->
+
+		<form-bean name="Search_AreaCheckStat_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_areacheckstat"
+				type="com.kj133.entity.Search_AreaCheckStat">
+			</form-property>
+		</form-bean><!-- 区域考勤次数统计 -->
+
+		<form-bean name="Search_LogManager_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_logmanager"
+				type="com.kj133.entity.Search_LogManager">
+			</form-property>
+		</form-bean><!-- 日志管理 -->
+
+		<form-bean name="Search_PageRangeTopleft_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_pagerangetopleft"
+				type="com.kj133.entity.Search_PageRangeTopleft">
+			</form-property>
+		</form-bean><!-- 区域设置- 区域列表 左上 -->
+
+		<form-bean name="Search_PageRangeTopright_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_pagerangetopright"
+				type="com.kj133.entity.Search_PageRangeTopright">
+			</form-property>
+		</form-bean><!-- 区域设置- 区域列表 右上 -->
+
+		<form-bean name="Search_PageRangeDownright_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_pagerangedownright"
+				type="com.kj133.entity.Search_PageRangeDownright">
+			</form-property>
+		</form-bean><!-- 区域设置- 区域范围列表 右下 -->
+		<form-bean name="Search_SysWordLeft_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_syswordleft"
+				type="com.kj133.entity.Search_SysWordLeft">
+			</form-property>
+		</form-bean><!-- 系统词库维护 -->
+		<form-bean name="Search_SysWordLeftDown_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="syswordleftdown"
+				type="com.kj133.entity.SysWordLeftDown">
+			</form-property>
+		</form-bean><!-- 系统词库维护 左下 -->
+
+		<form-bean name="Search_unworkcar_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="unworkcar"
+				type="com.kj133.entity.Search_unworkcar">
+			</form-property>
+		</form-bean><!-- 时段未出勤车辆统计 -->
+
+		<form-bean name="Search_car_move_log_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="car_move_log"
+				type="com.kj133.entity.Search_car_move_log">
+			</form-property>
+		</form-bean><!-- 单车运行记录查询 -->
+
+		<form-bean name="Search_abnormity_work_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="abnormity_work"
+				type="com.kj133.entity.Search_abnormity_work">
+			</form-property>
+		</form-bean><!-- 异常工作报警查询 -->
+
+		<form-bean name="Search_overfreight_call_top_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="overfreight_call_top"
+				type="com.kj133.entity.Search_overfreight_call_top">
+			</form-property>
+		</form-bean><!-- 超员报警查询 --><!--区域超员统计 -->
+
+		<form-bean name="Search_overfreight_call_down_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="overfreight_call_down"
+				type="com.kj133.entity.Search_overfreight_call_top">
+			</form-property>
+		</form-bean><!-- 超员报警查询 --><!-- 区域超员时段小计 -->
+
+		<form-bean name="Search_abnormity_work_top_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="abnormity_work_top"
+				type="com.kj133.entity.Search_abnormity_work_top">
+			</form-property>
+		</form-bean><!-- 异常工作报警查询 --><!-- 工作异常员工清单 -->
+
+		<form-bean name="Search_abnormity_work_down_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="abnormity_work_down"
+				type="com.kj133.entity.Search_abnormity_work_top">
+			</form-property>
+		</form-bean><!-- 异常工作报警查询 --><!-- 员工工作异常明细 -->
+
+		<form-bean name="Search_area_overtime_top_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="area_overtime_top"
+				type="com.kj133.entity.Search_area_overtime_top">
+			</form-property>
+		</form-bean><!-- 区域超时报警查询--><!-- 区域超时人次统计 -->
+
+		<form-bean name="Search_area_overtime_down_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="area_overtime_down"
+				type="com.kj133.entity.Search_area_overtime_top">
+			</form-property>
+		</form-bean><!-- 区域超时报警查询--><!-- 区域超时明细 -->
+
+		<form-bean name="Search_area_padlock_top_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="area_padlock_top"
+				type="com.kj133.entity.Search_area_padlock_top">
+			</form-property>
+		</form-bean><!-- 区域禁入报警查询--><!-- 区域禁入 -->
+
+		<form-bean name="Search_area_padlock_down_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="area_padlock_down"
+				type="com.kj133.entity.Search_area_padlock_top">
+			</form-property>
+		</form-bean><!-- 区域禁入报警查询--><!-- 区域禁入人员明细 -->
+
+		<form-bean name="Search_areatime_query_top_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="areatime_query_top"
+				type="com.kj133.entity.Search_areatime_query_top">
+			</form-property>
+		</form-bean><!-- 区域时段查询--><!-- 区域人数表 -->
+
+		<form-bean name="Search_areatime_query_down_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="areatime_query_down"
+				type="com.kj133.entity.Search_areatime_query_top">
+			</form-property>
+		</form-bean><!-- 区域时段查询--><!-- 区域人员明细表 -->
+
+		<form-bean name="Search_areatime_query_right_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="areatime_query_right"
+				type="com.kj133.entity.Search_areatime_query_top">
+			</form-property>
+		</form-bean><!-- 区域时段查询--><!-- 区域人员统计 -->
+
+		<form-bean name="Search_worktype_areadis_top_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="worktype_areadis_top"
+				type="com.kj133.entity.Search_worktype_areadis_top">
+			</form-property>
+		</form-bean><!-- 工种区域分布--><!-- 工种分布 -->
+
+		<form-bean name="Search_worktype_areadis_down_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="worktype_areadis_down"
+				type="com.kj133.entity.Search_worktype_areadis_top">
+			</form-property>
+		</form-bean><!-- 工种区域分布--><!-- 人员明细表 -->
+
+		<form-bean name="Search_worktype_areadis_right_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="worktype_areadis_right"
+				type="com.kj133.entity.Search_worktype_areadis_top">
+			</form-property>
+		</form-bean><!-- 工种区域分布--><!--区域分布 -->
+
+		<form-bean name="Search_stripclip_query_top_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="stripclip_query_top"
+				type="com.kj133.entity.Search_stripclip_query_top">
+			</form-property>
+		</form-bean><!-- 带卡查询-->
+
+		<form-bean name="Search_stripclip_query_down_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="stripclip_query_down"
+				type="com.kj133.entity.Search_stripclip_query_top">
+			</form-property>
+		</form-bean><!--带卡查询-->
+
+		<form-bean name="Search_stripclip_query_right_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="stripclip_query_right"
+				type="com.kj133.entity.Search_stripclip_query_top">
+			</form-property>
+		</form-bean><!-- 带卡查询-->
+
+		<form-bean name="Search_manamount_query_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="manamount_query"
+				type="com.kj133.entity.Search_manamount_query">
+			</form-property>
+		</form-bean><!-- 人数曲线查询 -->
+
+		<form-bean name="Search_car_life_report_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="car_life_report"
+				type="com.kj133.entity.Search_car_life_report">
+			</form-property>
+		</form-bean><!-- 车辆班次日/月明细表 -->
+		<form-bean name="Search_outcar_life_report_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="outcar_life_report"
+				type="com.kj133.entity.Search_outcar_life_report">
+			</form-property>
+		</form-bean><!-- 车辆出车日/月明细报 -->
+		<form-bean name="Search_car_check_menology_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="car_check_menology"
+				type="com.kj133.entity.Search_car_check_menology">
+			</form-property>
+		</form-bean><!-- 车辆考勤阅览表 -->
+
+		<form-bean name="Search_MoveArea_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_movearea"
+				type="com.kj133.entity.Search_MoveArea">
+			</form-property>
+		</form-bean><!-- 活动区域-->
+
+		<form-bean name="Search_Onload_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_onload"
+				type="com.kj133.entity.Search_OnLoad">
+			</form-property>
+		</form-bean><!-- 在场信息-->
+
+		<form-bean name="Search_AreaStick_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_areastick"
+				type="com.kj133.entity.Search_AreaStick">
+			</form-property>
+		</form-bean><!-- 区域停留信息-->
+
+		<form-bean name="Search_HistoryNote_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_historynote"
+				type="com.kj133.entity.Search_HistoryNote">
+			</form-property>
+		</form-bean><!-- 历史记录查询-->
+
+		<form-bean name="Search_Note_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_note"
+				type="com.kj133.entity.Search_Note">
+			</form-property>
+		</form-bean><!-- 明细记录查询-->
+
+		<form-bean name="Search_AllHelp_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_allhelp"
+				type="com.kj133.entity.Search_AllHelp">
+			</form-property>
+		</form-bean><!-- 所有报警-->
+
+		<form-bean name="Search_Card_Batteries_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_card_batteries"
+				type="com.kj133.entity.Search_Card_Batteries">
+			</form-property>
+		</form-bean><!-- 卡电池报警-->
+
+		<form-bean name="Search_Locator_Batteries_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_locator_batteries"
+				type="com.kj133.entity.Search_Locator_Batteries">
+			</form-property>
+		</form-bean><!-- 定位器电池报警-->
+
+		<form-bean name="Search_Call_Report_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_call_report"
+				type="com.kj133.entity.Search_Call_Report">
+			</form-property>
+		</form-bean><!-- 呼救历史查询-->
+
+		<form-bean name="Search_MapLeft_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_mapLeft"
+				type="com.kj133.entity.Search_MapLeft">
+			</form-property>
+		</form-bean><!-- 地图管理-->
+
+		<form-bean name="Search_WeizhidisLeft_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_weizhidisLeft"
+				type="com.kj133.entity.Search_WeizhidisLeft">
+			</form-property>
+		</form-bean><!-- 位置分布-->
+
+		<form-bean name="Search_emergencyLeft_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_emergencyLeft"
+				type="com.kj133.entity.Search_emergencyLeft">
+			</form-property>
+		</form-bean><!-- 应急帮助-->
+
+		<form-bean name="EmergencyAdd_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="emergencyadd"
+				type="com.kj133.entity.EmergencyAdd">
+			</form-property>
+		</form-bean><!-- 增加应急 -->
+
+		<form-bean name="Search_updatePassword_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_updatePassword"
+				type="com.kj133.entity.Search_updatePassword">
+			</form-property>
+		</form-bean><!-- 修改密码-->
+
+		<form-bean name="Search_EditEmployee_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_editEmployee"
+				type="com.kj133.entity.Search_EditEmployee">
+			</form-property>
+		</form-bean><!-- 编辑员工-->
+
+		<form-bean name="Search_Account_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_account"
+				type="com.kj133.entity.Search_Account">
+			</form-property>
+		</form-bean><!-- 编辑列表-->
+
+		<form-bean name="Search_MoveSlot_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_moveSlot"
+				type="com.kj133.entity.Search_MoveSlot">
+			</form-property>
+		</form-bean><!-- 移动轨迹查询-->
+
+		<form-bean name="Search_OperatorViewReaderForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="ser_operator_viewReader"
+				type="com.kj133.entity.Search_OperatorViewReaderForm">
+			</form-property>
+		</form-bean><!-- 编辑分站的add,update-->
+
+		<form-bean name="LoginForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="com.kj133.entity.Ouser">
+			</form-property>
+		</form-bean><!-- 登陆 -->
+
+		<form-bean name="Search_StandHelp_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="standHelp"
+				type="com.kj133.entity.Search_StandHelp">
+			</form-property>
+		</form-bean><!-- 分站报警查询 -->
+
+		<form-bean name="Search_OverTime_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="overtime"
+				type="com.kj133.entity.Search_OverTime">
+			</form-property>
+
+		</form-bean><!-- 下井超时查询 -->
+
+		<form-bean name="MapAdd_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="mapadd"
+				type="com.kj133.entity.MapAdd">
+			</form-property>
+		</form-bean><!-- 增加地图 -->
+
+		<form-bean name="AddEmployee_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="addEmployee"
+				type="com.kj133.entity.AddEmployee_Form">
+			</form-property>
+		</form-bean><!-- 增加员工-->
+
+
+		<form-bean name="Search_Employee_menology_mount_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="mount"
+				type="com.kj133.entity.Search_Employee_menology_mount">
+			</form-property>
+		</form-bean><!-- 员工考勤设置 -->
+		<form-bean name="Search_Pworkset_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="pworkset"
+				type="com.kj133.entity.Search_Pworkset">
+			</form-property>
+		</form-bean><!-- 人员工作设置 -->
+
+		<form-bean name="Search_Employee_check_daily_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="employee"
+				type="com.kj133.entity.Search_Employee_check_daily">
+			</form-property>
+		</form-bean><!-- 员工考勤日报 -->
+
+		<form-bean name="Search_emphases_report_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="emphases_report"
+				type="com.kj133.entity.Search_emphases_report">
+			</form-property>
+		</form-bean><!-- 重点考勤日月明细报 -->
+
+		<form-bean name="Search_emphases_check_report_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="emphases_check_report"
+				type="com.kj133.entity.Search_emphases_check_report">
+			</form-property>
+		</form-bean><!-- 重点考勤日月报-->
+
+		<form-bean name="Search_Department_daily_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="department"
+				type="com.kj133.entity.Search_Department_daily">
+			</form-property>
+		</form-bean><!-- 部门考勤日报 -->
+
+		<form-bean name="Search_Employee_menology_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="employee_menology"
+				type="com.kj133.entity.Search_Employeet_menology">
+			</form-property>
+		</form-bean><!-- 员工考勤月报 -->
+
+		<form-bean name="Search_downWellCount_menology_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="downWellCount_menology"
+				type="com.kj133.entity.Search_downWellCount_menology">
+			</form-property>
+		</form-bean><!-- 入井次数月报 -->
+
+		<form-bean name="Search_Department_menology_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="department_menology"
+				type="com.kj133.entity.Search_Department_menology">
+			</form-property>
+		</form-bean><!-- 部门考勤月报 -->
+
+		<form-bean name="Search_DownWell_menology_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="downwell_menology"
+				type="com.kj133.entity.Search_DownWell_menology">
+			</form-property>
+		</form-bean><!-- 部门下井月报 -->
+
+		<form-bean name="Search_BanType_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="bantype"
+				type="com.kj133.entity.Search_BanType">
+			</form-property>
+		</form-bean><!-- 班次设置 -->
+
+
+
+		<form-bean name="Search_department_day_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="department_day"
+				type="com.kj133.entity.Search_department_day">
+			</form-property>
+		</form-bean><!-- 部门时段查询，部门时点查询 -->
+
+		<form-bean name="Search_routDetail_top_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="routDetail_top"
+				type="com.kj133.entity.Search_routDetail_top">
+			</form-property>
+		</form-bean><!-- 巡检路线查询（左） -->
+
+		<form-bean name="Search_routDetail_right_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="routDetail_right"
+				type="com.kj133.entity.Search_routDetail_right">
+			</form-property>
+		</form-bean><!-- 经过路线设置路线查询（右） -->
+
+		<form-bean name="Search_Employee_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="search_employee"
+				type="com.kj133.entity.Search_Employee">
+			</form-property>
+		</form-bean><!--   -->
+
+		<form-bean name="Search_TrackShow_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="search_trackshow"
+				type="com.kj133.entity.Search_TrackShow">
+			</form-property>
+		</form-bean><!--定位-->
+
+		<form-bean name="Search_Popedom_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="search_popedom"
+				type="com.kj133.entity.Search_Popedom">
+			</form-property>
+		</form-bean><!--定位-->
+
+		<form-bean name="Search_Ocx_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="search_ocx"
+				type="com.kj133.entity.Search_Ocx">
+			</form-property>
+		</form-bean>
+
+		<!-- **********************************-->
+		<form-bean name="EditCardForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="recordid" type="java.lang.String" />
+			<form-property name="cardid" type="java.lang.String" />
+			<form-property name="mincardid" type="java.lang.String" />
+			<form-property name="maxcardid" type="java.lang.String" />
+			<form-property name="cardmode" type="java.lang.String" />
+			<form-property name="cardstate" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="syswordleftdownForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="wordname" type="java.lang.String" />
+			<form-property name="maxvalue" type="java.lang.String" />
+			<form-property name="minvalue" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="syswordrightForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="wordvalue" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="loadLocalizerForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="recordid" type="java.lang.String" />
+			<form-property name="locatorid" type="java.lang.String" />
+			<form-property name="lname" type="java.lang.String" />
+			<form-property name="shortname" type="java.lang.String" />
+			<form-property name="x" type="java.lang.String" />
+			<form-property name="y" type="java.lang.String" />
+			<form-property name="z" type="java.lang.String" />
+			<form-property name="ground" type="java.lang.String" />
+			<form-property name="state" type="java.lang.String" />
+			<form-property name="mapid" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="MapForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="recordid" type="java.lang.String" />
+			<form-property name="mapid" type="java.lang.String" />
+			<form-property name="mapinfo" type="java.lang.String" />
+			<form-property name="mapdata" type="java.lang.Byte" />
+			<form-property name="scale" type="java.lang.String" />
+			<form-property name="mapname" type="java.lang.String" />
+			<form-property name="maplevel" type="java.lang.String" />
+			<form-property name="parentid" type="java.lang.String" />
+			<form-property name="scaletoparentx"
+				type="java.lang.String" />
+			<form-property name="scaletoparenty"
+				type="java.lang.String" />
+			<form-property name="offsetx" type="java.lang.String" />
+			<form-property name="offsety" type="java.lang.String" />
+			<form-property name="compressdata" type="java.lang.Byte" />
+			<form-property name="iscad" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="GjUserForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="gjuser" type="com.kj133.entity.GjUser">
+			</form-property>
+		</form-bean><!-- 管技用户登陆 -->
+		<form-bean name="MoremapsForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="moremaps" type="com.kj133.entity.Moremaps">
+			</form-property>
+		</form-bean><!-- 多图地图 -->
+		
+		<!-- 潘二矿 -->
+		
+		<form-bean name="Search_WorkAtt_Form"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="search_workatt"
+				type="com.basic.entity.Search_WorkAtt">
+			</form-property>
+		</form-bean><!-- 实时信息查询-->
+		
+		<!-- 潘二矿 -->
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+
+	<action-mappings>
+		<action name="LoginForm" parameter="method" path="/login"
+			type="com.kj133.action.LoginAction">
+			<forward name="success" path="/menu_index.jsp" />
+			<forward name="no" path="/no.jsp" />
+			<forward name="logout" path="/login.jsp" />
+			<forward name="loginAgain" path="/loginAgain.jsp" />
+		</action><!-- 登陆-->
+
+
+
+		<action name="Search_ViewLocatorHistory_Form" parameter="method"
+			path="/viewLocatorHistory" scope="request"
+			type="com.kj133.action.ViewLocatorHistoryAction">
+			<forward name="show" path="/viewLocatorHistory.jsp" />
+			<forward name="vprint" path="/viewLocatorHistoryPrint.jsp" />
+		</action><!-- 定位器历史查询-->
+
+		<action name="Search_ViewReaderHistory_Form" parameter="method"
+			path="/viewReaderHistory" scope="request"
+			type="com.kj133.action.ViewReaderHistoryAction">
+			<forward name="show" path="/viewReaderHistory.jsp" />
+			<forward name="vprint" path="/viewReaderHistoryPrint.jsp" />
+		</action><!-- 分站历史查询-->
+
+
+
+		<action name="Search_Temperature_Form" parameter="method"
+			path="/temperature" scope="request"
+			type="com.kj133.action.TemperatureAction">
+
+			<forward name="vprint" path="/temperaturePrint.jsp" />
+			<forward name="show" path="/temperature.jsp" />
+		</action><!-- 温度查询-->
+
+		<action name="MapForm" parameter="method" path="/mapManager"
+			scope="request" type="com.kj133.action.MapManagerAction">
+			<forward name="show" path="/mapleft.jsp" />
+		</action><!-- 地图管理-->
+
+
+
+		<action name="Search_NoSingnal_Form" parameter="method"
+			path="/noSignal" scope="request"
+			type="com.kj133.action.NoSignalAction">
+			<forward name="show" path="/nosignal.jsp" />
+			<forward name="vprint" path="/nosignalPrint.jsp" />
+			<forward name="pdfPrint" path="/noSignal.do?method=getList" />
+		</action><!--定位器无信号报警 -->
+
+		<action name="Search_AreaStick_Form" parameter="method"
+			path="/areaStick" scope="request"
+			type="com.kj133.action.AreaStickAction">
+			<forward name="show" path="/areaStick.jsp" />
+			<forward name="wordlib" path="/areaStick.jsp" />
+			<forward name="vprint" path="/areaStickPrint.jsp" />
+		</action><!--区域停留信息 -->
+
+		<action name="Search_Note_Form" parameter="method" path="/note"
+			scope="request" type="com.kj133.action.NoteAction">
+			<forward name="show" path="/note.jsp" />
+			<forward name="wordlib" path="/note.jsp" />
+			<forward name="vprint" path="/notePrint.jsp" />
+		</action><!--明细记录查询 -->
+
+		<action name="Search_HistoryNote_Form" parameter="method"
+			path="/historyNote" scope="request"
+			type="com.kj133.action.HistoryNoteAction">
+			<forward name="show" path="/historyNote_top.jsp" />
+			<forward name="vprint" path="/historyNotePrint.jsp" />
+		</action><!--历史记录查询（分站信息）-->
+
+		<action parameter="method" path="/historyNote_Locator"
+			scope="request" type="com.kj133.action.HistoryNote_LocatorAction">
+			<forward name="show" path="/historyNote_down.jsp" />
+		</action><!--历史记录查询（分站定位信息）-->
+
+		<action name="Search_Onload_Form" parameter="method"
+			path="/on_load_left" scope="request"
+			type="com.kj133.action.On_load_leftAction">
+			<forward name="show" path="/on_load_left.jsp" />
+			<forward name="particular" path="/on_load_particular.jsp" />
+			<forward name="vprint" path="/on_load_leftPrint.jsp" />
+		</action><!--在场信息查询-->
+
+		<action parameter="method" path="/on_load_right"
+			type="com.kj133.action.On_Load_RightAction">
+			<forward name="vprint" path="/on_load_rightPrint.jsp" />
+		</action>
+		<action name="Search_ShuaKa_Form" parameter="method"
+			path="/downwell" scope="request"
+			type="com.kj133.action.DownWellAction">
+			<forward name="show" path="/downWell.jsp" />
+			<forward name="wordlib" path="/downWell.jsp" />
+			<forward name="vprint" path="/downWellPrint.jsp" />
+		</action><!-- 井下考勤明细 -->
+		<action name="Search_AreaCheckList_Form" parameter="method"
+			path="/area_check_list" scope="request"
+			type="com.kj133.action.AreaCheckListAction">
+			<forward name="show" path="/area_check_list.jsp" />
+			<forward name="wordlib" path="/area_check_list.jsp" />
+			<forward name="vprint" path="/area_check_listPrint.jsp" />
+		</action><!-- 区域考勤明细 -->
+		<action name="Search_AreaCheckStat_Form" parameter="method"
+			path="/area_check_stat" scope="request"
+			type="com.kj133.action.AreaCheckStatAction">
+			<forward name="show" path="/area_check_stat.jsp" />
+			<forward name="wordlib" path="/area_check_stat.jsp" />
+			<forward name="vprint" path="/area_check_statPrint.jsp" />
+		</action><!-- 区域考勤次数统计 -->
+		<action name="Search_LogManager_Form" parameter="method"
+			path="/log_manager" scope="request"
+			type="com.kj133.action.LogManagerAction">
+			<forward name="show" path="/log_manager.jsp" />
+			<forward name="delete"
+				path="/log_manager.do?method=getWordlib" />
+			<forward name="wordlib" path="/log_manager.jsp" />
+			<forward name="vprint" path="/log_managerPrint.jsp" />
+		</action><!-- 日志管理 -->
+		<action name="Search_PageRangeTopleft_Form" parameter="method"
+			path="/page_range_topleft" scope="request"
+			type="com.kj133.action.PageRangeTopleftAction">
+			<forward name="init" path="/page_range_topleft.jsp" />
+			<forward name="initer" path="/page_range_downleft.jsp" />
+			<forward name="delete"
+				path="/page_range_topright.do?method=getList" />
+			<forward name="getlist"
+				path="/page_range_downleftaddarea.jsp" />
+			<forward name="add"
+				path="/page_range_topright.do?method=getList" />
+			<forward name="getname"
+				path="/page_range_topleftaddarea.jsp" />
+			<forward name="noadd" path="/page_range_topleftadd.jsp" />
+			<forward name="update"
+				path="/page_range_topright.do?method=getList" />
+		</action><!-- 区域设置- 一级区域设置 左上 -->
+		<action name="Search_PageRangeTopleft_Form" parameter="method"
+			path="/page_range_downleft" scope="request"
+			type="com.kj133.action.PageRangeDownleftAction">
+			<forward name="init" path="/page_range_downleft.jsp" />
+			<forward name="wordlib" path="/page_range_downleftadd.jsp" />
+			<forward name="add"
+				path="/page_range_topright.do?method=getList" />
+			<forward name="delete"
+				path="/page_range_topright.do?method=getList" />
+			<forward name="update"
+				path="/page_range_topright.do?method=getList" />
+		</action><!-- 区域设置- 二级区域设置 左下 -->
+		<action name="Search_PageRangeTopright_Form" parameter="method"
+			path="/page_range_topright" scope="request"
+			type="com.kj133.action.PageRangeToprightAction">
+			<forward name="show" path="/page_range_topright.jsp" />
+		</action><!-- 区域设置- 区域列表 右上 -->
+		<action name="Search_PageRangeDownright_Form" parameter="method"
+			path="/page_range_downright" scope="request"
+			type="com.kj133.action.PageRangeDownrightAction">
+			<forward name="show" path="/page_range_downright.jsp" />
+		</action><!-- 区域设置- 区域范围列表 右下 -->
+		<action name="Search_SysWordLeft_Form" parameter="method"
+			path="/sys_wordLeft" scope="request"
+			type="com.kj133.action.SysWordLeftAction">
+			<forward name="show" path="/sys_wordLeft.jsp" />
+		</action><!-- 系统词库维护 左上 -->
+		<action name="syswordleftdownForm" parameter="method"
+			path="/sys_wordLeftDown" scope="request"
+			type="com.kj133.action.SysWordLeftAction">
+			<forward name="load" path="/sys_wordLeftDown.jsp" />
+			<forward name="update"
+				path="/sys_wordLeft.do?method=getList" />
+		</action><!-- 系统词库维护 左下 -->
+		<action name="syswordrightForm" parameter="method"
+			path="/sys_wordRight" scope="request"
+			type="com.kj133.action.SysWordRightAction">
+			<forward name="show" path="/sys_wordRight.jsp" />
+			<forward name="load" path="/sys_wordRightupdate.jsp" />
+			<forward name="reload"
+				path="/sys_wordRight.do?method=initer" />
+			<forward name="add" path="/sys_wordRight.do?method=initer" />
+			<forward name="update"
+				path="/sys_wordRight.do?method=initer" />
+			<forward name="delete"
+				path="/sys_wordRight.do?method=initer" />
+		</action><!-- 系统词库维护 右上 -->
+		<action name="Search_SysWordLeft_Form" parameter="method"
+			path="/sys_wordRightdown" scope="request"
+			type="com.kj133.action.SysWordRightAction">
+			<forward name="show" path="/sys_wordRight.jsp" />
+		</action><!-- 系统词库维护 右下 -->
+		<action name="Search_SysWordLeft_Form" parameter="method"
+			path="/stakeout" scope="request"
+			type="com.kj133.action.StakeoutAction">
+			<forward name="show" path="/stakeout.jsp" />
+		</action><!-- 自监视 -->
+
+
+		<action name="Search_unworkcar_Form" parameter="method"
+			path="/unworkcar" scope="request"
+			type="com.kj133.action.UnworkcarAction">
+			<forward name="show" path="/unworkcar.jsp" />
+			<forward name="wordlib" path="/unworkcar.jsp" />
+			<forward name="vprint" path="/unworkcarPrint.jsp" />
+		</action><!-- 时段未出勤车辆统计 -->
+		<action name="Search_car_move_log_Form" parameter="method"
+			path="/car_move_log" scope="request"
+			type="com.kj133.action.Car_move_logAction">
+			<forward name="show" path="/car_move_log.jsp" />
+			<forward name="wordlib" path="/car_move_log.jsp" />
+			<forward name="vprint" path="/car_move_logPrint.jsp" />
+		</action><!-- 单车运行记录查询 -->
+
+
+		<action name="Search_overfreight_call_top_Form"
+			parameter="method" scope="request" path="/overfreight_call_top"
+			type="com.kj133.action.Overfreight_call_topAction">
+			<forward name="show" path="/overfreight_call_top.jsp" />
+			<!--<forward name="showRadio" path="/area_list.jsp" />-->
+		</action><!-- 超员报警查询 --><!-- 区域超员统计 -->
+
+		<action name="Search_overfreight_call_down_Form"
+			parameter="method" scope="request" path="/overfreight_call_down"
+			type="com.kj133.action.Overfreight_call_downAction">
+			<forward name="init" path="/overfreight_call_down.jsp" />
+
+		</action><!-- 超员报警查询 --><!-- 区域超员时段小计 -->
+
+		<action name="Search_abnormity_work_top_Form" parameter="method"
+			scope="request" path="/abnormity_work_top"
+			type="com.kj133.action.Abnormity_work_topAction">
+			<forward name="show" path="/abnormity_work_top.jsp" />
+
+		</action><!-- 异常工作报警查询 --><!-- 工作异常员工清单 -->
+
+		<action name="Search_abnormity_work_down_Form"
+			parameter="method" scope="request" path="/abnormity_work_down"
+			type="com.kj133.action.Abnormity_work_downAction">
+			<forward name="init" path="/abnormity_work_down.jsp" />
+
+		</action><!-- 异常工作报警查询 --><!-- 员工工作异常明细 -->
+
+		<action name="Search_area_overtime_top_Form" parameter="method"
+			scope="request" path="/area_overtime_top"
+			type="com.kj133.action.Area_overtime_topAction">
+			<forward name="show" path="/area_overtime_top.jsp" />
+
+		</action><!-- 区域超时报警查询--><!-- 区域超时人次统计 -->
+
+		<action name="Search_area_overtime_down_Form" parameter="method"
+			scope="request" path="/area_overtime_down"
+			type="com.kj133.action.Area_overtime_downAction">
+			<forward name="init" path="/area_overtime_down.jsp" />
+
+		</action><!-- 区域超时报警查询--><!-- 区域超时明细 -->
+
+		<action name="Search_area_padlock_top_Form" parameter="method"
+			scope="request" path="/area_padlock_top"
+			type="com.kj133.action.Area_padlock_topAction">
+			<forward name="show" path="/area_padlock_top.jsp" />
+
+		</action><!-- 区域禁入报警查询--><!-- 区域禁入 -->
+
+		<action name="Search_area_padlock_down_Form" parameter="method"
+			scope="request" path="/area_padlock_down"
+			type="com.kj133.action.Area_padlock_downAction">
+			<forward name="init" path="/area_padlock_down.jsp" />
+
+		</action><!-- 区域禁入报警查询--><!-- 区域禁入人员明细 -->
+
+
+		<action name="Search_areatime_query_top_Form" parameter="method"
+			scope="request" path="/areatime_query_top"
+			type="com.kj133.action.Areatime_query_topAction">
+			<forward name="show" path="/areatime_query_top.jsp" />
+			<forward name="initPrint"
+				path="/areatime_query_topPrint.jsp" />
+
+		</action><!-- 区域时段查询--><!-- 区域人数表 -->
+
+		<action name="Search_areatime_query_down_Form"
+			parameter="method" scope="request" path="/areatime_query_down"
+			type="com.kj133.action.Areatime_query_downAction">
+			<forward name="init" path="/areatime_query_down.jsp" />
+
+		</action><!-- 区域时段查询--><!-- 区域人员明细表 -->
+
+
+		<action name="Search_areatime_query_right_Form"
+			parameter="method" scope="request" path="/areatime_query_right"
+			type="com.kj133.action.Areatime_query_rightAction">
+			<forward name="init" path="/areatime_query_right.jsp" />
+
+		</action><!-- 区域时段查询--><!-- 区域人员统计 -->
+
+		<action name="Search_worktype_areadis_top_Form"
+			parameter="method" scope="request" path="/worktype_areadis_top"
+			type="com.kj133.action.Worktype_areadis_topAction">
+			<forward name="show" path="/worktype_areadis_top.jsp" />
+			<forward name="initPrint" path="/worktype_areadisPrint.jsp" />
+
+		</action><!-- 工种区域分布表--><!-- 工种分布 -->
+
+		<action name="Search_worktype_areadis_down_Form"
+			parameter="method" scope="request" path="/worktype_areadis_down"
+			type="com.kj133.action.Worktype_areadis_downAction">
+			<forward name="init" path="/worktype_areadis_down.jsp" />
+
+		</action><!-- 工种区域分布表--><!-- 人员明细表 -->
+
+
+		<action name="Search_worktype_areadis_right_Form"
+			parameter="method" scope="request" path="/worktype_areadis_right"
+			type="com.kj133.action.Worktype_areadis_rightAction">
+			<forward name="init" path="/worktype_areadis_right.jsp" />
+
+		</action><!-- 工种区域分布表--><!-- 区域分布 -->
+
+		<action name="Search_stripclip_query_top_Form"
+			parameter="method" scope="request" path="/stripclip_query_top"
+			type="com.kj133.action.Stripclip_query_topAction">
+			<forward name="show" path="/stripclip_query_top.jsp" />
+
+		</action><!-- 带卡查询-->
+
+		<action name="Search_stripclip_query_down_Form"
+			parameter="method" scope="request" path="/stripclip_query_down"
+			type="com.kj133.action.Stripclip_query_downAction">
+			<forward name="init" path="/stripclip_query_down.jsp" />
+
+		</action><!--带卡查询-->
+
+
+		<action name="Search_stripclip_query_right_Form"
+			parameter="method" scope="request" path="/stripclip_query_right"
+			type="com.kj133.action.Stripclip_query_rightAction">
+			<forward name="init" path="/stripclip_query_right.jsp" />
+
+		</action><!--带卡查询-->
+
+		<action name="Search_manamount_query_Form" parameter="method"
+			scope="request" path="/manamount_query"
+			type="com.kj133.action.Manamount_queryAction">
+			<forward name="show" path="/manamount_query.jsp" />
+
+		</action><!--人数曲线查询-->
+
+
+
+
+
+
+		<action name="Search_car_life_report_Form" parameter="method"
+			path="/car_life_report" scope="request"
+			type="com.kj133.action.Car_life_reportAction">
+			<forward name="day" path="/car_life_report.jsp" />
+			<forward name="vprint" path="/car_life_reportPrint.jsp" />
+		</action><!-- 车辆班次日/月明细表 -->
+
+		<action name="Search_outcar_life_report_Form" parameter="method"
+			path="/outcar_life_report" scope="request"
+			type="com.kj133.action.Outcar_life_reportAction">
+			<forward name="day" path="/outcar_life_report.jsp" />
+
+			<forward name="vprint" path="/outcar_life_reportPrint.jsp" />
+		</action><!-- 车辆出车日/月明细报 -->
+
+		<action name="Search_car_check_menology_Form" parameter="method"
+			path="/car_check_menology" scope="request"
+			type="com.kj133.action.Car_check_menologyAction">
+			<forward name="show" path="/car_check_menology.jsp" />
+
+			<forward name="vprint" path="/car_check_menologyPrint.jsp" />
+		</action><!-- 车辆考勤阅览表 -->
+
+		<action name="Seach_DownWellCount_Form" parameter="method"
+			path="/downWellCount" scope="request"
+			type="com.kj133.action.DownWellCountAction">
+			<forward name="show" path="/downWellCount.jsp" />
+			<forward name="init" path="/downWellCount.jsp" />
+			<forward name="vprint" path="/downWellCountPrint.jsp" />
+		</action><!-- 下井次数统计-->
+
+		<action name="Seach_DownWellCount_Form" parameter="method"
+			path="/unwork" scope="request"
+			type="com.kj133.action.UnWorkAction">
+			<forward name="show" path="/unwork.jsp" />
+			<forward name="init" path="/unwork.jsp" />
+			<forward name="vprint" path="/unworkPrint.jsp" />
+		</action><!-- 未出勤人员明细-->
+
+
+		<action name="Search_MoveArea_Form" parameter="method"
+			path="/moveArea_left" scope="request"
+			type="com.kj133.action.MoveArea_leftAction">
+			<forward name="show" path="/moveArea_left.jsp" />
+			<forward name="particular" path="/move_Area_Particular.jsp" />
+			<forward name="vprint" path="/moveAreaPrint.jsp" />
+		</action><!--活动区域查询 -->
+
+
+		<action name="Search_AllHelp_Form" parameter="method"
+			path="/all_help" scope="request"
+			type="com.kj133.action.All_helpAction">
+			<forward name="show" path="/all_help.jsp" />
+			<forward name="type" path="/all_help.jsp" />
+			<forward name="vprint" path="/all_helpPrint.jsp" />
+		</action><!-- 所有报警-->
+
+		<action name="Search_Card_Batteries_Form" parameter="method"
+			path="/card_batteries" scope="request"
+			type="com.kj133.action.Card_batteriesAction">
+			<forward name="show" path="/card_batteries.jsp" />
+			<forward name="type" path="/card_batteries.jsp" />
+			<forward name="vprint" path="/card_batteriesPrint.jsp" />
+		</action><!--卡电池报警 -->
+
+		<action name="Search_Locator_Batteries_Form" parameter="method"
+			path="/locator_batteries" scope="request"
+			type="com.kj133.action.Locator_batteriesAction">
+			<forward name="show" path="/locator_batteries.jsp" />
+			<forward name="vprint" path="/locator_batteriesPrint.jsp" />
+		</action><!--定位器电池报警 -->
+
+		<action name="Search_Call_Report_Form" parameter="method"
+			path="/call_report" scope="request"
+			type="com.kj133.action.Call_reportAction">
+			<forward name="show" path="/call_report.jsp" />
+			<forward name="gro" path="/call_report.jsp" />
+			<forward name="vprint" path="/call_reportPrint.jsp" />
+		</action><!-- 呼救历史查询-->
+
+		<action name="Search_eidtCard_Form" scope="request"
+			parameter="method" path="/editcard"
+			type="com.kj133.action.EditCardAction">
+			<forward name="editCard" path="/editCard_top.jsp" />
+			<forward name="load" path="/updateEditCard.jsp" />
+			<forward name="worktype" path="/editCard_top.jsp" />
+			<forward name="vprint" path="/editCardViewPrint.jsp" />
+		</action><!--编辑卡 -->
+
+
+		<action name="Search_eidtCard_Form" scope="request"
+			parameter="method" path="/editCardQuery"
+			type="com.kj133.action.EditCardQueryAction">
+			<forward name="qcard" path="/queryCard.jsp" />
+			<forward name="vprint" path="/editCardQueryViewPrint.jsp" />
+		</action><!-- 查询卡 -->
+
+		<action name="EditCardForm" parameter="method"
+			path="/operateCard" scope="request"
+			type="com.kj133.action.OperateCardAction">
+			<forward name="load" path="/loadEditCard.jsp" />
+			<forward name="delete" path="/editcard.do?method=getList" />
+			<forward name="update" path="/editcard.do?method=getList" />
+			<forward name="save" path="/editcard.do?method=getList" />
+		</action><!--编辑卡里面的add,update,delete -->
+
+		<action scope="request" name="Search_locator_Form"
+			parameter="method" path="/localizer"
+			type="com.kj133.action.LocalizerAction">
+			<forward name="localizer" path="/locator.jsp" />
+			<forward name="vprint" path="/locatorViewPrint.jsp" />
+		</action><!--编辑定位器 -->
+		<action scope="request" name="Search_addchecklog_Form"
+			parameter="method" path="/addcheck_log"
+			type="com.kj133.action.Addcheck_logAction">
+			<forward name="localizer" path="/addcheck_log.jsp" />
+			<forward name="localizernew" path="/addcheck_lognew.jsp" />
+			<forward name="localizernewdel" path="/addcheck_lognewdel.jsp" />
+			<forward name="save" path="/addcheck_log.do?method=initialization" />
+			<forward name="vprint" path="/locatorViewPrint.jsp" />
+			<forward name="init" path="/addcheck_logadd.jsp" />
+			<forward name="localizernewupd" path="/addcheck_logupd.jsp" />
+			<forward name="localizernewupdnew" path="/addcheck_logupdnew.jsp" />
+		</action><!--增加考勤记录 -->
+		<action parameter="method" name="Search_addchecklog_Form"
+			path="/aaddcheck_log" scope="request"
+			type="com.kj133.action.Aaddcheck_logAction">
+			<forward name="save" path="/addcheck_log.do?method=initializationadd" />
+			<forward name="load" path="/loadLocaliser.jsp" />
+			<forward name="init" path="/addcheck_logadd.jsp" />
+			<forward name="update" path="/addcheck_log.do?method=getlist" />
+			<forward name="delete" path="/addcheck_log.do?method=getlistnewdel" />
+			<forward name="false" path="/aaddcheck_log.jsp" />
+			<forward name="localizernewupd" path="/addcheck_logupd.jsp" />
+		</action><!-- 增加考勤记录中add,update,delete-->
+
+
+		<action scope="request" name="Search_locator_Form"
+			parameter="method" path="/localizerQuery"
+			type="com.yourcompany.struts.action.LocalizerQueryAction">
+			<forward name="qLocator" path="/queryLocator.jsp" />
+			<forward name="vprint" path="/queryLocatorViewPrint.jsp" />
+		</action><!-- 查询定位器 -->
+
+
+		<action parameter="method" name="loadLocalizerForm"
+			path="/operator_locator" scope="request"
+			type="com.kj133.action.Operator_locatorAction">
+			<forward name="save"
+				path="/localizer.do?method=initialization" />
+			<forward name="load" path="/loadLocaliser.jsp" />
+			<forward name="update" path="/localizer.do?method=getlist" />
+			<forward name="delete" path="/localizer.do?method=getlist" />
+			<forward name="false" path="/addLocalizer.jsp" />
+		</action><!-- 编辑定位器里面的add,update,delete-->
+
+		<action name="Search_ViewReader_Form" parameter="method"
+			path="/editViewReader" scope="request"
+			type="com.kj133.action.EditViewReaderAction">
+			<forward name="show" path="/editViewReader.jsp" />
+			<forward name="vprint" path="/editViewReaderViewPrint.jsp" />
+		</action><!--编辑分站-->
+
+		<action name="Search_ViewReader_Form" parameter="method"
+			path="/editViewReaderQuery" scope="request"
+			type="com.yourcompany.struts.action.EditViewReaderQueryAction">
+			<forward name="qViewReader" path="/queryViewReader.jsp" />
+			<forward name="vprint" path="/queryViewReaderViewPrint.jsp" />
+		</action><!-- 查询分站 -->
+
+
+
+		<action name="Search_OperatorViewReaderForm" parameter="method"
+			path="/operartrViewReader" scope="request"
+			type="com.kj133.action.OperartrViewReaderAction">
+			<forward name="save"
+				path="/editViewReader.do?method=getList" />
+			<forward name="delete"
+				path="/editViewReader.do?method=getList" />
+			<forward name="load" path="/loadViewReader.jsp" />
+
+			<forward name="false" path="/addEditViewReader.jsp" />
+			<forward name="update"
+				path="/editViewReader.do?method=getList" />
+		</action><!--编辑分站里面的add,update,delete-->
+
+		<action name="Search_WeizhidisLeft_Form" scope="request"
+			parameter="method" path="/weizhidisleft"
+			type="com.kj133.action.WeizhidisLeftAction">
+			<forward name="weizhidisleft" path="/weizhidis_left.jsp" />
+		</action><!-- 位置分布-->
+
+		<action name="Search_MapLeft_Form" scope="request"
+			parameter="method" path="/mapleft"
+			type="com.kj133.action.MapLeftAction">
+			<forward name="mapleft" path="/map_left.jsp" />
+			<forward name="delete" path="/mapleft.do?method=getList" />
+		</action><!-- 地图管理-->
+
+
+		<action scope="request" name="MapAdd_Form" parameter="method"
+			path="/loadMap" type="com.kj133.action.LoadMapAction">
+			<forward name="load" path="/updateMap.jsp" />
+			<forward name="update" path="/mapleft.do?method=getList" />
+		</action><!-- 修改地图-->
+
+		<action scope="request" name="MapAdd_Form" path="/mapadd"
+			type="com.kj133.action.MapAddAction">
+			<forward name="add" path="/mapleft.do?method=getList" />
+		</action><!-- 增加地图-->
+
+		<action name="Search_emergencyLeft_Form" scope="request"
+			parameter="method" path="/emergencyleft"
+			type="com.kj133.action.EmergencyLeftAction">
+			<forward name="emergencyleft" path="/emergency_left.jsp" />
+			<forward name="delete"
+				path="/emergencyleft.do?method=getList" />
+		</action><!-- 应急帮助-->
+
+		<action scope="request" name="EmergencyAdd_Form"
+			parameter="method" path="/loadEmergency"
+			type="com.kj133.action.LoadEmergencyAction">
+			<forward name="load" path="/updateEmergency.jsp" />
+			<forward name="update"
+				path="/emergencyleft.do?method=getList" />
+		</action><!-- 修改应急管理-->
+
+		<action scope="request" name="EmergencyAdd_Form"
+			path="/emergencyadd" type="com.kj133.action.EmergencyAddAction">
+			<forward name="add" path="/emergencyleft.do?method=getList" />
+		</action><!-- 增加应急管理-->
+
+		<action name="Search_updatePassword_Form" parameter="method"
+			path="/updatePassword"
+			type="com.kj133.action.UpdatePasswordAction">
+			<forward name="false" path="/updatePassword.jsp" />
+		</action><!-- 修改密码-->
+
+		<action parameter="method" path="/accountleft"
+			type="com.kj133.action.AccountleftAction">
+			<forward name="left" path="/accountleft.jsp" />
+		</action><!-- 帐户管理-->
+
+		<action parameter="method" path="/fenzhandisleft"
+			type="com.kj133.action.FenzhandisleftAction">
+			<forward name="left" path="/fenzhandisleft.jsp" />
+		</action><!-- 分站分布-->
+
+		<action name="Search_Account_Form" parameter="method"
+			path="/add_department" type="com.kj133.action.AddDepartmentAction">
+			<forward name="account" path="/adddepartment.jsp" />
+			<forward name="department"
+				path="/accountleft.do?method=getList" />
+			<forward name="update"
+				path="/accountleft.do?method=getList" />
+		</action><!-- 帐户管理的部门操作-->
+
+		<action name="Search_Account_Form" path="/add_group"
+			parameter="method" type="com.kj133.action.AddGroupAction">
+			<forward name="group" path="/addgroup.jsp" />
+			<forward name="update"
+				path="/accountleft.do?method=getList" />
+		</action><!--帐户管理的组别操作 -->
+
+		<action name="Search_Account_Form" parameter="method"
+			path="/add_user" type="com.kj133.action.AddUserAction">
+			<forward name="user" path="/adduser.jsp" />
+			<forward name="update"
+				path="/accountleft.do?method=getList" />
+		</action><!--帐户管理的用户操作 -->
+
+		<action name="Search_StandHelp_Form" parameter="method"
+			scope="request" path="/standHelp"
+			type="com.kj133.action.StandHelpAction">
+			<forward name="show" path="/standHelp.jsp" />
+			<forward name="vprint" path="/standHelpPrint.jsp" />
+		</action><!-- 分站报警查询-->
+
+		<action name="Search_OverTime_Form" parameter="method"
+			path="/overTime" scope="request"
+			type="com.kj133.action.DownWell_OverTimeAction">
+			<forward name="show" path="/overTime.jsp" />
+			<forward name="vprint" path="/overTimePrint.jsp" />
+		</action><!-- 下井超时查询-->
+
+
+		<action name="Search_Employee_menology_mount_Form"
+			parameter="method" path="/employee_menology_mount"
+			type="com.kj133.action.Employee_menology_mountAction">
+			<forward name="init" path="/employee_menology_mount.jsp" />
+			<forward name="loadAdd"
+				path="/employee_menology_mountAdd.jsp" />
+			<forward name="add"
+				path="/employee_menology_mount.do?method=init" />
+		</action><!-- 员工考勤设置 -->
+		<action name="Search_Pworkset_Form" parameter="method"
+			path="/pworkset" type="com.kj133.action.PworksetAction">
+			<forward name="init" path="/pworkset.jsp" />
+			<forward name="addgongzhong" path="/pworkset_gongzhong.jsp" />
+			<forward name="siteinit" path="/pworkset_site.jsp" />
+			<forward name="timeinit" path="/pworkset_time.jsp" />
+			<forward name="siteinit1" path="/pworkset_site1.jsp" />
+			<forward name="timeinit1" path="/pworkset_time1.jsp" />
+			<forward name="addgzTime"
+				path="/pworkset.do?method=timeinit1" />
+			<forward name="pworkseta"
+				path="/pworkset.do?method=siteinit1" />
+			<forward name="addSite" path="/pworkset.do?method=init" />
+			<forward name="loadAdd"
+				path="/employee_menology_mountAdd.jsp" />
+			<forward name="add"
+				path="/employee_menology_mount.do?method=init" />
+		</action><!-- 人员工作设置 -->
+
+
+		<action scope="request" name="Search_Employee_check_daily_Form"
+			parameter="method" path="/employee_check_daily"
+			type="com.kj133.action.Employee_check_dailyAction">
+			<forward name="day" path="/employee_check_daily.jsp" />
+			<forward name="vprint"
+				path="/employee_check_dailyPrint.jsp" />
+		</action><!--员工考勤日报 -->
+
+		<action scope="request" name="Search_emphases_report_Form"
+			parameter="method" path="/emphases_report"
+			type="com.kj133.action.Emphases_reportAction">
+			<forward name="day" path="/emphases_report.jsp" />
+			<forward name="vprint" path="/emphases_reportPrint.jsp" />
+		</action><!--重点考勤日月明细报 -->
+
+		<action scope="request" name="Search_emphases_check_report_Form"
+			parameter="method" path="/emphases_check_report"
+			type="com.kj133.action.Emphases_check_reportAction">
+			<forward name="day" path="/emphases_check_report.jsp" />
+			<forward name="vprint"
+				path="/emphases_check_reportPrint.jsp" />
+		</action><!--重点考勤日月报 -->
+
+		<action name="Search_Department_daily_Form" parameter="method"
+			path="/department_daily" scope="request"
+			type="com.kj133.action.Department_dailyAction">
+			<forward name="department" path="/department_daily.jsp" />
+			<forward name="vprint" path="/department_dailyPrint.jsp" />
+		</action><!--部门考勤日报 -->
+
+		<action name="Search_Department_menology_Form"
+			parameter="method" path="/department_menology" scope="request"
+			type="com.kj133.action.Department_menologyAction">
+			<forward name="show" path="/department_menology.jsp" />
+			<forward name="vprint" path="/department_menologyPrint.jsp" />
+		</action><!--部门考勤月报 -->
+
+		<action name="Search_DownWell_menology_Form" parameter="method"
+			path="/downwell_menology" scope="request"
+			type="com.kj133.action.Downwell_menologyAction">
+			<forward name="show" path="/downwell_menology.jsp" />
+			<forward name="vprint" path="/downwell_menologyPrint.jsp" />
+		</action><!-- 部门下井月报-->
+
+		<action name="Search_Employee_menology_Form" parameter="method"
+			path="/employee_menology" scope="request"
+			type="com.kj133.action.Employee_menologyAction">
+			<forward name="show" path="/employee_menology.jsp" />
+			<forward name="vprint" path="/employee_menologyPrint.jsp" />
+		</action><!-- 员工考勤月报-->
+		<action name="Search_downWellCount_menology_Form"
+			parameter="method" path="/downWellCount_menology" scope="request"
+			type="com.kj133.action.DownWellCount_menologyAction">
+			<forward name="show" path="/downWellCount_menology.jsp" />
+			<forward name="vprint" path="/employee_menologyPrint.jsp" />
+		</action><!-- 入井次数月报-->
+
+		<action name="Search_BanType_Form" parameter="method"
+			path="/bantype" scope="request"
+			type="com.kj133.action.BantypeAction">
+			<forward name="type" path="/bantype.jsp" />
+			<forward name="show"
+				path="/bantype.do?method=initialization" />
+			<forward name="load" path="/bantype.do?method=loadShow" />
+			<forward name="loadBanType" path="/updateBanType.jsp" />
+		</action><!-- 班次设置-->
+
+
+
+
+
+		<action name="Search_routDetail_top_Form" parameter="method"
+			scope="request" path="/routDetail_top"
+			type="com.kj133.action.RoutDetail_topAction">
+			<forward name="routDetail_top" path="/routDetail_top.jsp" />
+			<forward name="save" path="/routDetail_top.do?method=init" />
+			<forward name="load" path="/routDetail_top_load.jsp" />
+			<forward name="update"
+				path="/routDetail_top.do?method=init" />
+			<forward name="delete"
+				path="/routDetail_top.do?method=init" />
+		</action><!-- 巡检路线查询-->
+
+
+		<action name="Search_routDetail_right_Form" parameter="method"
+			path="/routDetail_right" scope="request"
+			type="com.kj133.action.RoutDetail_rightAction">
+			<forward name="showRadio"
+				path="/routDetail_right_showradio.jsp" />
+			<forward name="addChoiceRadio"
+				path="/routDetail_right_add.jsp" />
+			<forward name="init" path="/routDetail_right_init.jsp" />
+			<forward name="save"
+				path="/routDetail_right.do?method=save_ok" />
+			<forward name="load" path="/routDetail_right_load.jsp" />
+			<forward name="updateChoiceRadio"
+				path="/routDetail_right_load.jsp" />
+			<forward name="update"
+				path="/routDetail_right.do?method=save_ok" />
+			<forward name="delete"
+				path="/routDetail_right.do?method=save_ok" />
+		</action><!-- 经过地点设置-->
+
+
+		<action name="Search_department_day_Form" parameter="method"
+			path="/department_day" scope="request"
+			type="com.kj133.action.Department_dayAction">
+			<forward name="show" path="/department_day.jsp" />
+			<forward name="vprint" path="/department_dayPrint.jsp" />
+		</action><!-- 部门时段查询-->
+
+		<action name="Search_department_day_Form" parameter="method"
+			path="/department_time" scope="request"
+			type="com.kj133.action.Department_timeAction">
+			<forward name="time" path="/department_time.jsp" />
+			<forward name="vprint" path="/department_timePrint.jsp" />
+		</action><!-- 部门时点查询-->
+
+		<action name="AddEmployee_Form" path="/addEmployee"
+			scope="request" type="com.kj133.action.AddEmpLoyeeAction">
+			<forward name="error"
+				path="/operatorEmployee.do?method=initializerator" />
+			<forward name="success"
+				path="/employee.do?method=getStaffer" />
+		</action><!-- 增加员工-->
+
+		<action name="AddEmployee_Form" parameter="method"
+			path="/operatorEmployee" scope="request"
+			type="com.kj133.action.OperatorEmployeeAction">
+			<forward name="add.success" path="/addEmployee.jsp" />
+			<forward name="add.error" path="/addErrorEmployee.jsp" />
+			<forward name="load" path="/updateeEmployee.jsp" />
+		</action><!--初始化员工 -->
+
+		<action name="AddEmployee_Form" parameter="method"
+			scope="request" path="/loadEmployee"
+			type="com.kj133.action.LoadEmployeeAction">
+			<forward name="load" path="/updateeEmployee.jsp" />
+			<forward name="update"
+				path="/employee.do?method=getStaffer" />
+		</action><!-- 修改员工，其实可以和增加员工放在一起-->
+
+		<action name="Search_Employee_Form" parameter="method"
+			path="/employee" scope="request"
+			type="com.kj133.action.EmployeeAction">
+			<forward name="employee" path="/Employee.jsp" />
+			<forward name="delete"
+				path="/employee.do?method=getStaffer" />
+			<forward name="vprint" path="/employeeViewPrint.jsp" />
+		</action><!--编辑员工-->
+
+
+		<action name="Search_Employee_Form" scope="request"
+			parameter="method" path="/employeeQuery"
+			type="com.kj133.action.EmployeeQueryAction">
+			<forward name="employee" path="/queryEmployee.jsp" />
+			<forward name="vprint" path="/queryEmployeePrint.jsp" />
+		</action><!--  查询员工 -->
+
+		<action name="Search_TrackShow_Form" parameter="method"
+			path="/track" type="com.kj133.action.TrackAction">
+			<forward name="trackShow" path="/trackShow.jsp" />
+			<forward name="srror" path="/socketError.jsp" />
+		</action><!--定位跟踪-->
+
+		<action path="/showMaP" type="com.kj133.action.ShowMaPAction">
+			<forward name="showmap" path="/showMap.jsp" />
+			<forward name="srror" path="/socketError.jsp" />
+		</action><!--显示分站和人数-->
+
+		<action name="Search_Popedom_Form" path="/popedom"
+			parameter="method" type="com.kj133.action.UserPopedomAction">
+			<forward name="init" path="/userPopedom.jsp" />
+			<forward name="addPopedom" path="/addPopedom.jsp" />
+			<forward name="showPage" path="/menu_left_back.jsp" />
+			<forward name="save" path="/popedom.do?method=init" />
+			<forward name="delete" path="/popedom.do?method=init" />
+			<forward name="load" path="/loadPopedom.jsp" />
+		</action><!-- 用户权限设置 -->
+
+		<action name="Search_Popedom_Form" path="/suggest"
+			parameter="method" type="com.kj133.action.SuggestAction" /><!-- 仿Google提示 -->
+
+		<action name="MapAdd_Form" parameter="method" path="/fleeHelp"
+			type="com.kj133.action.FleeHelpAction">
+			<forward name="init" path="/fleeHelp.jsp" />
+			<forward name="update" path="/fleeHelp.do?method=init" />
+		</action><!-- 应急帮助 -->
+
+
+		<action name="Search_TransitTrctic_Form" parameter="method"
+			path="/transitTrctic" type="com.kj133.action.TransitTrcticAction">
+			<forward name="init" path="/transitTrcticLeft.jsp" />
+			<forward name="info" path="/transitTrcticInfo.jsp" />
+			<forward name="info1" path="/transitTrcticInfo1.jsp" />
+			<forward name="load" path="/transitTrcticAdd.jsp" />
+			<forward name="save" path="/transitTrcticSave.jsp" />
+
+			<forward name="delete" path="/transitTrctic.do?method=init" />
+		</action><!-- 通行策略设置 -->
+
+
+		<action name="Search_Ocx_Form" parameter="method"
+			path="/showOcx" type="com.kj133.action.ShowOcxAction">
+			<forward name="init" path="/showOcx.jsp" />
+			<forward name="ocxLoad" path="/showOcxLoad.jsp" />
+			<forward name="ocxAddJsp" path="/showOcxError.jsp" />
+			<forward name="ocxUpdate" path="/showOcx.do?method=init" />
+			<forward name="ocxAdd" path="/showOcx.do?method=init" />
+			<forward name="show" path="/TestShowOcx.jsp" />
+		</action><!-- 加载ocx -->
+
+		<action name="Search_ShuaKa_Form" parameter="method"
+			path="/Moves_path" type="com.kj133.action.Moves_pathAction">
+			<forward name="moves_path" path="/moves_path.jsp" />
+			<forward name="init" path="/moves_path_downWell.jsp" />
+			<forward name="result" path="/moves_path_showResult.jsp" />
+		</action><!-- 移动轨迹查询 -->
+		<!--管技人员考勤信息查询-->
+		<action name="Search_ShuaKa_Form" parameter="method" path="/gj"
+			type="com.kj133.action.GjAction">
+			<forward name="gj" path="/gj.jsp" />
+			<forward name="gj1" path="/gj1.jsp" />
+			<forward name="xzgj" path="/xzgj.jsp" />
+			<forward name="vprint" path="/gjPrint.jsp" />
+		</action>
+		
+		<action name="GjUserForm" parameter="method" path="/gjuser"
+			type="com.kj133.action.GjUserAction">
+			<forward name="success" path="/gj.do?method=getWordlib" />
+			<forward name="gjno" path="/gjno.jsp" />
+			<forward name="gjlogout" path="/gjlogin.jsp" />
+			<forward name="gjupdate" path="/updategjpwd.jsp" />
+			<forward name="addgjuser" path="/addgjuser.jsp" />
+			<forward name="toguanligjuser" path="/guanligjuser.jsp" />
+			<forward name="delgjuser" path="/gjuser.do?method=getallgjuser" />
+		</action><!-- 管技用户登陆-->
+		
+		<action name="MoremapsForm" parameter="method" path="/moremaps"
+			type="com.kj133.action.MoremapsAction">
+			<forward name="toindex" path="/telezone/map.jsp" />
+			<forward name="toindexright" path="/telezone/index_right.jsp" />
+		</action><!-- 多图地图-->
+		
+		<!-- 简版开始 -->
+		
+		<action name="Search_Employee_Form" scope="request"
+			parameter="method" path="/EmployeeQuery"
+			type="com.basic.action.EmployeeQueryAction">
+			<forward name="employeebasic" path="/queryEmployee.jsp" />
+		</action><!--  查询员工 -->
+		
+		<action name="Search_ViewReader_Form" parameter="method"
+			path="/ReaderQuery" scope="request"
+			type="com.basic.action.ReaderQueryAction">
+			<forward name="basicReader" path="/queryViewReader.jsp" />
+		</action><!-- 查询分站 -->
+		
+		<action name="Search_Card_Batteries_Form" parameter="method"
+			path="/card_alarm" scope="request"
+			type="com.basic.action.CardBatteriesAction">
+			<forward name="basicShow" path="/card_batteries.jsp" />
+			<forward name="basicInit" path="/card_batteries.jsp" />
+			<forward name="basicShowCall" path="/card_call.jsp" />
+			<forward name="basicInitCall" path="/card_call.jsp" />
+		</action><!--定位卡报警 -->
+		
+		<action name="Search_OverTime_Form" parameter="method"
+			path="/OverTime" scope="request"
+			type="com.basic.action.DownWellOverTimeAction">
+			<forward name="basicShow" path="/overTime.jsp" />
+			<forward name="vprint" path="/overTimePrint.jsp" />
+		</action><!-- 下井超时查询-->
+		
+		<action name="Search_Department_menology_Form"
+			parameter="method" path="/DepartmentMenology" scope="request"
+			type="com.basic.action.DepartmentMenologyAction">
+			<forward name="showbasic" path="/department_menology.jsp" />
+			<forward name="vprint" path="/department_menologyPrint.jsp" />
+		</action><!--部门考勤月报 -->
+		
+		<action name="Search_WorkAtt_Form" parameter="method"
+			path="/workatt" scope="request"
+			type="com.basic.action.WorkAttAction">
+			<forward name="showbasic" path="/workatt.jsp" />
+		</action><!--实时信息查询-->
+		
+		<action name="Search_WorkAtt_Form" parameter="method"
+			path="/workattleader" scope="request"
+			type="com.basic.action.WorkAttLeaderAction">
+			<forward name="showbasic" path="/workattleader.jsp" />
+		</action><!--实时干部查询-->
+		
+		<action name="Search_WorkAtt_Form" parameter="method"
+			path="/workatthis" scope="request"
+			type="com.basic.action.WorkAttHisAction">
+			<forward name="show" path="/workatthis.jsp" />
+			<forward name="showarea" path="/workatthisarea.jsp" />
+		</action><!--历史信息查询-->
+		
+		<action name="Search_WorkAtt_Form" parameter="method"
+			path="/person" scope="request"
+			type="com.basic.action.MineAction">
+			<forward name="showbasic" path="/panermine.jsp" />
+			<forward name="initbasic" path="/panermine.jsp" />
+		</action><!-- 人员搜索 -->
+		
+		<!-- 简版结束 -->
+		
+	</action-mappings>
+
+	<message-resources parameter="/ApplicationResources_zh" />
+
+</struts-config>
+
+
+
+

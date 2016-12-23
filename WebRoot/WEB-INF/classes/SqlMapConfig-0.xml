@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" maxRequests="128" maxSessions="64"
+		useStatementNamespaces="true" />
+
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver"
+				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<property name="JDBC.ConnectionURL"
+				value="jdbc:sqlserver://localhost;DatabaseName=tyzh" />
+			<property name="JDBC.Username" value="sa" />
+			<property name="JDBC.Password" value="tyzh123KZMK" />
+			<property name="Pool.MaximumActiveConnections" value="10" />
+			<property name="Pool.MaximumIdleConnections" value="5" />
+			<property name="Pool.MaximumCheckoutTime" value="120000" />
+			<property name="Pool.TimeToWait" value="500" />
+			<property name="Pool.PingQuery"
+				value="select 1 from sample" />
+			<property name="Pool.PingEnabled" value="false" />
+			<property name="Pool.PingConnectionsOlderThan" value="1" />
+			<property name="Pool.PingConnectionsNotUsedFor" value="1" />
+		</dataSource>
+	</transactionManager>
+
+	<sqlMap resource="com/telezone/Test/OGroup.xml" />
+	<sqlMap resource="com/telezone/domain/xml/MapList.xml" />
+	<sqlMap resource="com/telezone/domain/xml/AlarmInfo.xml" />
+	<sqlMap
+		resource="com/telezone/domain/xml/LocatedataEveryTimeMod.xml" />
+	<sqlMap resource="com/telezone/domain/xml/Locator.xml" />
+	<sqlMap resource="com/telezone/domain/xml/VReaderData.xml" />
+	<sqlMap resource="com/telezone/domain/xml/CardReader.xml" />
+	<sqlMap
+		resource="com/telezone/domain/xml/PersonInMineDetailInfo.xml" />
+	<sqlMap resource="com/telezone/domain/xml/ReaderState611.xml" />
+	<sqlMap resource="com/telezone/domain/xml/Staffer.xml" />
+	<sqlMap resource="com/telezone/domain/xml/WoldLib.xml" />
+	<sqlMap resource="com/telezone/domain/xml/GasData.xml" />
+	<sqlMap resource="com/telezone/domain/xml/AreaInfo.xml" />
+	<sqlMap resource="com/telezone/domain/xml/Area.xml" />
+	<sqlMap resource="com/telezone/domain/xml/AreaDetail.xml" />
+	<sqlMap resource="com/telezone/domain/xml/upload721.xml" />
+	<sqlMap resource="com/telezone/domain/xml/ShowBackup.xml" />
+	<sqlMap resource="com/telezone/domain/xml/Common.xml" />
+	<sqlMap resource="com/telezone/domain/xml/EscapeLine.xml" />
+</sqlMapConfig>

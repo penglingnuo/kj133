@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Locator">
+	<typeAlias alias="Locator"
+		type="com.telezone.domain.classes.Locator" />
+
+	<select id="selectLocator" parameterClass="Locator"
+		resultClass="Locator">
+		select * from Locator
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="mapid">
+				mapid = #mapid#
+			</isNotNull>
+			<isNotNull prepend="and" property="state">
+				state = #state#
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<select id="selectAlarmLocator" resultClass="Locator">
+		<![CDATA[
+			select t.info as state, l.lname from (
+				select vl.*,ai.info from v_locatedata vl
+					left join alarminfo ai
+					on vl.[state] = ai.[state]
+					where vl.starttime > GetDate() - 0.5
+				) t
+				left join locator l
+				on t.locatorid = l.locatorid
+				where t.[state] & 64 > 0 or t.[state] & 1024 > 0
+		]]>
+	</select>
+	
+	<update id="updateLocator" parameterClass="Locator">
+		update locator set webx = #webx#, weby = #weby# where locatorid = #locatorId#
+	</update>
+	<update id="updateLocator1" parameterClass="Locator">
+		update locator set webxall = #webxall#, webyall = #webyall# where locatorid = #locatorId#
+	</update>
+</sqlMap>

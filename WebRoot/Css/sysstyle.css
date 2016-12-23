@@ -1,0 +1,1071 @@
+/* CSS Document
+ * FOR SWETT PT 经典风格
+***Version=2.4
+ * History :
+ v2.2.2
+ * 1、增加首页的风格显示 sybcolor1、sybcolor2、sybcolor3  杨叶萍 2008-3-19
+ * 2、tdmsgclass 风格中增加高度解决 图片过大撑开行高的问题  wangkw 2008-3-26
+ * 3、补充增加 hiddenFieldBox 风格 应用在表单定义的字段显示风格中 wangkw 2008-3-25
+ * 4、补充增加 FORMTITLE 风格 wangkw 2008-3-26
+ * 5、leftfrmtopbartxt 风格中补充一些属性，并调整右边距 为 5 增加背景图片 wangkw 2008-3-26
+ * 6、displayinfobox 中增加 word-break:break-all属性 解决英文自动换行的问题 wangkw 2008-3-26
+ * 7、更换 normalColor 的颜色 wangkw 2008-3-26
+ * 8、增加风格 .flowtitlebar .flowtitlebarhand .spantext .spanbtn 为了流程显示 wangkw 2008-3-26
+ * 9、修改tasktdclass 解决任务列表缺少线的问题  wangkw 2008-5-14
+ * 10、更改 myInputShowBox 的长度为165 wangkw 2008-5-23
+ * 11、增加submitButnOn风格用于按钮的风格变换 wangkw 2008-6-3
+ v2.3
+ * 1、增加列表锁定风格 lockedRow、lockedAll、lockedColumn。 chenhy 2008-6-24
+ v2.4 wangkw 2008-10-10
+ * 1、为lockedRow、lockedAll、lockedColumn增加内容边界和td边框
+ * 2、增加displaybottom风格为按钮显示划出清晰的界限。
+ * 3、修改serialnum的高度为21，用以避免列表的大小总是由于出现option时而撑大的问题
+ * 4、在listtblclass增加borderColor:expression，解决table中td没有边框的问题
+ * 5、增加tblclass、tblclass2用于tr间的颜色变换，删除tdclass的底色；增加tdclass2备用
+*/
+div.tabBox {BACKGROUND-COLOR: #E6F2F5;}
+TD {
+	border-left: 0px;
+	border-top: 0px;
+	FONT-SIZE: 12px;
+}
+TH {
+	border-left: 0px;
+	border-top: 0px;
+	FONT-SIZE: 12px;
+	background: #FAFAFA;
+}
+.myInputShowBox { border:1 inset;FONT-FAMILY:"宋体", "Courier New", "Courier";FONT-SIZE:12px;cursor: default;}
+DIV.menuBar {BACKGROUND-COLOR: transparent; border:none;border-bottom:1px;padding:0px;padding-top:2px;}
+DIV.menuBar A.menuButton {BACKGROUND-COLOR: transparent; COLOR: black; border-style: none; border-color: BUTTONHIGHLIGHT BUTTONSHADOW BUTTONSHADOW BUTTONHIGHLIGHT;height:16px;cursor: hand;padding-top:1px;}
+DIV.menuBar A.menuButton:hover {BACKGROUND-COLOR: #CAECF4; COLOR: black; border-style: none;height:16px;cursor: hand;}
+DIV.menuBar A.menuButtonActive {BACKGROUND-COLOR: #CAECF4; COLOR: black; border-style: none;height:16px;cursor: hand;}
+DIV.menuBar A.menuButtonActive:hover {BACKGROUND-COLOR: #CAECF4; COLOR: black; border-style: none;height:16px;cursor: hand;}
+DIV.menu A.menuItem {
+	COLOR: #000000; cursor: hand;
+	BACKGROUND-COLOR: #9BDCED;
+	border:0px none;
+	border-bottom:1px solid #5AA6BD;
+	padding-top:5px;
+	padding-bottom:3px;
+}
+DIV.menu {
+	z-index:300;overflow :visible;POSITION: absolute;border:1px solid #5AA6BD;
+	BACKGROUND-COLOR: #9BDCED;
+}
+DIV.menu A.menuItem:hover {
+	border:0px none;
+	BACKGROUND-COLOR: #71C1D6; COLOR: #000000;
+	border-bottom:1px solid #5AA6BD;
+}
+DIV.menu A.menuItemHighlight {
+	border-top:0px none;
+	border-left:0px none;
+	border-right:0px none;
+	BACKGROUND-COLOR: #71C1D6; COLOR: #000000;
+	border-bottom:1px solid #5AA6BD;
+}
+.menubarcut {BACKGROUND-COLOR: transparent; COLOR: black; border: 1px solid #1A7FB8;font-size:12px;padding-top:2px;padding-left:3px;padding-right:3px;height:20px;}
+
+.invrPlanButn{font:9pt 宋体; height: 14pt; border:2px groove white;
+filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#662CBBAF', EndColorStr='#EE35357E';)
+	cursor:hand;background:#254FA9;color:white;padding:1px;padding-top:2px;TEXT-DECORATION:NONE;}
+.planButn {font:12px "宋体"; cursor:hand;
+	border: 1px solid #0099CC;
+	height: 20px;
+	background:menu;color:black;padding:1px;padding-top:2px;TEXT-DECORATION:NONE;
+	background-image: url(images/button_bj.gif);
+}
+.formbutton {font:12px "宋体"; cursor:hand;
+	border: 1px solid #0099CC;
+	height: 20px;
+	color:black;padding:1px;padding-top:2px;TEXT-DECORATION:NONE;
+	background-image: url(images/button_bj.gif);
+	}
+.submitButn {font:12px "宋体";
+	border: 1px solid #0099CC;
+	height: 20px;
+	cursor:hand;background:menu;color:black;padding:1px;padding-top:2px;TEXT-DECORATION:NONE;
+	background-image: url(images/button_bj.gif);
+}
+.submitButnOn {font:12px "宋体";
+	border: 1px solid #0099CC;
+	height: 20px;
+	cursor:hand;color:black;padding:1px;padding-top:2px;text-decoration: underline;
+	background-image: url(images/button_bj.gif);
+}
+.MySubmitButn {
+	font:12px "宋体";
+	border: 1px solid #0099CC;
+	height: 20px;
+	cursor:hand;background:menu;color:black;padding-left:10px;padding-right:10px;padding-top:3px;padding-bottom:1px;
+	text-decoration:none;
+	display:inline;
+	white-space: nowrap;
+	background-image: url(images/button_bj.gif);
+}
+
+.fileselect {font:9pt "宋体"; height: 14pt; border: 1px solid; border-color: BUTTONHIGHLIGHT BUTTONSHADOW BUTTONSHADOW BUTTONHIGHLIGHT; padding-top:2px;padding-left:2px;}
+.imgbutn {cursor: hand}
+.tipmsg {cursor: help}
+TD.ttd {
+	FONT-SIZE: 12px; LINE-HEIGHT: 100%
+}
+
+.TITLE {background-color:#94D1EA;font-size: 12px;;color:black}
+.TITLEGRAY {color: #353535; background-color: #C5E7F0;height:20px;}
+.GROUPTITLES {background:#254FA9;color:white;padding-left:6;padding-top:2px;}
+.GROUPTITLE {cursor:hand;background-color: #B9E3ED;color:black;padding-left:15px;padding-top:6px;
+	border-bottom: 1px solid #00659C;
+	background-image: url(images/groupgripbar.gif);
+	background-repeat:repeat-x;
+	background-position:top left;
+	height:20px;
+}
+.GROUPOFFTITLE {cursor:hand;background-color:#94D1EA;color:BLACK;padding-left:15px;padding-top:6px;
+	border-bottom: 2px groove #00659C;
+	background-image: url(images/groupgripbar.gif);
+	background-repeat:repeat-x;
+	background-position:top left;
+	height:20px;
+}
+.TITLES {color:white;padding-left:10;padding-top:2px;}
+.TITLEGRAY {color:black;}
+
+.myInputBox {
+	BACKGROUND:white;
+	COLOR:#000000;
+	border: 1px solid #999999;
+	FONT-FAMILY:"宋体", "Courier New", "Courier";
+	FONT-SIZE:12px;
+	cursor: auto;
+}
+
+.myInputShowBox {
+	BACKGROUND:#EEEEEE;
+	COLOR:#254FA9;
+	width:165px;
+}
+
+.myInputShowBox1 { BACKGROUND:#EEEEEE;COLOR:#254FA9;width:100px;border: 1px solid #999999;}
+.mypoplist {
+	FONT-SIZE: 12px;
+	COLOR:black;
+	background-color: white;
+	width:182px;
+}
+.hiddenFieldBox {
+	border:1 dashed;
+	FONT-FAMILY:"宋体", "Courier New", "Courier";
+	FONT-SIZE:12px;
+	cursor: default;
+}
+.mylistbox {
+	FONT-SIZE: 12px;
+	COLOR:black;
+	background-color: white;
+}
+.font {
+	font-size: 12px;
+	line-height: 24px;
+}
+.invrColor { color: highlighttext; background-color: #356CC4}
+.blankColor { color: infotext; background-color:white}
+.blankTColor { color: #254FA9; background-color: white}
+.valuebox { color: infotext; background-color:white;padding-left:3px;border:1px solid #BDD7FF;font-size: 12px;}
+.normalColor { color: windowtext; background-color: #C5E7F0;}
+.toplineColor { color: windowtext; background-color: #BDD7FF;height:1px}
+.sysColor { FONT-FAMILY: "宋体", "Courier New", "Courier"; color: windowtext; BACKGROUND-COLOR: #E6F2F5;border:none;}
+.topmenutbl { FONT-FAMILY: "宋体", "Courier New", "Courier";
+	background-color: white ;color: #000000;
+	background-image: url(images/log1.jpg);
+	background-repeat:no-repeat;
+	background-position-y:10;
+}
+.deskColor { FONT-FAMILY: "宋体", "Courier New", "Courier";
+	font-size: 12px;
+	background-color: #E6F2F5;
+	border:none;
+}
+.sysIColor { FONT-FAMILY: "宋体", "Courier New", "Courier";
+	color: black;
+	BACKGROUND-COLOR: #E6F2F5;
+	SCROLLBAR-FACE-COLOR: #F4F7F9;
+	SCROLLBAR-HIGHLIGHT-COLOR: #90fcfc;
+	SCROLLBAR-3DLIGHT-COLOR: #4848b4;
+	SCROLLBAR-TRACK-COLOR: #C6E0EE;
+	SCROLLBAR-DARKSHADOW-COLOR: #b4fcfc;
+	SCROLLBAR-BASE-COLOR: #b4d8fc;
+	border:none;
+}
+.menuframe
+{
+	FONT-FAMILY: "宋体", "Courier New", "Courier";
+	color: #000000;
+	background-color: #E6F2F5;
+	SCROLLBAR-FACE-COLOR: #F4F7F9;
+	SCROLLBAR-HIGHLIGHT-COLOR: #90fcfc;
+	SCROLLBAR-3DLIGHT-COLOR: #4848b4;
+	SCROLLBAR-TRACK-COLOR: #C6E0EE;
+	SCROLLBAR-DARKSHADOW-COLOR: #b4fcfc;
+	SCROLLBAR-BASE-COLOR: #b4d8fc;
+}
+
+.transColor { background-color: transparent; }
+.formdivspace{ font-size:5px;margin:1px}
+.mainformtable {background-color: white}
+.mainformbox {
+	background-color: white
+	font-size: 12px;
+	border-top: 2px solid #006699;
+	border-right: 2px solid #8AE0F2;
+	border-bottom: 2px solid #8AE0F2;
+	border-left: 2px solid #006699;
+	padding-top:5px;
+}
+.displayinfobox{
+	background-color: #edfeff;
+	border-top: 1px solid #006699;
+	border-right: 1px solid #8AE0F2;
+	border-bottom: 1px solid #8AE0F2;
+	border-left: 1px solid #006699;
+	word-break: break-all;
+}
+.displaymsgsbox{
+border: 1px solid #999999;
+background-color: white;
+}
+.msgtitlebar {
+	background-image: url(images/line03.gif);
+	background-repeat:repeat-x;
+	margin-left:50px;
+	height:6px;
+}
+.formPrompt{height:18px; padding-top:3px;}
+.deskColor FRAMESET{ background-color:WHITE; border-color:WHITE; background-position: right -90}
+.cardValue {border-style:none; color:black; border-top:1px solid #B9E3ED;border-right:1px solid #B9E3ED;padding:3px;padding-top:6px;padding-left:8px;background: #FFFFFF;height:26px;border-bottom:none;border-right:none;}
+.cardtdbox{color: #222233; background: #E6F2F5;height:100%;border-top:1px solid #B9E3ED;padding:3px;padding-top:6px;padding-left:8px;height:26px;border-bottom:none;border-left:none;border-right:1px solid #B9E3ED;vertical-align:middle}
+div.cardPrompt {}
+td.cardPrompt { }
+.tabColor {
+	font-size:12px;
+	border: 1px solid #8AE0F2;
+}
+.schedule_th {background-color: #94D1EA;border-bottom:0px;}
+.schedule_title {background-color:#8AE0F2;border:1px solid #94D1EA;}
+.schedule_tr {background-color:white;}
+.schedule_tiptd{background-color: #94D1EA;text-align:center;border:none;border-right:1px solid #006699;}
+.timecolorA { background-color:#FFFBEF;border:none;height:18px}
+.timecolorB { background-color:#FFFFDE;border:none;height:18px}
+.timecolorC { background-color:#EFE3C6;border:none;height:18px}
+.timecolorD { background-color:#DEDBDE;border:none;height:18px}
+.timecolor1A { background-color:#EFDFFF;border:none;height:18px}
+.timecolor1B { background-color:#E2F1FA;border:none;height:18px}
+.timecolor1C { background-color:#E7F3FF;border:none;height:18px}
+.timecolor1D { background-color:#F3F3F3;border:none;height:18px}
+.myFontColor {TEXT-DECORATION: none;cursor:hand}
+.myFontColor A:link{ font-size: 12px;padding-left:4px;color: #8B8B8B;TEXT-DECORATION: none;cursor:hand}
+.myFontColor A:hover{ font-size: 12px;padding-left:4px;color: #8B8BFF;TEXT-DECORATION: underline;cursor:hand}
+.myFontColor2 {
+	border: 1px solid #8AE0F2;
+	border-top: 1px solid #006699;
+	border-bottom: 0px none;
+	background-color: #B9E3ED;
+	height:18px;
+}
+.myFontColor3 { color:#000000; }
+.myWarnColor { color:#ff0000; background-color: #ffffff;}
+.myBgColor1 { color:black; BACKGROUND-COLOR: #CEEBF2;}
+.myBgColor2 { color:#FF6633; background-color: #94D1EA;}
+.myBgColor3 { background-color: #ffffff;}
+.myBgColor4 { background-color: #000000;}
+.myBgColor5 { background-color: #94D1EA;}
+.myChinanessFontColor { FONT-SIZE: 12px;}
+.myWeekChinaFont {FONT-FAMILY: "宋体", "Courier New", "Courier"; color: #000000; FONT-SIZE:14px;}
+.dayBarColor {background-color: #FFFFD9;
+	border-left: 1px solid #94D1EA;
+	border-top: 1px solid #94D1EA;
+	border-right: none;
+	border-bottom: none;
+}
+.myDayColor {background-color: #ffffff;
+}
+.myBarBorder { border-collapse: collapse; border-color: #111111;}
+.myBarStyle {width:1px;display:none}
+.myDayLink
+{
+    COLOR: black;
+    TEXT-DECORATION: none;
+	PADDING-LEFT:5px;
+	cursor:hand;
+}
+
+.myDayLink A:link
+{
+    COLOR: black;
+    TEXT-DECORATION: none;
+	PADDING-LEFT:5px;
+}
+
+.myDayLink A:visited
+{
+    COLOR: black;
+    TEXT-DECORATION: none
+}
+.myDayLink A:hover
+{
+    COLOR: black;
+    TEXT-DECORATION: underline
+}
+.myWeekDayLink
+{
+    COLOR: black;
+    TEXT-DECORATION: none
+	background-color: #94D1EA;
+	cursor:hand;
+}
+
+.myWeekDayLink A
+{
+    COLOR: black;
+    TEXT-DECORATION: none
+	background-color: #94D1EA;
+}
+
+.myWeekDayLink A:link
+{
+    COLOR: black;
+    TEXT-DECORATION: none
+	background-color: #94D1EA;
+	PADDING-LEFT:5px;
+}
+
+.myWeekDayLink A:visited
+{
+    COLOR: black;
+    TEXT-DECORATION: none
+	background-color: #94D1EA;
+}
+.myWeekDayLink A:hover
+{
+    COLOR: black;
+	background-color: #94D1EA;
+    TEXT-DECORATION: underline
+}
+
+.myButtons
+{
+    BACKGROUND-COLOR: #8C9FD0;
+    BORDER-BOTTOM: black 1px groove;
+    BORDER-LEFT: #99ccff 1px ridge;
+    BORDER-RIGHT: black 1px groove;
+    BORDER-TOP: #99ccff 1px ridge;
+    COLOR: #ffffff;
+    FONT-FAMILY: 宋体,楷体,黑体,幼圆,trebuchet, Arial, geneva;
+    FONT-SIZE: 9pt
+}
+
+.myFormItem {}
+.myFormItem_select {cursor : help; background-image : url(images/hwave.gif);}
+
+.listtabtitle{
+	background-color: #C5E7F0;
+	DISPLAY: inline;
+	OVERFLOW: visible;
+	padding-top: 5px;
+	padding-left: 5px;
+	WHITE-SPACE: nowrap;
+	margin-bottom: 2px;
+	border-bottom: 1px solid #00659C;
+	background-image: url(images/groupgripbar.gif);
+	background-repeat:repeat-x;
+	background-position:top left;
+	height:26px;
+}
+.listtblclass {background-color: white; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;borderColor:expression(this.borderColor="#a1a2a3");}
+
+.tblclass {border-color: #a1a2a3; color: text; background-color: white; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;padding-left:5px;borderColor:expression(this.borderColor="#a1a2a3");height:20px;}
+.tblclass2 {border-color: #a1a2a3; color: text; background-color: #F5F5F5; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;padding-left:5px;borderColor:expression(this.borderColor="#a1a2a3");height:20px;}
+
+.tdclass {border-color: #a1a2a3; color: text;FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;padding-left:5px}
+.tdclass A:link{ color: black; text-decoration: none; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;}
+.tdclass A:hover{ color: black; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;text-decoration: underline;}
+
+.tdclass2 {border-color: #a1a2a3; color: text;FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;padding-left:5px}
+.tdclass2 A:link{ color: black; text-decoration: none; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;}
+.tdclass2 A:hover{ color: black; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;text-decoration: underline;}
+
+.firsttdclass {border-color:#a1a2a3; color: text; background-color: white; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;padding-left:0px;}
+.firsttdclass A:link{ color: black; text-decoration: none; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;}
+.firsttdclass A:hover{ color: black; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;text-decoration: underline;}
+.thclass {border-color: #a1a2a3; background-color: #FFC06F; background-color: transparent;FONT-FAMILY:"宋体", "ROMANC", "Courier"; FONT-SIZE:12px;TEXT-DECORATION: none;background-image: url(images/bj006.gif);height:26px;padding-top:3px;);
+}
+.thclass A:link{ color: #2E5B89;background-color: transparent; text-decoration: none; FONT-FAMILY:"宋体", "ROMANC", "Courier"; FONT-SIZE:12px;}
+.thclass A:hover{ color: #2E5B89; background-color: transparent;text-decoration: underline;background-color: #C5E7F0; FONT-FAMILY:"宋体", "ROMANC", "Courier"; FONT-SIZE:12px;}
+.thclass A:visited{ color: #2E5B89; background-color: transparent;text-decoration: none;  FONT-FAMILY:"宋体", "ROMANC", "Courier"; FONT-SIZE:12px;TEXT-DECORATION: none}
+.th1class {border-color: #a1a2a3; color: #2E5B89; background-color: transparent; FONT-FAMILY:"宋体", "ROMANC", "Courier"; FONT-SIZE:12px;TEXT-DECORATION: none;background-image: url(images/bj005.gif);height:26px;padding-top:3px;}
+.listbotmbutn {cursor:hand;text-decoration: none;}
+.listtblbot {cursor:hand;text-decoration: none;}
+.listtblbot A:link{text-decoration: none;}
+.listtblbot A:hover{text-decoration: none;}
+.listtblbot A:visited{text-decoration: none;}
+.bottomclass {
+	background-color: #C5E7F0;
+	DISPLAY: inline;
+	OVERFLOW: visible;
+	padding-top: 3px;
+	padding-left: 15px;
+	width:100%;
+	WHITE-SPACE: nowrap;
+	border-top: 1px outset #5D8997;
+	margin-top: 2px;
+}
+
+.tdmsgclass { color: text; background-color: white; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;border:0px;border-bottom:1px solid #BDD7FF;height:20px;padding:2px;padding-top:3px;height:24}
+.tdmsgclass A:link{ color: black; text-decoration: none; FONT-FAMILY:"宋体", "Courier New", "Courier";text-decoration: none;FONT-SIZE:12px;border:0px;height:18px;padding-top:3px}
+.tdmsgclass A:hover{ color: black; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;text-decoration:none;border:0px;border-bottom:1px solid #BDD7FF;height:18px;padding-top:3px}
+.tdmsgclass A:visited{ color: text; text-decoration: none; background-color: white; FONT-FAMILY:"宋体", "ROMANC", "Courier"; FONT-SIZE:12px;border:0px;height:18px;padding-top:3px}
+.thmsgclass { color:text; background-color:#94D1EA;FONT-FAMILY:"宋体","ROMANC", "Courier"; FONT-SIZE:12px;TEXT-DECORATION: none;height:20px;padding-left:3px;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;}
+
+
+.taskth1class {
+	font-size: 12px;
+	color: #264B71;
+	background-image: url(images/bj005.gif);
+	text-indent: 6pt;
+	height:26px;padding:2px;padding-top:3px;
+}
+.taskthclass {
+	font-size: 12px;
+	color: #2E5B89;
+	background-image: url(images/bj006.gif);
+	height:26px;padding:2px;padding-top:3px;
+	border-color: #a1a2a3;
+}
+.tasktd1class {
+	font-size: 12px;
+	background-color: #FFFFFF;
+	height:20px;padding:2px;padding-top:5px;
+	baobao:expression(this.borderColor="#a1a2a3")
+}
+.tasktdclass {
+	font-size: 12px;
+	background-color: #E6F2F5;
+	height:20px;padding:2px;padding-top:5px;
+	baobao:expression(this.borderColor="#a1a2a3")
+}
+.msgtreebox {
+	background:white;
+	LEFT:0px; margin: 0px;
+	WIDTH:100%;
+	margin-left:3px;
+	PADDING: 5px;
+	POSITION:relative;TOP:0px;
+	overflow: auto; visibility: visible; height:100%;
+	font-size: 12px;
+	border-top: 1px solid #006699;
+	border-right: 1px solid #8AE0F2;
+	border-bottom: 1px solid #8AE0F2;
+	border-left: 1px solid #006699;
+	overflow: auto;
+}
+
+.trclass { color: text; background-color: white; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;}
+.trclass A:link{ color: black; text-decoration: none; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;}
+.trclass A:hover{ color: black; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;text-decoration: underline;}
+.tr1class { color: text; background-color: white; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;}
+.tr1class A:link{ color: black;text-decoration: underline; background-color: white; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;}
+.tr1class A:hover{ color: black; background-color: white;text-decoration: underline; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;}
+
+.myMsgBox {
+	BACKGROUND-COLOR: BACKGROUND;
+	BORDER: 2px groove;
+	COLOR: HIGHLIGHTTEXT;
+	CURSOR: default;
+	LEFT: 0px;
+	MARGIN: 1px;
+	PADDING-BOTTOM: 2px;
+	PADDING-LEFT: 6px;
+	PADDING-RIGHT: 6px;
+	PADDING-TOP: 2px;
+	POSITION: relative;
+	TEXT-DECORATION: none;
+	TOP: 0px; Z-INDEX: 100
+}
+.myScrollMsgBox {
+	BACKGROUND-COLOR: background;
+	BORDER: 2px groove menu;
+	COLOR: highlighttext;
+	CURSOR: default;
+	LEFT: 0px; MARGIN: 1px;
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 6px; PADDING-RIGHT: 6px; PADDING-TOP: 2px;
+	POSITION: relative; TEXT-DECORATION: none; TOP: 0px; Z-INDEX: 100 ;
+	width:100%;
+	height:100%;
+	font-size:10pt;
+}
+
+A:link{text-decoration: none; color:highlight}
+A:visited {text-decoration: none; color:black}
+A:hover{text-decoration: none; color:gray}
+
+.window {
+	BORDER-RIGHT: #606060 2px solid; PADDING-RIGHT: 2px; BORDER-TOP: #f0f0f0 2px solid; PADDING-LEFT: 2px; VISIBILITY: hidden; PADDING-BOTTOM: 2px; MARGIN: 0px; BORDER-LEFT: #d0d0d0 2px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #404040 2px solid; POSITION: absolute; BACKGROUND-COLOR: #c0c0c0; TEXT-ALIGN: left
+}
+.titleBar {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 0.5em; FONT-WEIGHT: bold; FONT-SIZE: 8pt; PADDING-BOTTOM: 2px; MARGIN: 0px; CURSOR: default; COLOR: black; PADDING-TOP: 2px; FONT-FAMILY: "MS Sans Serif", "Arial", "Helvetica", sans-serif; WHITE-SPACE: nowrap; BACKGROUND-COLOR: ACTIVECAPTION; TEXT-ALIGN: left
+}
+.titleBarText {
+	FLOAT: left; OVERFLOW: hidden; TEXT-ALIGN: left
+}
+.titleBarButtons {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; VERTICAL-ALIGN: middle; BORDER-LEFT: 0px; WIDTH: 50px; BORDER-BOTTOM: 0px; HEIGHT: 14px
+}
+.clientArea {
+	BORDER-RIGHT: #e0e0e0 2px solid; PADDING-RIGHT: 0.5em; BORDER-TOP: #404040 2px solid; PADDING-LEFT: 0.5em; FONT-SIZE: 10pt; PADDING-BOTTOM: 0.5em; MARGIN: 2px 0px 0px; OVERFLOW: auto; BORDER-LEFT: #505050 2px solid; COLOR: #000000; PADDING-TOP: 0.5em; BORDER-BOTTOM: #f0f0f0 2px solid; FONT-FAMILY: "Arial", "Helvetica", sans-serif; BACKGROUND-COLOR: white
+}
+.titlebar {  }
+
+.formGrpNameCell {background-color: highlight;Color: highlighttext; font-size: 12px;FONT-WEIGHT: bold;}
+
+.jstree_tree-item A {
+	COLOR: #000000; TEXT-DECORATION: none;
+	font-size:12px;
+}
+.jstree_tree-item A:hover {
+	TEXT-DECORATION: none;
+	COLOR: #F9046C;
+	background-color: #CAECF4;
+	font-size: 12px;
+}
+.jstree_tree-item A:active {
+	COLOR: #F9046C;
+	TEXT-DECORATION: none;
+	background-color: #CAECF4;
+	font-size: 12px;
+}
+.jstree_tree-item A:visited {
+	COLOR: #000000;
+	TEXT-DECORATION: none;
+	font-size: 12px;
+}
+.jstree_tree-itemsel {
+	COLOR: #003366;
+	TEXT-DECORATION: none;
+	background-color: #EFEFEF;
+	font-size: 12px;
+	font-weight: bold;
+}
+.jstreeTreeSelected {
+	COLOR: #003366;
+	TEXT-DECORATION: none;
+	background-color: #EFEFEF;
+	font-size: 12px;
+	font-weight: bold;
+}
+ TABLE.shrink {
+	border-bottom-style : none;
+	border-left-style : none;
+	border-right-style : none;
+	border-top-style : none;
+	border : 0px none;
+}
+
+IMG.shrink{
+	cursor:hand
+}
+
+.TOPMENUBAR {
+	background-color:transparent;
+}
+.topbarRT {
+	background-image: url(images/title_bj.gif);
+	background-repeat:repeat-x;
+}
+.jsBarTree  {
+	font-size: 12px;
+	color: #264B71;
+	padding-left: 8pt;
+	width: 100%;
+	height: 28px;
+	cursor:hand;
+	padding-top:8px;
+	border:none;
+	background-image: url(images/multabbarnorm.gif);
+	background-repeat:repeat-x;
+	overflow:hidden;
+	word-break : break-all;
+}
+.jsBarTreeSel  {
+	font-size: 12px;
+	color: #264B71;
+	width: 100%;
+	height: 28px;
+	cursor:hand;
+	padding-top:8px;
+	background-image: url(images/multabbarselt.gif);
+	background-repeat:repeat-x;
+	text-align: center;
+	display:inline;
+	overflow:hidden;
+}
+.jsBarTreeOver {
+	font-size: 12px;
+	color: #264B71;
+	padding-left: 8pt;
+	width: 100%;
+	height: 28px;
+	cursor:hand;
+	padding-top:8px;
+	border:none;
+	background-image: url(images/multabbarover.gif);
+	background-repeat:repeat-x;
+	overflow:hidden;
+}
+.leftmenuboxaa {
+	font-size: 12px;
+	border-top: 1px solid #006699;
+	border-right: 1px solid #8AE0F2;
+	border-bottom: 1px solid #8AE0F2;
+	border-left: 1px solid #006699;
+	margin-left: 3px;
+	display:inline;
+}
+.sysmainmenubar {
+	height: 39;
+}
+.mytoolbar {
+	height: 38;
+	COLOR: black;
+	BORDER: none;
+	font-size: 12px;
+}
+.mytoolbarA {
+	height: 38;
+	background-image: url(images/topbarimg1.gif);
+}
+.mytoolbarB {
+	height: 38;
+	background-image: url(images/topbarimg1.gif);
+}
+.mytoolbarC {
+	height: 38;
+	background-image: url(images/topbarimg3.gif);
+}
+.mytoolbarD {
+	height: 38;
+	background-image: url(images/topbarimg4.gif);
+}
+.mytoolbarActive {
+	height: 38;
+	background-image: url(images/toolbutnactive.gif);
+}
+.mytoolbarFocus {
+	height: 38;
+	cursor: hand;
+	background-image: url(images/toolbutnover.gif);
+}
+.toolbutntxt{
+	padding-top:3px;
+	font-size: 12px;
+}
+.butngap{
+	height: 38;
+	width:2px;
+	background-image: url(images/line01.gif);
+	background-repeat:no-repeat;
+	background-position: bottom center;
+}
+.butnbotln{
+	width:2px;
+	background-image: url(images/bj011.gif);
+	background-repeat:repeat-x;
+	background-position: top center;
+}
+.msgwintopln{
+	width:4px;
+	background-image: url(images/bj010.gif);
+	background-repeat:repeat-x;
+	background-position: center center;
+	cursor:s-resize;
+}
+.divimgvert {
+	background-image: url(images/divimgvert.gif);
+	background-repeat:repeat-y;
+	background-position-y: center;
+	background-position-x: right;
+}
+.mytoolbutn_icon {
+	height:20;
+	width:100%;
+	padding-top:2px;
+}
+.leftfrmtopbar {
+	font-size: 12px;
+	background-color: #C5E7F0;
+}
+.leftfrmtopbartxt{
+	font-size: 12px;
+	padding-top:0px;
+	padding-left: 5px;
+	width: 100%;
+	background-image: url(images/multabbarover.gif);
+	background-repeat:repeat-x;
+	display:inline;
+	overflow:hidden;
+	vertical-align:middle
+}
+.msgnumbar  {
+	FONT-FAMILY: "宋体", "ROMANC", "Courier";
+	font-size: 12px;
+	height: 14pt;
+	width: 100%;
+	background-color: transparent;
+	border: 0px none;
+	border-bottom: 0px;
+	text-align: center;
+	z-index:12;
+	padding-top:5px;
+}
+.toolbutton {
+	height: 39;
+	BORDER:none;
+	cursor:hand;
+	z-index:12;
+	background-image: url(images/topbarimg.gif);
+}
+.toolbutton_select {
+	height: 39;
+	BORDER:none;
+	cursor:hand;
+	z-index:12;
+	background-image: url(images/topbarimg.gif);
+}
+.toolbutton_over {
+	height: 39;
+	BORDER:none;
+	cursor:hand;
+	z-index:12;
+	background-image: url(images/topbarimg.gif);
+}
+.FLOWGROUPTITLE {
+	background:#EE13419D;
+	FONT-FAMILY: "宋体", "ROMANC", "Courier";
+	font-size:10pt;
+	height: 14pt;
+	width: 100%;
+	color:#2222CD;
+	padding-top:2;
+	border-bottom:0px;
+}
+.tooltxt { font-family: "宋体"; font-size: 12px; color: black;}
+.toolimg { position:relative; top:0; left:0; width:32; height:32;}
+.toolimg A:link{ position:relative; top:0; left:0;width:32; height:32;}
+.toolimg A:hover{ position:relative; top:0; left:0; width:32; height:32;}
+.leftmenu-table {
+	font-size: 12px;
+	border-top: 1px solid #006699;
+	border-right: 1px solid #8AE0F2;
+	border-bottom: 1px solid #8AE0F2;
+	border-left: 1px solid #006699;
+}
+.TreeArea {
+	border: 1px none #000000;
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	LEFT: 0px;
+	PADDING-BOTTOM: 5px;
+	WIDTH: 180px;
+	PADDING-TOP: 5px;
+	POSITION: relative ;
+	TOP: 0px;
+	HEIGHT: 100%;
+	overflow: visible;
+	visibility: visible;
+}
+.myShowBox {
+	border:1 solid WINDOWFRAME;
+	FONT-FAMILY:"宋体", "Courier New", "Courier";
+	BACKGROUND:menu;
+	COLOR:background;
+	padding-top:2;
+	font-size:10pt;
+	height:14pt;
+	cursor: auto;
+}
+.newdetail {
+	padding-left:20;
+	padding-right:20;
+}
+.touming { background-color: transparent; FONT-FAMILY:"宋体", "Courier New", "Courier"; FONT-SIZE:12px;
+	border-left: 0px;
+	border-top: 0px;
+	border-color: #98928F;
+}
+
+.msgmenubar {background-image: url(images/menubarbkimg1.gif);height:28px;border-top:1px}
+.windowmenubar {background-image: url(images/menubarbkimg1.gif);height:28px;padding:5px;border-top:1px;width:100%;background-position:center left;background-repeat:repeat-x;}
+.winmsgmenubar {background-image: url(images/menubarbkimg2.gif);height:28px;padding:5px;padding-right:35px;background-position:center left;border-right:2px groove;border-bottom:1px solid #eeeeee;background-repeat:repeat-x;}
+.scrolllink { TEXT-DECORATION: underline; cursor:hand;}
+.toolbutnbox {  border: none;
+	background-color: #C5E7F0;
+	display: inline;
+	overflow: visible;
+	padding-left: 10px;
+	white-space: nowrap;
+	border-bottom: 1px solid #5D8997;
+	margin-bottom: 2px;
+}
+.pkserialnum {font-weight: bolder; cursor: hand; height: 100%; width:100%; text-align: center; padding-top:4px}
+.serialnum {
+	font-size: 12px;
+	background-color: #94D1EA;
+	cursor: hand;
+	height: 21px;
+	width:35px;
+	text-align: center;
+	padding-top:4px;
+	border:none;
+	border-top: 1px solid #E6F2F5;
+}
+.colfirstnum { background: buttonface;color: buttontext; font-weight: bolder; cursor: hand; height: 14px; width:16px; text-align: center; border: 1px outset; }
+.printColor { color: #000000; background-color: #FFFFFF}
+.tabIframeWrapper { background-color: menu;}
+.popmenupicker {width:16px;z-index:50; background-color:#C1D5FB; border:2px groove;cursor:hand; background-image: url(images/vermenubarbg.gif);}
+.funcmenubar{position:absolute; width:16;z-index:50; overflow-y: visible;overflow-x: hidden;cursor:hand;}
+.popfuncmenubox{position:relative;top:0;left:0;border:2px outset;background:menu;height:100%;}
+.funchorbar{position:static;left:0;top:0;display:none;height:25;width:100%;background:menu;border:2px groove;}
+.funcmenuitem{position:relative;top:0;left:0;background:menu;border:2px groove;height:20px; color:black;padding:2px; padding-left:10px; FONT-FAMILY:宋体; font-size:10pt;cursor:hand;}
+.curfuncmenuitem{position:relative;top:0;left:0;background:menu;color:blue;border:2px groove menu;height:20px;padding:2px; padding-left:10px; FONT-FAMILY:宋体; font-size:10pt;cursor:hand;}
+.newdetail {padding-left:20; padding-right:20;}
+.msgWinColor {FONT-FAMILY: "宋体", "Courier New", "Courier"; color: windowtext; background-color: white}
+.msgmainwin  {background-color: #DBEAF5}
+.formEditorBar {background-color: #D0E6F4;filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#CCFFFFFF', EndColorStr='#FFFFC460'), Alpha(Opacity=100,FinishOpacity=0, Style=1, StartX=99, StartY=70, FinishX=100, FinishY=100)}
+.menubardivhline {height:1px;background-color: #0000AA;width:100%;font-size:1px;border:0px;padding:0px}
+.listtablebpage {
+CLEAR: both; BORDER: 1px solid #919B9C; PADDING-RIGHT: 1px;
+PADDING-LEFT: 1px; Z-INDEX: 2; BACKGROUND: #FCFCFE;
+PADDING-BOTTOM: 16px; PADDING-TOP: 1px; POSITION: relative; TOP: 0px;
+SCROLLBAR-FACE-COLOR: #94D1EA;
+}
+
+.mydeskbotbar{font-size: 12px;background-color: #94D1EA;}
+
+.mtabfrmleft {width:8px;background-image: url(images/cbtabfrmleft.gif);background-repeat:repeat-y;background-position:top left}
+.mtabfrmright {width:9px;background-image: url(images/cbtabfrmright.gif);background-repeat:repeat-y;background-position:top right}
+.mtabfrmleftbot{width:8px;height:4px;background-image: url(images/cbtabfrmleftbot.gif);background-repeat:no-repeat;background-position:bottom left}
+.mtabfrmrightbot{width:8px;height:4px;background-image: url(images/cbtabfrmrightbot.gif);background-repeat:no-repeat;background-position:bottom right}
+.mtabfrmcenterbot {height:4px;background-image: url(images/cbtabfrmbottom.gif);}
+.mtabfrmrighttop {width:9px;background-image: url(images/cbtabtopright.gif);background-repeat:no-repeat;background-position:top right}
+.mtabfrmtopln{height:26px;}
+.mtabfrmtopbar {background-image: url(images/cbtabtopbar.gif);background-repeat:repeat-x;height:26px;}
+
+.mtabfirsttabon{width:8px;background-image: url(images/cbfirsttabon.gif);height:26px;background-position:top left;background-repeat:no-repeat;}
+.mtabfirsttaboff{width:8px;background-image: url(images/cbfirsttaboff.gif);height:26px;background-position:top left;background-repeat:no-repeat;}
+
+.mtabcurrent {background-image: url(images/cbtabonbkimg.gif);padding-left:5px;padding-right:5px;width:40px;font-size:12px;TEXT-ALIGN:center}
+.mtabonright{background-image: url(images/cbtabrighton.gif);width:18px;}
+.mtabonleft{background-image: url(images/cbtablefton.gif);width:18px;}
+
+.mtabisoff{background-image: url(images/cbtaboffbkimg.gif);padding-left:5px;padding-right:5px; width:40px;font-size:12px;TEXT-ALIGN:center}
+
+
+.mtabgrip2right{background-image: url(images/cbtabnormright.gif);width:18px}
+.mtabgripright{background-image: url(images/cbtabnormleft.gif);width:18px}
+.mtabgriplaston{background-image: url(images/cblasttabon.gif);width:18px}
+.mtabgriplast{background-image: url(images/cblasttaboff.gif);width:18px}
+.mtabalink{text-decoration:none; display:inline; white-space: nowrap;cursor:hand}
+.mtabiframe{border:0px solid;}
+.winbarbk {
+	font-size:12px;
+	background-repeat:repeat-x;
+	background-position:top left;
+	background-image: url(images/winbarbkimg.gif);
+}
+.mydeskgrip {
+width:6px;
+BACKGROUND-COLOR: #E6F2F5;
+}
+.mywinhorgrip {
+height:0px;
+BACKGROUND-COLOR: #c8cccc;
+}
+.mydesk_winbox {
+border: 1px solid #4EA5C9;
+BACKGROUND-COLOR: white;
+}
+.mywinhorblank {
+height:15px;
+}
+.listsubformbox
+{
+	width: 100%;
+	height:100%;
+	padding-top:5px;
+	background-image: url(images/bj010.gif);
+	background-repeat:repeat-x;
+	background-position: top center;
+}
+.multsubformbox
+{
+	width: 100%;
+	height:100%;
+	padding-top:5px;
+	background-image: url(images/bj010.gif);
+	background-repeat:repeat-x;
+	background-position: top center;
+}
+.multsubform_funcbar
+{
+	vertical-align:top;
+	padding-left:20px;
+	padding-top:0px;
+	text-align:left;
+}
+.tasktableleft {background-image: url(images/tasktblico2.gif); background-repeat: repeat-y;width:10}
+.tasktblgrip {background-image: url(images/tasktblico3.gif); background-repeat: repeat-x;width:100%;font-size:6px}
+.taskblock { border:1px solid #6accf3;background-color:#e8f3f7;border-right:0px;}
+.groupname {background-color:#6accf3;background-image: url(images/tasktblico1.gif);background-repeat:repeat-y;background-position: top right;text-align:left;padding:5px;padding-left:10px; font-size:14px; border: 0px none;width:30px;}
+.groupnameln {background-color:#6accf3;background-image: url(images/tasktblico1.gif);background-repeat:repeat-y;background-position: top right;text-align:left;padding:2px;padding-left:10px; font-size:14px; border: 0px none;height:18px}
+.selectedbox {
+	text-align:left;
+	padding:3px;
+	padding-left:20px;
+	padding-top:5px;
+	background-color: #E6F2F5;
+	font-size:12px;
+	border-top:1px inset #6accf3;
+	border-bottom: none;
+	border-right: none;
+	border-left:1px inset #6accf3;
+	cursor:hand;width:120px;
+}
+.unseltypbox {
+	background-color:#CAEFFC;
+	text-align:left;
+	padding:3px;
+	padding-top:5px;
+	padding-left:20px;
+	font-size:12px;
+
+	border-top:1px solid #97ddf9;
+	border-bottom: none;
+	border-right:2px ridge;
+	border-left:1px solid #97ddf9;
+
+	cursor:hand;
+	width:120px;
+}
+.mydisplayinfobox{
+	background-color: #E6F2F5;
+	border: 2px solid #006699;
+	padding:0px;margin:0px;
+}
+.treelinkact {
+	font-size:12px;
+}
+.workpanelframeset{
+	any:expression(this.borderColor="#7EC8DC")
+}
+.helptd{ height:50; text-align:center;}
+.Search{
+	background-image:url(images/Search.gif);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+.SearchsysIColor{FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#ffffff,endColorStr=#99d8f2);
+}
+.SearchmyInputBox {
+    height:24;
+	padding-top:3;
+	BACKGROUND:white;
+	COLOR:#000000;
+	border: 1px solid #999999;
+	FONT-FAMILY:"宋体", "Courier New", "Courier";
+	FONT-SIZE:14px;
+	cursor: auto;
+}
+.sybcolor1{background-color :#def0f6;}
+.sybcolor2{background-color :#def0f6;}
+.sybcolor3{ color:#FFFFFF;}
+.sybcolor3  A:link{color:#FFFFFF;}
+.sybcolor3  A:hover	{color:#fff100;}
+.FORMTITLE{
+	background-color: Text;
+	padding-top: 5px;
+	padding-left: 5px;
+	margin-bottom: 2px;
+	border-bottom: 1px solid #00659C;
+	background-repeat:repeat-x;
+	background-position:top left;
+	height:26px;
+}
+.flowtitlebar {
+	background-image: url(images/multabbarover.gif);
+	height:28px;
+	padding:1px;
+	background-position:center left;
+	background-repeat:repeat-x;
+	display:inline;
+	border-right:2px ridge;
+}
+.flowtitlebarhand {
+	background-image: url(images/multabbarover.gif);
+	height:28px;
+	padding:1px;
+	background-position:center left;
+	background-repeat:repeat-x;
+	display:inline;
+	cursor:hand;
+}
+.spantext {font:12px "宋体"; cursor:hand;
+	border: 1px solid #999999;
+	height: 20px;
+	background:menu;color:black;padding:1px;padding-top:2px;TEXT-DECORATION:NONE;
+	background-image: url(images/bj006.gif);
+	background-color: #FFC06F;
+}
+.spanbtn {font:12px "宋体"; cursor:hand;
+	border: 1px solid #999999;
+	height: 20px;
+	background:menu;color:black;padding:1px;padding-top:2px;TEXT-DECORATION:NONE;
+	background-image: url(images/bj006.gif);
+	background-color: #FFC06F;
+}
+
+.lockedAll{
+	position: relative;
+	left: expression(document.getElementById("listareabox").scrollLeft);
+	top: expression(document.getElementById("listareabox").scrollTop);
+	z-index:2;
+	border-color: #a1a2a3;
+	padding-left:5px;
+}
+.lockedAllfirst{
+	position: relative;
+	left: expression(document.getElementById("listareabox").scrollLeft);
+	top: expression(document.getElementById("listareabox").scrollTop);
+	background-image: url(images/bj005.gif);
+	z-index:2;
+	padding-left:5px;
+	border-color: #a1a2a3;
+}
+.lockedColumn{
+	position: relative;
+	left: expression(document.getElementById("listareabox").scrollLeft);
+	z-index:1;
+	border-color: #a1a2a3;
+	padding-left:5px;
+}
+.lockedRow{
+	position: relative;
+	top: expression(document.getElementById("listareabox").scrollTop);
+	z-index:1;
+	border-color: #a1a2a3;
+	padding-left:5px;
+}
+.displaybottom{
+	background-color: #edfeff;
+	border-bottom: 1px solid #8AE0F2;
+	word-break: break-all;
+}

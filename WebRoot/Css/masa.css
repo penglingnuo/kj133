@@ -1,0 +1,259 @@
+BODY
+ {SCROLLBAR-FACE-COLOR: C7D0DF;
+ SCROLLBAR-HIGHLIGHT-COLOR: E7E7ED;
+ SCROLLBAR-SHADOW-COLOR: 4477aa;
+ SCROLLBAR-3DLIGHT-COLOR:336699;
+ SCROLLBAR-ARROW-COLOR: 244B8A;
+ SCROLLBAR-TRACK-COLOR: F0F0F7;
+ SCROLLBAR-DARKSHADOW-COLOR: E7E7ED} 
+
+a:link          { color: #001c8c; text-decoration: none }
+a:visited       { color: #0033ff; text-decoration: none }
+a:active        { color: #dd0000; text-decoration: none }
+a:hover         { color: #0084FF; text-decoration: none; position: relative; right: 0px; top: 1px; border-bottom:1 dotted #ff0000 }
+
+a,tr,table,td,body       {font-size:9pt;font-family:宋体;line-height:20px;}
+
+.loginbottm:link          { color: #ffffff; text-decoration: none }
+.loginbottm:visited       { color: #ffffff; text-decoration: none }
+.loginbottm:active        { color: #ffffff; text-decoration: none }
+.loginbottm:hover         { color: #94A2CA; text-decoration: none; position: relative; right: 0px; top: 1px }
+
+.topname:link          { color: #244B8A; text-decoration: none }
+.topname:visited       { color: #244B8A; text-decoration: none }
+.topname:active        { color: #244B8A; text-decoration: none }
+.topname:hover         { color: #00BF43; text-decoration: none; position: relative; right: 0px; top: 1px }
+
+.f1 {line-height:30px;}
+
+.masa_login {width:100px;height:20px;background-color:#4D76B9;border-top:1 solid #336699;border-left:1 solid #336699;border-right:1 solid #73A8EF;color:#ffffff;border-bottom:1 solid #73A8EF;behavior: url(CSS/shade.htc)}
+.masasubmit { background-image:url(masa_login1.gif);background-color:#ffffff;height=33;WIDTH=84;font-size:12px;border:#ffffff 0px solid}
+.treesubmit 
+{
+border-width:1px;
+	}
+
+td  {table-layout:fixed;word-wrap:break-word;word-break:break-all}
+.subject {
+	font-family: "宋体";
+	font-size: 12px;
+	background-color: #EEEEFF;
+	border: 1px double #AAAACC;
+}
+.listhead {
+	font-family: "宋体";
+	font-size: 9pt;
+	background-color: #9999CC;
+	color: #FFFFFF;
+	text-align: center;
+
+}
+.list {
+	font-family: "宋体";
+	font-size: 9pt;
+	background-color: #8888AA;
+	border: 1px solid #EFEFF8;
+}
+.listbody {
+	font-family: "宋体";
+	font-size: 9pt;
+	background-color: #F2F2F9;
+	
+}
+ 
+
+.bottomline {
+	color: #9999CC;
+	background-color: #EEEEFF;
+}
+.inputbox {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 1px solid #999999;
+	background-color: #EFEFFF;
+
+}
+.tbform {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 0px solid #666666;
+	width: 96%;
+	background-color:#8888AA;
+	border-collapse: collapse;
+}
+.tdform {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 0px solid #8888AA;
+	background-color:#F2F2F9;
+}
+.listsubject {
+	font-family: "宋体";
+	background-color: #CDCFDE;
+}
+.listtable {
+	font-family: "宋体";
+	background-color: #8888AA;
+	width: 96%;
+}
+.Recommend {
+	height: 100px;
+	width: 300px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:EDF0F4;
+}
+.MasaPositionCss
+{
+	width:100%;
+	border:0;
+	
+	background-color:#8888AA;
+
+}
+.style1 
+{
+	font-family: "宋体";
+    font-size: 9pt;
+    color: red;
+
+}
+.TRbody {
+
+ background-color: #F2F2F9;
+
+}
+
+.MasaMustCss {
+	width:250px;
+	height:22px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+
+}
+.MasaOptionCss {
+	width:250px;
+	height:22px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+
+}
+
+.MasaNumberCss {
+	width:80px;
+	height:22px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+
+}
+.masainput {
+	width:250px;
+	height:25px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+
+}
+
+
+.masa_text {
+	width:250px;
+	height:100px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+
+}
+
+.masainput1 {
+	width:120px;
+	height:25px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+
+}
+
+.masainputtable {
+		width:120px;
+	height:21px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+}
+.masainputtime {
+		width:70px;
+	height:21px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+}
+
+.masainput2 {
+	width:30px;
+	height:20px;
+	border:solid 1px;
+	border-left-color:666666;
+	border-top-color:666666;
+	border-right-color:dddddd;
+	border-bottom-color:dddddd;
+	background-color:eeeeee;
+
+}
+.masa_submit {
+	border:solid 1px;
+	border-left-color:eeeeee;
+	border-top-color:eeeeee;
+	border-right-color:555555;
+	border-bottom-color:555555;
+	background-color:cccccc;
+	height:25px;
+
+}
+
+.masa_submit1 {
+	border:solid 1px;
+	border-left-color:eeeeee;
+	border-top-color:eeeeee;
+	border-right-color:555555;
+	border-bottom-color:555555;
+	background-color:cccccc;
+	height:20px;
+
+}
+
+.masa_TR {
+	
+        CURSOR:hand
+
+}

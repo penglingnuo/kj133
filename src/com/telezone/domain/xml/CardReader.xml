@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CardReader">
+	<typeAlias alias="CardReader"
+		type="com.telezone.domain.classes.CardReader" />
+
+	<select id="selectCardReaderByParam" parameterClass="CardReader"
+		resultClass="CardReader">
+		select * from CardReader
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="mapid">
+				mapid = #mapid#
+			</isNotNull>
+			<isNotNull prepend="and" property="state">
+				state = #state#
+			</isNotNull>
+			<isNotNull prepend="and" property="cardreaderid">
+				cardreaderid != #cardreaderid#
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<select id="selectCardReaderByCardReaderId" parameterClass="CardReader"
+		resultClass="CardReader">
+		select * from CardReader where cardreaderid = #cardreaderid#
+	</select>
+	
+	<update id="updateCardReader" parameterClass="CardReader">
+		update cardreader set webx = #webx#, weby = #weby# where cardreaderid = #cardreaderid#
+	</update>
+	<update id="updateCardReader1" parameterClass="CardReader">
+		update cardreader set webxall = #webxall#, webyall = #webyall# where cardreaderid = #cardreaderid#
+	</update>
+</sqlMap>

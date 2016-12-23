@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speed-configuration>
+<connection-factory id="test">
+  <property name="speed.connection.driver.class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+  <property name="speed.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=tyzh</property>
+  <property name="speed.connection.username">sa</property>
+  <property name="speed.connection.password">123</property>
+  </connection-factory> 
+  <speed-cache-provider>default</speed-cache-provider>
+  <speed-global-cache>false</speed-global-cache>
+</speed-configuration>

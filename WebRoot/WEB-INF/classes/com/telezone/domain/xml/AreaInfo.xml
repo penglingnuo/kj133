@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AreaInfo">
+	<typeAlias alias="AreaInfo"
+		type="com.telezone.domain.classes.AreaInfo" />
+
+	<!-- 获得最大的ID -->
+	<select id="selectMaxId" resultClass="AreaInfo">
+		select max(areaid) + 1 as areaid from areainfo
+	</select>
+
+	<!-- 获得所有的区域 -->
+	<select id="selectAllArea" resultClass="AreaInfo">
+		select * from areainfo
+	</select>
+
+	<!-- 判断一个区域名称是否存在 -->
+	<select id="checkAreaByParameter" parameterClass="AreaInfo"
+		resultClass="AreaInfo">
+		select * from AreaInfo
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="areaname">
+				areaname = #areaname#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- **************************Insert**************************** -->
+	<!-- 插入新的区域 -->
+	<insert id="addArea" parameterClass="AreaInfo">
+		insert into AreaInfo ( AreaId, AreaName, AreaOrder, AreaType,
+		MaxSum, CaiJueSum, StayMinute, Areainfo ) values(
+		#areaid#,#areaname#,#areaorder#,#areatype#,
+		#maxsum#,#caijuesum#,#stayminute#,#areainfo# )
+	</insert>
+
+</sqlMap>

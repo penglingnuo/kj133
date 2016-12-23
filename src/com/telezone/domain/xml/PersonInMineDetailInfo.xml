@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PersonInMineDetailInfo">
+	<typeAlias alias="PersonInMineDetailInfo"
+		type="com.telezone.domain.classes.PersonInMineDetailInfo" />
+	<typeAlias alias="PersonInMine"
+		type="com.telezone.domain.classes.PersonInMine" />
+	<typeAlias alias="CardReader"
+		type="com.telezone.domain.classes.CardReader" />
+
+	<!-- 获得没有信号的卡 -->
+	<select id="selectPersonInMineWithoutSignal"
+		resultClass="PersonInMineDetailInfo">
+		<![CDATA[
+			select we.cardid, we.downtime, le.[state],
+				le.cardreaderid as cardreader, cr.crname as cardreadername,
+				l.locatorid as locator, l.lname as locatorname
+				from WorkattendanceEx we
+				left join (
+					select cardid,max(starttime) as ltime 
+						from locatedata_everyTimeMod 	
+						group by cardid			
+				) d
+				on we.cardid = d.cardid
+				left join locatedata_everyTimeMod le
+				on we.cardid = le.cardid
+				left join cardreader cr
+				on le.cardreaderid = cr.cardreaderid
+				left join locator l
+				on le.locatorid = l.locatorid
+				where we.downtime > GetDate() - 0.5
+				and we.uptime is null and le.[state]&16 > 0
+		]]>
+	</select>
+
+	<!-- 获得有信号的卡 -->
+	<select id="selectPersonInMineWithSignal"
+		resultClass="PersonInMineDetailInfo">
+		<![CDATA[
+			select we.cardid, we.downtime, le.[state],
+				le.cardreaderid as cardreader, cr.crname as cardreadername,
+				l.locatorid as locator, l.lname as locatorname
+				from WorkattendanceEx we
+				left join (
+					select cardid,max(starttime) as ltime 
+						from locatedata_everyTimeMod 	
+						group by cardid			
+				) d
+				on we.cardid = d.cardid
+				left join locatedata_everyTimeMod le
+				on we.cardid = le.cardid
+				left join cardreader cr
+				on le.cardreaderid = cr.cardreaderid
+				left join locator l
+				on le.locatorid = l.locatorid
+				where we.downtime > GetDate() - 1.0
+				and we.uptime is null and le.[state]&16 = 0
+		]]>
+	</select>
+
+	<!-- 井下人员 -->
+	<select id="selectPersonInMine" resultClass="PersonInMine">
+		<![CDATA[
+			select we.cardid 
+				from WorkattendanceEx  we
+				left join recog r on r.cardid = we.cardid
+				where we.downtime >
+				GetDate() - 1.0 and we.uptime is null
+				and r.cardmode = 'kge39'
+		]]>
+	</select>
+	
+	<!-- 井下人员,获得井下人员的区域分布信息 -->
+	<select id="selectPersonInMine1" resultClass="PersonInMine">
+		<![CDATA[
+			select we.cardid, le.starttime, le.cardreaderid ,cr.crname,
+				isnull(s.name,'_null') as sname, 
+				isnull(s.department,'_null') as department
+				from WorkattendanceEx we
+				left join locatedata_everyTimeMod le
+				on we.cardid = le.cardid
+				left join cardreader cr
+				on le.cardreaderid = cr.cardreaderid
+				left join staffer s
+				on we.cardid = s.cardid
+				where downtime > GetDate() - 1.0
+				and uptime is null
+		]]>
+	</select>
+
+	<!-- 井下人员区域汇总 -->
+	<select id="selectCardInCardReaderCount"
+		resultClass="PersonInMine">
+		<![CDATA[
+			select count(1) as number, le.cardreaderid
+					from WorkattendanceEx we
+					left join locatedata_everyTimeMod le
+					on we.cardid = le.cardid
+					left join cardreader cr
+					on le.cardreaderid = cr.cardreaderid
+					left join staffer s
+					on we.cardid = s.cardid
+					where downtime > GetDate() - 1.0
+					and uptime is null
+					group by le.cardreaderid
+		]]>
+	</select>
+
+	<!-- 根据部门和基站ID获得当前基站下的人员,井下人员 -->
+	<select id="selectPersonsInMineByDepartmentAndCardreaderId"
+		parameterClass="PersonInMineDetailInfo"
+		resultClass="PersonInMineDetailInfo">
+		select s.stafferid as stafferid, s.name as staffername,
+			s.department as stafferdepartment, we.downtime, we.uptime as
+			uptime, cr.crname as cardreadername, le.cardid, cr.webx as cwebx, cr.weby as cweby, 
+			l.webx as lwebx,l.weby as lweby, cr.mapid as map
+			from WorkattendanceEx we left join staffer s on we.cardid = s.cardid
+			left join locatedata_everyTimeMod le on we.cardid = le.cardid
+			left join cardreader cr on cr.cardreaderid = le.cardreaderid
+			left join locator l on le.locatorid = l.locatorid
+			where we.downtime > GetDate() - 1.0
+		<dynamic>
+			<isEmpty prepend="and" property="stafferdepartment">
+				s.department is null
+			</isEmpty>
+			<isNotEmpty prepend="and" property="stafferdepartment">
+				s.department = #stafferdepartment#
+			</isNotEmpty>
+		</dynamic>
+		and le.cardreaderid = #cardreader# and uptime is null
+	</select>
+
+	<!-- 根据基站ID获得当前基站下的人员,井下人员 -->
+	<select id="selectPersonsInMineByCardreaderId"
+		parameterClass="PersonInMineDetailInfo"
+		resultClass="PersonInMineDetailInfo">
+		select s.stafferid as stafferid, s.name as staffername,
+		s.department as stafferdepartment, we.downtime, we.uptime as
+		uptime, cr.crname as cardreadername, le.cardid,ai.areaname as
+		antenna from WorkattendanceEx we left join staffer s on
+		we.cardid = s.cardid left join locatedata_everyTimeMod le on
+		we.cardid = le.cardid left join cardreader cr on cr.cardreaderid
+		= le.cardreaderid left join areadetail ad on cr.cardreaderid =
+		ad.pointid left join areainfo ai on ad.areaname = ai.areaname
+		where we.downtime > GetDate() - 1.0 and le.cardreaderid =
+		#cardreader# and ai.areaname = #areaname# and uptime is null
+	</select>
+
+	<!-- 获得该基站下的人员信息 -->
+	<select id="selectStafferInCardreaderByCardReaderId" parameterClass="CardReader"
+		resultClass="PersonInMineDetailInfo">
+		select s.[name] as staffername,le.antenna as antenna,l.shortname as locatorname,s.[group] as staffergroup,ai.info as state
+			from locatedata_everyTimeMod le
+			right join(
+				select * from WorkattendanceEx we
+					where we.downtime > GetDate() - 1.0
+					and we.uptime is null
+			) t
+			on le.cardid = t.cardid
+			left join staffer s
+			on le.cardid = s.cardid
+			left join locator l
+			on l.locatorid = le.locatorid
+			left join alarminfo ai
+			on ai.[state] = le.state
+			left join reportpopedom udp
+			on udp.department=s.department
+			where 1=1
+			<dynamic>
+				<isNotEmpty prepend="and" property="cardreaderid">
+					 le.cardreaderid =  #cardreaderid#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="userid">
+					 udp.userid = #userid#
+				</isNotEmpty>
+	    	</dynamic>
+			order by s.name
+	</select>
+	
+	<!-- 获得该基站下的人员信息 -->
+	<select id="selectStafferInCardreaderByCardReaderIdUp" parameterClass="CardReader"
+		resultClass="PersonInMineDetailInfo">
+		select s.[name] as staffername,le.antenna as antenna,cr.crname as locatorname,s.[group] as staffergroup,ai.info as state
+			from locatedata_everyTimeMod le
+			left join staffer s
+			on le.cardid = s.cardid
+			left join cardreader cr
+			on le.cardreaderid = cr.cardreaderid
+			left join alarminfo ai
+			on le.state = ai.state
+			left join reportpopedom udp
+			on udp.department=s.department
+			where le.starttime = 
+			(
+				select max(starttime) as [time] from locatedata_everyTimeMod le
+			) 
+			<dynamic>
+				<isNotEmpty prepend="and" property="cardreaderid">
+					 le.cardreaderid =  #cardreaderid#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="userid">
+					 udp.userid=#userid#
+				</isNotEmpty>
+	    	</dynamic>
+	</select>
+	
+	<!-- 定位数据，地图使用,井下分站 -->
+	<select id="selectLocationDataForMap" parameterClass="PersonInMine"
+		resultClass="PersonInMine">
+		select count(1) as personincardreadernumber From dbo.locatedata_everyTimeMod le
+			right join dbo.WorkattendanceEx we
+			on le.cardid = we.cardid
+			right join staffer sta
+			on sta.cardid=le.cardid
+			right join reportpopedom udp
+			on sta.department=udp.department
+			where le.starttime > GetDate() - 1.0
+			and we.downtime > GetDate() - 1.0
+			and we.uptime is null
+		<dynamic>
+			<isNotEmpty prepend="and" property="cardreaderid">
+				le.cardreaderid = #cardreaderid#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="lid">
+				le.locatorid = #lid#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="userid">
+				udp.userid = #userid#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 定位数据，地图使用,井下分站 -->
+	<select id="selectLocationDataForMapUp" parameterClass="PersonInMine"
+		resultClass="PersonInMine">
+		select count(1) as personincardreadernumber from locatedata_everyTimeMod le
+			right join staffer sta
+			on sta.cardid=le.cardid
+			right join reportpopedom udp
+			on sta.department=udp.department
+			where le.starttime = 
+			(
+				select max(starttime) as [time] from locatedata_everyTimeMod le
+			)
+			<dynamic>
+				<isNotEmpty prepend="and" property="cardreaderid">
+					le.cardreaderid = #cardreaderid#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="userid">
+					udp.userid = #userid#
+				</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 定位数据，页面右侧使用 -->
+	<select id="selectLocationData" parameterClass="PersonInMine"
+		resultClass="PersonInMine">
+		select top 50 isnull(s.name,'_null') as staffername, we.cardid,
+			cr.crname, l.lname, cr.webx as crx, cr.weby as cry, le.lx,le.ly,
+			s.stafferid, cr.cardreaderid,l.locatorid, cr.mapid,
+			we.downtime,ai.info as [state],s.name as staffername from
+			WorkattendanceEx we left join locatedata_everyTimeMod le on
+			we.cardid = le.cardid left join cardreader cr on le.cardreaderid
+			= cr.cardreaderid left join locator l on le.locatorid =
+			l.locatorid left join staffer s on we.cardid = s.cardid left
+			join alarminfo ai on le.[state] = ai.[state]
+			left join recog r on r.cardid = we.cardid
+			where we.downtime >
+			GetDate() - 1.0 and we.uptime is null
+			and r.cardmode = 'kge39'
+		<dynamic>
+			<isNotEmpty prepend="and" property="cardreaderid">
+				le.cardreaderid = #cardreaderid#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="lid">
+				le.locatorid = #lid#
+			</isNotEmpty>
+		</dynamic>
+		order by we.cardid desc
+	</select>
+	<!-- 定位数据，页面右侧使用 新增方法-->
+	<select id="selectLocationDataByuserid" parameterClass="PersonInMine"
+		resultClass="PersonInMine">
+		select top 50 isnull(s.name,'_null') as staffername, we.cardid,
+			cr.crname, l.lname, cr.webx as crx, cr.weby as cry, le.lx,le.ly,
+			s.stafferid, cr.cardreaderid,l.locatorid, cr.mapid,
+			we.downtime,ai.info as [state],s.name as staffername from
+			WorkattendanceEx we left join locatedata_everyTimeMod le on
+			we.cardid = le.cardid left join cardreader cr on le.cardreaderid
+			= cr.cardreaderid left join locator l on le.locatorid =
+			l.locatorid left join staffer s on we.cardid = s.cardid left
+			join alarminfo ai on le.[state] = ai.[state]
+			left join recog r on r.cardid = we.cardid
+			left join reportpopedom udp 
+			on udp.department=s.department
+			where 1=1  
+			and we.downtime >GetDate() - 1.0
+			and we.uptime is null
+			and r.cardmode = 'kge39'
+		<dynamic>
+			<isNotEmpty prepend="and" property="userid">
+					udp.userid = #userid#
+			</isNotEmpty>
+		</dynamic>
+		order by we.cardid desc
+	</select>
+	<!-- 定位数据，页面右侧使用 新增方法 查询人员-->
+	<select id="selectLocationDataByuseridandygname" parameterClass="PersonInMine"
+		resultClass="PersonInMine">
+		select distinct(isnull(s.name,'_null')) as staffername, we.cardid,
+			cr.crname, l.lname, cr.webx as crx, cr.weby as cry, le.lx,le.ly,
+			s.stafferid, cr.cardreaderid,l.locatorid, cr.mapid,
+			we.downtime,ai.info as [state],s.name as staffername from
+			WorkattendanceEx we left join locatedata_everyTimeMod le on
+			we.cardid = le.cardid left join cardreader cr on le.cardreaderid
+			= cr.cardreaderid left join locator l on le.locatorid =
+			l.locatorid left join staffer s on we.cardid = s.cardid left
+			join alarminfo ai on le.[state] = ai.[state]
+			left join recog r on r.cardid = we.cardid
+			left join reportpopedom udp 
+			on udp.department=s.department
+			where 1=1  
+			and we.downtime >GetDate() - 1.0
+			and we.uptime is null
+			and r.cardmode = 'kge39'
+		<dynamic>
+			<isNotEmpty prepend="and" property="staffername">
+					(s.name like '%$staffername$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="staffername">
+					(s.cardid like '%$staffername$%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="staffername">
+					(s.pinyin like '%$staffername$%') )
+			</isNotEmpty>
+		</dynamic>
+		order by we.cardid desc
+	</select>
+	<!-- 根据人员ID获得最近一天的定位数据，从而在地图上划线 -->
+	<select id="selectWayOfStaffera" parameterClass="PersonInMine"
+		resultClass="PersonInMine">
+		<![CDATA[
+			select cr.cardreaderid, cr.webx as crx, cr.weby as cry ,
+				vs.intime, vs.outtime, cr.crname
+				from WorkattendanceEx we
+				left join (
+					select * from v_stayinterval 
+					where intime > GetDate() - 1.0
+					and cardid = #cardid#
+				) vs
+				on we.cardid = we.cardid
+				left join cardreader cr
+				on vs.cardreaderid = cr.cardreaderid	
+				where we.downtime > GetDate() - 1.0
+				and we.cardid = #cardid#
+		]]>
+		<dynamic>
+			<isNotEmpty prepend="and" property="mapid">
+				cr.mapid = #mapid#
+			</isNotEmpty>
+		</dynamic>
+		and we.uptime is null order by vs.outtime
+	</select>
+
+	<!-- 下井超时 -->
+	<select id="selectOverTimeCard" parameterClass="PersonInMine"
+		resultClass="PersonInMine">
+		<![CDATA[
+			select t.cardid as cardid from (
+				select we.cardid, DATEDIFF ( s , downtime , GetDate() ) / 60 as betweentime, a.*
+					from WorkattendanceEx we,(select wl.wordvalue from wordlib wl where wordname = #crname#) a
+					where downtime > GetDate() - 1.0 and uptime is null) t
+			left join recog r
+			on t.cardid = r.cardid 
+			where betweentime > wordvalue
+			and r.cardmode = 'kge39'
+		]]>
+	</select>
+	
+	<!-- 下井超时 -->
+	<select id="selectOverNumber" parameterClass="PersonInMine"
+		resultClass="PersonInMine">
+		<![CDATA[
+			select wordvalue as cardid from wordlib where wordname = #crname#
+		]]>
+	</select>
+
+	<!-- 下井超时具体信息 -->
+	<select id="selectOverTimeCardDetail"
+		parameterClass="PersonInMineDetailInfo"
+		resultClass="PersonInMineDetailInfo">
+		select s.stafferid as stafferid, s.name as staffername,
+		s.department as stafferdepartment, we.downtime, we.uptime as
+		uptime, cr.crname as cardreadername, le.cardid from
+		WorkattendanceEx we left join staffer s on we.cardid = s.cardid
+		left join locatedata_everyTimeMod le on we.cardid = le.cardid
+		left join cardreader cr on cr.cardreaderid = le.cardreaderid
+		where we.downtime > GetDate() - 1.0 and uptime is null and
+		le.cardid = #cardid#
+	</select>
+
+	<!-- 根据基站ID获得基站下的人员24小时内的活动 -->
+	<select id="selectStafferByCardReaderId"
+		parameterClass="PersonInMine" resultClass="PersonInMine">
+		select isnull(s.name,'_null') as
+		staffername,vs.intime,vs.outtime , vs.cardid from v_stayinterval
+		vs left join staffer s on vs.cardid = s.cardid where intime >
+		GetDate() - 1.0 and cardreaderid = #cardreaderid# and vs.cardid
+		in ( select cardid from WorkattendanceEx we where we.downtime >
+		GetDate() - 1.0 and we.uptime is null ) order by intime
+	</select>
+	
+	<!-- 根据人员ID号，找到人员的具体信息 主要用于地图人员点击图标 -->
+	<select id="selectStafferInfoByCardid" parameterClass="PersonInMine" resultClass="PersonInMine">
+		select s.name as staffername,s.[group],s.cardid,we.downtime,cr.crname,l.lname,ai.info as state,
+			cr.webx as crx,cr.weby as cry,l.webx as lx,l.weby as ly,cr.mapid
+			from WorkattendanceEx we
+			left join locatedata_everyTimeMod le
+			on we.cardid = le.cardid
+			left join staffer s
+			on le.cardid = s.cardid
+			left join cardreader cr
+			on le.cardreaderid = cr.cardreaderid
+			left join locator l
+			on le.locatorid = l.locatorid
+			left join alarminfo ai
+			on ai.[state] = le.[state]
+			where we.downtime > GetDate() - 2.0
+			and we.uptime is null
+			and le.cardid = #cardid#
+	</select>
+	
+	<!-- 根据人员ID号，找到人员的具体信息 主要用于地图人员点击图标 -->
+	<select id="selectStafferInCardreaderInfoByCardid" parameterClass="PersonInMine" resultClass="PersonInMine">
+		select cardid,cardreaderid,starttime as intime from dbo.v_locatedata
+			where starttime > GetDate() - 2.0
+			and cardid = #cardid#
+			order by starttime desc
+	</select>
+</sqlMap>

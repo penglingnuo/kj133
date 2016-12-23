@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Area">
+	<typeAlias alias="AreaInfo"
+		type="com.telezone.domain.classes.AreaInfo" />
+	<typeAlias alias="PersonInMineDetailInfo"
+		type="com.telezone.domain.classes.PersonInMineDetailInfo" />
+
+	<select id="selectStafferInAreaByAreaId" parameterClass="AreaInfo"
+		resultClass="PersonInMineDetailInfo">
+		select le.cardid from WorkattendanceEx we left join
+		locatedata_everyTimeMod le on we.cardid = le.cardid where
+		we.downtime > GetDate() - 0.5 and we.uptime is null and
+		le.cardreaderid in( select pointid from areainfo ai left join
+		areadetail ad on ai.areaname = ad.areaname where areaid =
+		#areaid# )
+	</select>
+</sqlMap>

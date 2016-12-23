@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ReaderState611">
+	<typeAlias alias="ReaderState611"
+		type="com.telezone.domain.classes.ReaderState611" />
+	<typeAlias alias="AlarmInfoObject"
+		type="com.telezone.domain.classes.AlarmInfoObject" />
+	<typeAlias alias="CardReader"
+		type="com.telezone.domain.classes.CardReader" />
+
+	<select id="selectReaderState611" resultClass="AlarmInfoObject">
+		<![CDATA[
+			select t.* from (
+				select al.info as alarmInfo,cr.cardreaderid as stafferName,
+					cr.shortname as subStation
+					from ReaderState611 rs
+					right join cardreader cr
+					on rs.readerid = cr.cardreaderid
+					left join readeralarminfo al
+					on rs.state = al.state
+					where rs.endtime is null and cr.cardreaderid != 0
+				) t where alarmInfo is not null
+		]]>
+	</select>
+
+	<!-- 获得基站状态，从而更改基站的图标 -->
+	<select id="selectCardReaderByState" parameterClass="CardReader"
+		resultClass="AlarmInfoObject">
+		<![CDATA[
+		select rai.info as alarmInfo, t.cardreaderid as stafferName from readeralarminfo rai
+			right join(
+				select top 1 * from v_readerdata
+					where cardreaderid = #cardreaderid#
+					and recordtime > GetDate() - 0.5
+					order by recordtime desc) t
+			on rai.[state] = t.state
+		]]>
+		<!-- 
+			select t.* from (
+				select al.info as alarmInfo,cr.cardreaderid as stafferName,
+					cr.shortname as subStation
+					from ReaderState611 rs
+					right join cardreader cr
+					on rs.readerid = cr.cardreaderid
+					left join readeralarminfo al
+					on rs.state = al.state
+					where rs.endtime is null and cr.cardreaderid != 0
+				) t where alarmInfo is not null
+				and stafferName = #cardreaderid#
+		 -->
+	</select>
+	
+	<!-- 获得基站状态，从而更改基站的图标 -->
+	<select id="selectCardReaderByStateAlarm" parameterClass="CardReader"
+		resultClass="AlarmInfoObject">
+		<![CDATA[
+			select rai.info as alarmInfo, t.cardreaderid as stafferName, cr.shortname as subStation
+				from readeralarminfo rai
+					right join(
+						select top 1 * from v_readerdata
+							where cardreaderid = #cardreaderid#
+							and recordtime > GetDate() - 0.5
+							order by recordtime desc) t
+					on rai.[state] = t.state
+					left join cardreader cr on t.cardreaderid = cr.cardreaderid
+				where t.[state] > 1
+		]]>
+	</select>
+</sqlMap>

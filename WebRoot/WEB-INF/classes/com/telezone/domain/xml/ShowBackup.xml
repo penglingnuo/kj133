@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ShowBackup">
+	<typeAlias alias="ShowBackup"
+		type="com.telezone.domain.classes.ShowBackup" />
+	<typeAlias alias="PersonInMine"
+		type="com.telezone.domain.classes.PersonInMine" />
+
+	<select id="selectShowBackup" parameterClass="ShowBackup"
+		resultClass="ShowBackup">
+		select vl.cardreaderid, cr.ground, vl.starttime, vl.endtime,cr.webx,cr.weby,cr.mapid,
+			cr.crname from v_locatedata vl left join cardreader cr on
+			vl.cardreaderid = cr.cardreaderid
+			<dynamic prepend="where">
+				<isNotNull prepend="and" property="cardid">
+					cardid = #cardid#
+				</isNotNull>
+				<isNotNull prepend="and" property="starttime">
+					<![CDATA[
+						starttime > (Select cast(#starttime# as datetime) as time1 ) - 0.07
+					]]>
+				</isNotNull>
+				<isNotNull prepend="and" property="endtime">
+					<![CDATA[
+						endtime < (Select cast(#endtime# as datetime) as time1 ) + 0.07
+					]]>
+				</isNotNull>
+			</dynamic>
+			order by vl.starttime
+	</select>
+	
+	<select id="searchHistoryByCardidDate" parameterClass="ShowBackup"
+		resultClass="ShowBackup">
+		select recordid,cardid,downtime as starttime,uptime as endtime from WorkattendanceEx
+			<dynamic prepend="where">
+				<isNotNull prepend="and" property="starttime">
+					downtime between #starttime# and #endtime#
+				</isNotNull>
+				<isNotNull prepend="and" property="cardid">
+					cardid = #cardid#
+				</isNotNull>
+				<isNotNull prepend="and" property="recordid">
+					recordid = #recordid#
+				</isNotNull>
+			</dynamic>
+			
+			<!--  用于考勤表(workattendanceex)做分区使用，workattendanceex表中没有recordid字段
+			<dynamic prepend="where">
+				<isNotNull prepend="and" property="starttime">
+					downtime between #starttime# and #endtime#
+				</isNotNull>
+				<isNotNull prepend="and" property="cardid">
+					cardid = #cardid#
+				</isNotNull>
+				<isNotNull prepend="and" property="recordid">
+					convert(varchar(19),downtime,120) = #recordid#
+				</isNotNull>
+			</dynamic>
+			-->
+			
+	</select>
+	
+	<select id="selectStaffer" parameterClass="ShowBackup" resultClass="PersonInMine">
+		select downtime,uptime from WorkattendanceEx
+			where recordid = #recordid#
+		<!--  用于考勤表(workattendanceex)做分区使用，workattendanceex表中没有recordid字段
+			<dynamic prepend="where">
+				<isNotNull prepend="and" property="recordid">
+					convert(varchar(19),downtime,120) = #recordid#
+				</isNotNull>
+				<isNotNull prepend="and" property="cardid">
+					cardid = #cardid#
+				</isNotNull>
+			</dynamic>
+		-->
+	</select>
+</sqlMap>

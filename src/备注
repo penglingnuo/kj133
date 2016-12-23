@@ -1,0 +1,1347 @@
+Java heap space 的解决办法：
+在window/preferences/java/installed JREs/edit（你正在使用的jdk）/Default VM Arguments那栏中 
+输入-Xms512m -Xmx1024m即可。 
+前面是指定最小的内存，后面是指定最大内存。具体根据需求调整。
+--------------------------------------------------------
+
+关闭myeclipse的Quick Update自动更新功能 
+Windows > Preferences > MyEclipse > Community Essentials, 
+把选项 "Search for new features on startup"的前勾去掉即可. 
+-------------------------------------------------------
+
+在Tomcat中conf的server.xml文件中，修改URIEncoding="GBK"，没有则添加上。
+    <Connector 
+port="8080"               maxThreads="150" minSpareThreads="25" maxSpareThreads="75"
+               enableLookups="false" redirectPort="8443" acceptCount="100"
+               debug="0" connectionTimeout="20000" 
+               disableUploadTimeout="true"  URIEncoding="GBK" />
+--------------------------------------------------------------------------------
+
+--1、加载页面时可能出现js未加载完就运行程序的情况，解决办法是在js方法里添加defer="defer"
+
+
+--2、在报表合计里如果出现合计的字段为null的情况，那么要对进行判断转换：
+    例如: 这个worktime为null，
+    int at = Integer.valueOf(vo.getWorktime()== null ? 0 : Integer.parseInt(vo.getWorktime()));
+
+
+   // var winwidth=screen.width;
+ // var winheight=screen.height;
+  //window.open('http://www.baidu.com','anyname','width='+screen.width+',height='+screen.height); 
+ 所查出数据在表格里自动转到第二行   在 table里 加 style="word-break:break-all"
+ 
+ js得到当前时间并且时间格式转换
+2002-06-01   12:34:56.789  转换成 2002年06月01日 12:34:56.789
+
+得到当前时间  格式   2008-08-08 08:08:08.000
+
+<script>   
+  function   str2date(str){   
+  var   d=null;   
+  var   reg=/^(\d{4})-(\d{2})-(\d{2})   (\d{2}):(\d{2}):(\d{2})\.(\d+)$/   
+  if(arr=str.match(reg))d=new   Date(Number(arr[1]),Number(arr[2])-1,Number(arr[3]),Number(arr[4]),Number(arr[5]),Number(arr[6]),Number(arr[7]))   
+  return   d;   
+  }   
+  function   date2str(d){   
+  var   ret=d.getFullYear()+"-"   
+  ret+=("00"+(d.getMonth()+1)).slice(-2)+"-"   
+  ret+=("00"+d.getDate()).slice(-2)+" "   
+  ret+=("00"+d.getHours()).slice(-2)+":"   
+  ret+=("00"+d.getMinutes()).slice(-2)+":"   
+  ret+=("00"+d.getSeconds()).slice(-2)+"."   
+  return   ret+d.getMilliseconds()   
+  }   
+  
+    
+  if(d=str2date("2002-06-01 12:34:56.789"))alert(d.toLocaleString())   
+  document.write(date2str(new   Date()))   
+  </script>
+ 
+ 
+ 		/**
+		 * 用这个方法可以得到当前月的前一个或两个月或者后一个或两个月（N个月）正数为向后将来的，
+		 * 负数为向前以前的；天，或小时，等等
+		 * (当前时间的前N小时的时间)
+		 */
+		public void beforeHours()
+		{
+			Date now = new Date(); 
+			java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:s");
+			String nowTime = format.format(now);
+				
+			java.util.Calendar c = Calendar.getInstance();
+			c.add(Calendar.HOUR, -12);
+			String nowTimeBefore5Hours = format.format( c.getTime());	
+			System.out.println(nowTime+"  "+nowTimeBefore5Hours);
+		}
+  
+ 区域时段查询areatime_query_top.jsp中有起始时间与截止时间的间隔的javascript方法 
+        function check()
+         {
+	         var stime=document.all['areatime_query_top.stime'].value;
+	         var etime=document.all['areatime_query_top.etime'].value;
+//	         var stime = new Date("2008","06","11","08","30","40"); 
+//             var etime = new Date("2008","06","13","12","40","50"); 
+	         var stime1 = new Date(stime.substring(0,4),stime.substring(5,7),stime.substring(8,10),stime.substring(11,13),stime.substring(14,16),stime.substring(17,19)); 
+	         var etime1 = new Date(etime.substring(0,4),etime.substring(5,7),etime.substring(8,10),etime.substring(11,13),etime.substring(14,16),etime.substring(17,19)); 
+            
+
+            var DyMilli = 1000 * 60 * 60 * 24 
+
+             var days = Math.round((etime1.getTime()-stime1.getTime()) / DyMilli); 
+
+	         if( stime >= etime){
+	            alert('起始时间不能大于或等于截止时间');
+	            return false;
+
+             }if(days>31){
+                alert('起始时间与截止时间不能超过31天');
+                return false;
+             }else{
+             
+             return true;
+             }
+
+        }
+ 
+按钮的用法（跳转按钮）：
+1.<input type="button" value="返 回" onclick="javascript:window.location.href='emergency_top.jsp'"/>
+2.<input type="button" value="增 加"   onclick="add()" />							  
+			function add(){
+			   window.parent.frames['topFrame'].location.href="emergency_add.jsp";
+			  return false;
+			}							  
+图片式删除按钮的用法：
+<a href="javascript:if(confirm('确实要删除吗?'))location='add_department.do?method=deleteDepartment'" target="leftFrame"><IMG src="Image/delete.BMP" border="0" align="absmiddle"/></a> 
+ 
+ <logic:iterate id="myBean" indexId="ind" name="循环JavaBean的对象名称">
+
+
+<bean:write name="myBean" property="Bean的属性">
+
+  <!--循环Map-->
+   <logic:iterate id="myHashMap" indexId="mapInd" name="myBean" property="hashMap名称">
+         <!--输出hashMap的键,不需要可以不用这行-->
+         <bean:write name="myHashMap" property="key">
+
+         <!--输出hashMap的值,如果值是个数组或者又一个MAP你可以再对他循环-->
+         <bean:write name="myHashMap" property="value">
+   </logic:iterate>
+
+<logic:iterate> 
+
+String s = new String() 声明了一个String类型的变量s，这个变量是一个引用，它指向一个对象，但是此对象的内容为空！
+
+String s = null 仅仅是声明了一个String类型的变量s，但是这个s并不指向任何一个对象！
+
+
+
+在调用ocx的时候,需要在注册表里面注册它
+regsvr32 d:\ocx\Moving.ocx
+
+这样在页面上才能显示控件，但是有个问题难道让每一个客户端都
+注册一次，这也太麻烦了（解决。）
+
+//帐户管理
+部门编号和组别编号不能相同
+
+
+//应急帮助
+create table FleeHelp
+(
+  
+  RecordID int identity(1,1),
+  MapID int not null,
+  MapInfo varchar(1000) not null,
+  MapData image not null,
+  CompressData image not null,
+  primary key(RecordID)  
+)
+
+ insert into FleeHelp  select MapID,MapInfo ,MapData,CompressData
+ from mapList where RecordID=1
+ 
+ 
+ //通行应用策略设置
+alter table passforbided add  locatorid varchar(10)
+update passforbided set locatorid='0'
+
+//员工考勤设置：
+create table AttendanceSet
+(
+stafferid varchar(10) not null,
+miniworktime int ,
+primary key(stafferid)
+)
+	
+	
+	
+	
+	
+	
+
+//通讯
+ --卡号是1到16384
+create table socket_staffer (id int )
+  
+declare @i int
+select @i=0
+while(@i<=16384)
+   begin
+   insert into socket_staffer values(@i)
+   select @i=@i+1;
+   end
+
+ 
+
+--分站是 1到256
+create table socket_cardreader(id int )
+
+declare @i int
+select @i=0
+while(@i<=255)
+   begin
+   insert into socket_cardreader values(@i)
+   select @i=@i+1;
+   end
+   
+   
+   
+   
+   
+ -----ocx
+
+create table WebInitialize
+(
+   strCon varchar(200),
+   svIP varchar(20),
+   wMapID varchar(10),   
+   svPort int,
+   keepDataTime int,
+   overMinute int,
+   reoverMinute   int,
+   locateType int,
+   lostLocator int
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+============================================================================================================
+============================================================================================================
+<!-- --10.103.0.134 -->
+
+<a href="login.do?method=userLogOut" target="_parent">退出系统</a>
+
+
+采集机的数据大概是20秒钟一个轮回，假如发送数据只用了3秒，那么剩下的17秒钟
+采集器也不发送数据，等有新的信息，他才又发一次。
+
+
+
+我不能Ping 别人的ip，但是别人可以ping 我的ip, 别人的防火墙没关
+
+<script>Top方法一：<body   onload="openwen()">   浏览器读页面时弹出窗口；     
+  方法二：<body   onunload="openwen()">   浏览器离开页面时弹出窗口； 
+  
+	 @SuppressWarnings("unchecked")
+	//此标签可以让编译器忽略某种warning信息，比如减少JDK5.0的集合操作引入范型后无处不在的warning。
+    //因为有些非JDK5.0的开源库如hibernate, 函数返回的一定是List，而不会是List<User>，这时候IDE就会爆出很多warning。
+    //用SuppressWarning("unchecked")可以让IDE安静一些。
+
+Property文件中，使用的编码方式根据机器本身的设置可能是GBK或者UTF-8。而在Java程序中读取Property文件的时候使用的是Unicode编码方式，这种编码方式不同会导致中文乱码。因此需要将Property文件中的中文字符转化成Unicode编码方式才能正常显示中文。 
+
+
+ <INPUT type="radio"  name="radio"  onclick="choise(this)" value=
+function choise(obj){
+                alert(obj.value);
+                Search_routDetail_right_Form.submit();
+            }
+
+
+
+
+ <script>   
+    document.all("sex")[0].checked=true;//第一个radio选中   
+  </script>  
+ 
+ 
+ 
+ <a  target=_blank href='http://wpa.qq.com/msgrd?V=1&Uin=21119273&Site=http://www.xxptw.com&Menu=yes'><img border=0 src='http://wpslogo.qq.com/10_online.gif'></a> 
+onmouseover="this.style.background='#CCCCCC'; " onmouseout ="this.style.background=''; this.style.borderColor=''"
+JAVA_HOME=c:\jdk1.5; 
+classpath=.;c:\jdk1.5\lib\tool.jar;c:\jkd1.5\lib\td.jar; 
+path=c:\jdk1.5\bin\;
+
+function openwin()
+		{
+			var iWidth = 600;
+			var iHeight =400;
+			var iTop = (window.screen.availHeight-30-iHeight)/2;
+			var iLeft = (window.screen.availWidth-10-iWidth)/2;
+			open('login.aspx','登录','height='+iHeight+',,innerHeight='+iHeight+',width='+iWidth+',innerWidth='+iWidth+',top='+iTop+',left='+iLeft+',menubar=no,toolbar=no,location=no,directories=no,scrollbars=no,status=yes,resizable=no');
+		}
+<a class='leftfont' href='javascript:openwin()'>用户登陆</a>
+
+
+  onmousemove="javascript:window.status='修 改 <bean:write name='list' property='mapid' /> 号 地 图 信 息 '"  onmouseout="javascript:window.status=''" target="topFrame" >
+  
+  <script   language=javascript>   
+  		window.location.replace("about:试试后退，不行吧^_^")   
+  </script>
+ 
+ 
+ 
+ 
+ CLASSPATH     .;   
+  JAVA_HOME     c:\j2sdk1.4.2_05;   
+  Path               c:\j2sdk1.4.2_05\bin;   
+ 
+ String time=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()); 
+ 当hh为小写的时候那么时间就显示的是12小时制
+datediff()求2个时间的想差，
+求时间的和或者平均值，用convert(date,convert(float,''))转换，
+<logic:equal>用法看部门时段查询
+
+  在删除项目的时候，不但要删除webapps里面的，还要删除localhost里面的，不然项目还是以前的。
+  
+  局域网内的机器不能访问，xp防火墙的问题。控制面板-〉windows防火墙-〉例外-〉添加端口-〉8080（tcp）名称随便   
+  OK!   
+  我以前就是这样搞定地
+
+select id,name  from customers  union  all
+select  id,order_number from orders 
+1,2,3,4,5,6,1,2,3,4,5
+
+select id,name  from customers  union  
+select  id,order_number from orders 
+1,1,2,2,3,3,4,4,5,5,6
+
+
+在做删除的时候，必须写<html:form>
+
+学习本文你到底要学到什么：
+1、 static在java中到底代表什么，为何要用它？
+2、 static在java中怎么用？
+3、 static 有那些特点和使用的“局限”？
+
+ window.parent.frames['topFrame'].location.href="map_top.jsp";
+ 框架按钮
+1、 static在java中到底代表什么，为何要用它？
+     static――静态――“指定位置“
+     首先，我们来看看java的内存：java把内存分为栈内存和堆内存，栈内存用来存放一些基本类型的变量和数组及对象的引用变量，而堆内存主要是来放置对象的。
+      用static的修饰的变量和方法，实际上是指定了这些变量和方法在内存中的“固定位置”－static storage。既然要有“固定位置”那么他们的“大小”似乎就是固定的了，有了固定位置和固定大小的特征了，在栈中或堆中开辟空间那就是非常的方便了。如果静态的变量或方法在不出其作用域的情况下，其引用句柄是不会发生改变的。
+      我们常看到：static变量有点类似于C中的全局变量的概念；静态表示的是内存的共享，就是它的每一个实例都指向同一个内存地址。把static拿来，就是告诉JVM它是静态的，它的引用（含间接引用）都是指向同一个位置，在那个地方，你把它改了，它就不会变成原样，你把它清理了，它就不会回来了。我们常可看到类似以下的例子来说明这个问题：
+    class Student{
+                static int numberOfStudents=0;
+                Student()
+                 {
+                   numberOfStudents++;
+                 }
+               }每一次创建一个新的Student实例时,成员numberOfStudents都会不断的递增,并且所有的Student实例都访问同一个numberOfStudents变量,实际上int numberOfStudents变量在内存中只存储在一个位置上。为了来更好的说明这个问题，我特意学习张老师（张孝祥）使用一个形象的图解：
+            创建两个Student实例，stu1＝new Student(); stu2=new Student();    
+
+              
+
+             多个实例共享一个变量似乎不足以让我们对static那么的热情，实际上java引入static却有另外的含义：
+
+      (1)、引用static的方法和变量，不需要和实例捆绑在一起,这可以提高代码的编写的效率，这样的例子我们随处可见；
+      (2)、java的主类中main()方法本身就是一个static的，所以main方法的执行就是在没有产生新的实例的情况；对于静态的东西，JVM在加载类时，就在內存中开辟了这些静态的空间，所以虽没有静态的main()方法但是程序还是执行了，不过抛出来了无main()方法的异常。这也不知算不算是java的一个漏洞；
+      (3)、如果需要创建一个脱离于实例的变量或方法（只与整个类有关），那么用static作修饰是再好不过了，如我们经常看到要统计实例实现的个数（通常的例子就是计数）。
+      (4)、使用一种静态的方法的编程通常叫做防御(defensive)编程,它可以在API供应商突然中断支持的情况下保护代码  
+
+
+2、 static在java中怎么用？
+     使用static时，要记着我阐述的static代表什么。
+      static使用非常的简单，如果要修饰一个静态块只需：staic {……..}即可（常用静态块来初始化一些变量）； 静态方法就参照main()的形式：访问标识 static returnType method(…) {};静态变量就是：static type fields；
+     在使用静态的方法时，可以直接用类名来引用，不需要创建实例（当然创建实例也是可以的），例如，System.out,String.valueOf()等等。
+
+3、 static 有那些特点和使用的“局限”？
+     从上面的分析可知，static的东西在类加载时，就分配了内存空间，即编译时就为这些成员变量的实例分配了空间。
+      那么在static块内和方法体内，我们能给它放一个在内存中还没有着落的变量？显然与我们先前所说的相左。static的东西，人家是在static storage中有“指定位置“的，如果我们茫然的在static的作用域中放置一个普通的变量，那么编译时JVM就毫不客气的给你个异常：
+non-static variable a cannot be referenced from a static context或non-static method Test() cannot be referenced from a static context（注：Test()是我试验时的一个例子），除非我在static中现场开辟空间，用new来要内存。
+对于static的初始化问题，我们还是值得讨论的。现看下面的例子：
+//StaticInit show the static decorated initialization 
+package com.blogchina.qb2049;
+public class StaticInit
+{
+   static int i;
+   int a;
+   public StaticInit()
+   {
+      a=6;
+      System.out.println("a 的初始化"+a);
+   } 
+   public static void main(String[] args)
+  {
+    new StaticInit();
+  }
+  static 
+  {
+     i=5;
+     System.out.println("i 的初始化"+i);
+  }
+}运行结果如下：i 的初始化5
+                        a 的初始化6 静态块的初始化要早于非静态的，原因就是在于这些东西是在类装载时就开始初始化了。
+      说起static的“局限“，总结起来就是：在static的方法中仅能够调用其他的static方法和static变量；在static方法中不能以任何方式引用this或super；static变量在定义时必须进行初始化，并且初始化的时间早于非静态。还有一个局限我需要具体的说明一下，static的变量的初始化仅能一次，如下例：
+    //Static.java， initialize only one
+    class T1
+    {   
+     static int t=1;
+     T1(int b)
+     {
+       t=b;
+     }
+   }
+   public class Static
+    {
+       T1 t1=new T1(2);
+       T1 t2=new T1(3);
+       T1 t3=new T1(4);
+       public Static()
+       {
+         System.out.println("t1: "+t1.t);
+         System.out.println("t2: "+t2.t);
+         System.out.println("t3: "+t3.t);
+      }
+      public static void main(String args[])
+      {
+        new Static();
+      }
+   }
+运行结果为: t1: 4
+                        t2: 4
+                        t3: 4
+
+该static变量只是接受了最后一次的初始化.实际这还是我们先前提到的多个实例共享一个静态的变量的问题。
+总之，static就是给我们一个这样的忠告：static的东西在编译时，就已向内存要到了存取空间了。
+ 
+
+部门下井月报里的取2位小数
+
+
+create table k(科目 varchar(50),分数 int,姓名 varchar(50))
+insert k select '语文',88,'董兆'
+union all select '数学',95,'董兆'
+union all select '英语',89,'董兆'
+union all select '语文',69,'婵娟'
+union all select '数学',95,'婵娟'
+union all select '英语',89,'婵娟'
+union all select '语文',69,'李慧'
+union all select '数学',95,'李慧'
+union all select '英语',89,'李慧'
+
+
+
+
+declare @s varchar(8000)
+set @s='select 科目'
+
+select @s=@s+',['+姓名+']=sum(case 姓名 when '''+姓名+''' then 分数 else 0 end)'
+from k group by 姓名
+
+exec(@s+'from k group by 科目')
+
+
+
+
+
+
+java.lang.Object
+  |
+  +--javax.servlet.GenericServlet
+        |
+        +--javax.servlet.http.HttpServlet
+              |
+              +--org.apache.struts.action.ActionServlet
+
+Struts提供了一个缺省版本的ActionServlet类，你可以继承这个类，覆盖其中的一些方法来达到你的特殊处理的需要。ActionServlet继承与javax.servlet.http.HttpServlet，所以在本质上它和一个普通的servlet没有区别，你完全可以把它当做一个servlet来看待，只是在其中完成的功能不同罢了。ActionServlet主要完成如下功能：
+
+将一个来自客户端的URI映射到一个相应的Action类
+
+
+如果是这个Action类是第一次被调用，那么实例化一个并放入缓存
+
+如果在配置文件(struts-config.xml)中指定了相应的ActionForm，那么从Request中抓取数据填充FormBean
+
+调用这个Action类的perform()方法，传入ActionMapping的一个引用，对应的ActionForm、以及由容器传给ActionServlet的HttpServletRequest、HttpServletResponse对象。
+
+
+<logic:present scope="session" name= "user">
+<bean:write name="user" property="petname"/>
+</logic:present>
+你必须保证session里有user这个bean，且user这个bean的petname的属性是有值的，才能在页面显示。
+
+谢谢各位兄弟，终于弄懂了，原来<logic:present scope="session" name= "user">的user指的是httpsession.setAttribute("user",form)里的“user”，而<bean:write name="user" property="petname"/>的petname指的是formbean里的属性，我大小写弄错了，嘿嘿，马上给分
+
+
+
+1.注意bo里面的vo的用法
+有顺序的,list是接口,里面出来其实是ArrayList这个实例,
+页面迭代出来就像你写for循环一样,
+ArrayList里面其实维护的是一个对象数组 
+2．如果一个数据类型占8位那么他的范围为-（2的7次方）到2的7次方-1，一共2的8次方个数字（别忘记0），其中最高为作为符号位，是1就为负值。
+
+其中：（2的8次方-1）等于2的0次方+2的1次方+……+2的7次方
+
+所以IP地址中若地址为00000000则代表可以有256个地址，0次方+2的1次方+……+2的7次方=255，但是别忘记0 ！！！
+
+员工考勤日报（重点）
+
+
+<html:img >显示图片的原理：
+点一连接，到action里面执行load方法，把其他的数据显示在修改的页面上
+在action里面用request.setAttribute("mid",id)把传到修改的页面
+ <%
+   String id=request.getAttribute("mid").toString();
+   request.setAttribute("pic_id",id); 
+ %>
+ 然后用html:img来显示图片
+ <html:img src="/XX.do?method=show" paramId="mid" paramName="pic_id">
+ 接着src到action里面获取mid的值
+
+
+
+在做load的时候Staffer load里面的load必须和表的字段相对应，也就是要相同
+
+load的时候并不需要用 //engine.executeSpecialSQL(sb.toString(),param.toArray());
+还有就是显示到页面上的用法LoadMapAction
+
+<html:file property="theFile" styleId="theFile"
+注意bantype里面的save,bantype.jsp里面的表单是DynaActionForm
+那么在转换的时候，就需要，用BenaUtils.copyProperties()而不是
+BeanUtils.populate()
+1、如果用“.”作为分隔的话，必须是如下写法：String.split("\\."),这样才能正确的分隔开，不能用String.split(".");
+2.删除操作
+
+   考勤报表里面有表格线
+  speed的bo属性和表的字段一样，并且bo统一为小写
+
+
+  /* List list=go.getState(str);
+		    	   if( list!= null && list.size()>0){
+		    	    	     Map map=(Map) list.get(0);
+			    	    	 sb.append(" and v_locatedata.state  = ? ");
+					    	 param.add(map.get("state")); 
+			    	    	 System.out.println("sate=="+map.get("state"));
+		    	        }*/
+
+
+var did=document.forms[0].elements[0].value 
+编辑分站的写法
+试了一下，用styleId的确可以指定id。谢谢 #小嘴看世界 和各位大虾。
+<html:text >
+<html:text property="cardid" size="10" onfocus="this.blur()" >
+onfocus="this.blur()"  onkeyup="this.value=this.value.replace(/\D/g,'')"
+这个是说选定以后，无法编辑－－！
+    输出list   
+       list=query.getResults(sql,obj,null,pagin);
+            System.out.println("list="+list.toString());
+
+    0.bean里面的属性必须和表的字段一样，并且是小写（*）
+    
+	1.DynaActionForm dy=(DynaActionForm) form;
+	输出页面的数据：System.out.println(“dy.getMap.toString()”):
+	
+	2.驱动需要在tomcat里面加一次，和在eclipse里面的web-inf/lib下加上
+	
+	3.初始化修改是 load一个对象出来 form.set("xxx",load出来那个对象)  把值自动装载到form里面 
+      页面脚本 var value = document.forms[0]['xxx.userid'].value;这样取那个对象的值 
+    
+    4.String id=(String)dy.get("userID");
+        System.out.println(id); 
+        
+    5.DynaActionForm的2种用法（*）
+    <form-bean name="LoginForm" type="org.apache.struts.action.DynaActionForm">
+      <form-property name="user"  type="com.kj133.entity.Ouser"/>
+    </form-bean>
+    页面：用户名：<html:text  property="user.userid" /><br />
+         密 码：<html:password property="user.opassword" /><br />
+    
+    6.做编辑卡的时候，错误是java.lang.IllegalArgumentException
+     原因:表的字段为smallint，bean里写为short，最后改成String就ok
+     String是通用的，因为程序和数据库通信是通过socket，都是转成字符流传输，
+     只不过是到达数据库告诉它是什么类型再进行转换，性能都差不多的
+     页面输出也是以字符串形式输出的 
+     
+   8.list=query.getResults(sql,new Object[]{},EditCardVO.class,pagin);
+   把EditCardVO写成null也可以，但是参数为null，数据是封装到hashmap里面，消耗比较大，vo性能比较好 
+   
+   9. 在调用load和delete方法的时候为什么在console里面输出的是
+      select * from recog where 1=1  and cardid=? 
+      delete from recog where 1=1 and cardid=? 
+      The recog PK is cardid因为cardid是主键的关系吗？
+  
+   10。select * from Ouser--三条记录
+      select * into bk_ouser   FROM Ouser
+      select * from  bk_ouser 
+      inset   into  ouser  select   distinct *   from   bk_ouser
+      
+   11.当用IFRAME嵌入页面时，NO就是没有滚动条，auto就是自动判断，YES即是有滚动条。  scrolling="no" 
+   
+   12.dy.set();findforwar到了一个页面后，虽然没有在页面显示数据出来
+    但是你还是可以用dy.get()获取。
+   
+   13. 清除DynaActionForm
+    1.如果不是为了持续保持ActionForm中的数据的话,在struts-config.xml(<action-mappings>中)把ActionForm的scope设为"request";   
+    2.如果ActionForm的scope为"session",那么action中,在用ActionForm中的数据处理完业务逻辑后,清掉session中的该ActionForm属性   
+                  if   (mapping.getAttribute()   !=   null)   {   
+                          if   ("session".equals(mapping.getScope()))   
+                                  session.removeAttribute(mapping.getAttribute());   
+                  }   
+     3.实在不想清session属性的话,只能在ActionForm的reset方法中,把属性值重新置回初始值了,如...   
+     idno   =   null;   
+     eraddr   =   null;   
+     erzipcode   =   null;   
+     artifc   =   null;
+   
+   14。sql:  select  r.name ,r.password,r.demo as d left join recog r on recog.id=staffer.id
+     bean: name,password,demo
+   
+   
+   （*）15.在对1年一上的记录进行查询的时候，有个错误java.lang.OutOfMemoryError: Java heap space
+   
+   16：在跳转的时候需要指定一个 <html:form action="/historyNote?method=getList">
+   
+   
+   17.<html:select>用法
+   
+   
+    18.<speed-global-cache>false</speed-global-cache>
+       是每次查都需要调用存储过程，把缓存的临时开关设为false,把存储过程缓存起来了 
+        
+   19.判断一个字符为空
+     if(sid!=null && !sid.equals(""))
+    
+   20.在写ActionMessage的时候，如果错误是can't find bean message in any scope,则是config.xml的路径不对
+   20.
+   
+		     public class Untitled1 {
+		  public Untitled1() {
+		  }
+		  public static void main(String[] args) {
+		    Untitled1 untitled11 = new Untitled1();
+		    String s1="STRING类的值是不是会变的->";
+		    String s2=s1;
+		    System.out.println(s2);
+		    s1+="加个试试"; //String 赋值实际上这个是NEW了一个新的对象了，S1变了
+		    System.out.println(s2); //S2没有变，这是因为S2指向的地址还是最早的s1所在的地址
+		  
+		    StringBuffer b1=new StringBuffer("StringBuffer类的值是会变的->");
+		    StringBuffer b2=b1;
+		    b2.append("加个试试");//StringBuffer赋值,操作b2还是那个对象，
+		    System.out.println(b1);//所以加一个字符进去b1指向的对象的值已经变了哦
+		  }
+		}
+		
+		结果：
+		STRING类的值是不是会变的->
+		STRING类的值是不是会变的->
+		StringBuffer类的值是会变的->加个试试
+     
+        使用 StringBuffer 主要就是在性能上的考虑。
+		
+		String 是一种非常常用的数据类型，但由于 String 是不可变对象，在进行 String 的相关操作的时候会产生许多临时的 String 对象。
+		
+		而 StringBuffer 在操作上是在一个缓冲中进行的，性能当然优越得多。
+		
+		不过，一般做为简单的字符串传递和其它操作，只不要改变字符串内容的操作，用 String 效率会高一些。
+
+   
+   
+    
+ public List getList(Connection con, UserInfo userInfo, BaseObject object,
+                      Pagination pagination) throws Exception {
+    // TODO Auto-generated method stub
+    StringBuffer sb = new StringBuffer();
+    List parms = new ArrayList();
+    List relist = null;
+    InfoProject info = (InfoProject) object;
+    try {
+      sb.append("select a.pro_id,");
+      sb.append("a.pro_name,");
+      sb.append("a.begin_date,");
+      sb.append("a.end_date,");
+      sb.append("a.create_date,");
+      sb.append("b.code_name as send_mode,");
+      sb.append("c.code_name as pro_type, ");
+      sb.append("d.oa_name as create_oper ");
+      if (info.getSend_mode().equals("01")) {
+        sb.append(",CASE WHEN (SELECT COUNT(*) FROM SEND_TASK WHERE pro_id=a.pro_id AND test_flag=1)>0 THEN '是'ELSE '否' END test_flag ");
+      }
+      sb.append(
+          "from info_project a,code_system b,code_svcid c,lkg_oa_user d "); //修改
+
+      sb.append("where a.send_mode=b.code_id and b.parent_code_id='00001'");
+      sb.append("and a.pro_type=c.code_id and c.dep_type=? "); //修改
+
+      sb.append("and a.create_oper=d.oa_id and a.local_net=?");
+      sb.append("and a.send_mode=? and a.dep_type=? ");
+      //sb.append(" and create_oper=? ");
+      parms.add(info.getDep_type());
+      parms.add(userInfo.getOaUser().getLocal_net());
+      parms.add(info.getSend_mode());
+      parms.add(info.getDep_type());
+
+      //parms.add(userInfo.getOaUser().getOa_id());
+      if (object != null) { //项目名称
+        if (info.getPro_name() != null) {
+          if (!info.getPro_name().equals("")) {
+            sb.append("and a.pro_name like ? ");
+            parms.add("%" + info.getPro_name() + "%");
+          }
+        }
+
+        if (info.getPro_type() != null) {
+          if (!info.getPro_type().equals("")) {
+            sb.append("and a.pro_type = ? ");
+            parms.add(info.getPro_type());
+          }
+        }
+
+        if (info.getCreate_date() != null) { //创建日期
+          sb.append("and a.create_date=? ");
+          parms.add(info.getCreate_date());
+        }
+        /*if (info.getSend_mode() != null) {
+          if (!info.getSend_mode().equals("")) {
+            sb.append("and a.send_mode=? ");
+            parms.add(info.getSend_mode());
+          }
+                 }*/
+
+        if (info.getCreate_oper() != null && !info.getCreate_oper().equals("")) { //创建人
+          sb.append("and a.create_oper=? ");
+          parms.add(info.getCreate_oper());
+        }
+
+        /*if (info.getSend_type() != null) {
+          if (!info.getSend_type().equals("")) {
+            sb.append("and send_type=? ");
+            parms.add(info.getSend_type());
+          }
+                 }*/
+        if (info.getSvc_id() != null && !info.getSvc_id().equals("")) { //产品分类
+          sb.append("and a.svc_id=? ");
+          parms.add(info.getSvc_id());
+        }
+
+        if (info.getBegin_date() != null) { //任务开始日期
+          sb.append("and a.begin_date>=? ");
+          parms.add(info.getBegin_date());
+        }
+        if (info.getEnd_date() != null) { //任务结束日期
+          sb.append("and a.end_date<=? ");
+          parms.add(info.getEnd_date());
+        }
+      }
+      sb.append("order by pro_id desc");
+      relist = baseDAO.selectPagination(con, sb.toString(), parms,
+                                        InfoProject.class, pagination);
+    }
+    catch (Exception e) {
+      log.error(e);
+      throw e;
+    }
+    return relist;
+  }   
+		   
+		DTree:   
+		ID：主键
+		PID：父类ID
+		NAME：结点名称
+		URL：结点连接的URL
+		TITLE：类似ALT的一种结点显示内容
+		TARGET：连接打开的目标
+		ICON：图片文件，没有指定将使用默认的图片
+		ICONOPEN：打开结点后的图片文件，没有指定将使用默认的图片
+		OPEN：boolean类型，结点是否打开。
+		调用d.openAll();可以打开所有结点。
+		调用d.closeAll();可以关闭所有结点。
+		调用d.openTo(id);可以打开指定ID的结点
+   
+   onkeydown="return false"文本框不可修改
+   
+   
+     三个记录集的字段顺序要相同 ,名字也一样 
+        select  odepartment.departmentid as id ,odepartment.dname as name ,'0' as pid   from odepartment
+		union
+		select  ogroup.groupid as id,ogroup.gname as name ,ogroup.departmentid  as pid from ogroup
+		union   
+		select  ouser.userid as id,ouser.oname as name,ouser.groupid as pid from ouser 
+   
+   
+   stack overflow at line :654
+	id   name  pid
+	078  Test  0	
+	078  Test  078
+   
+   
+ ()  <html:text property="ser_account.department_id" size="10"/>&nbsp;&nbsp;
+        error action:
+           String did=request.getParameter("departmentid");
+            dy.set("ser_account",did);
+        action:
+            Search_Account account=new Search_Account();
+			String did=request.getParameter("departmentid");
+            account.setDepartment_id(did);
+            System.out.println("id==="+account.getDepartment_id());
+			dy.set("ser_account",account);
+	  form的属性是对象 
+      <html:textproperty="ser_account.department_id" /> 
+       这个调用的是ser_account.setDepartment_id();这个方法 
+	  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   Error:   Error:   Error:   Error:   Error:   Error:   Error:   Error:   Error:   Error:
+   
+   1.[ERROR] DispatchAction - Dispatch[/editcard] to method 'getList' 
+    returned an exception <java.lang.reflect.InvocationTargetException>
+    java.lang.reflect.InvocationTargetException
+   // System.out.println("list.toString"+list.toString());问题所在
+  
+   2.javax.servlet.ServletException: Cannot retrieve definition for form bean null
+      on action /localiszerHistory?method=getList
+      action的name需要给个值 
+   
+   3.javax.servlet.ServletException: Cannot find bean org.apache.struts.taglib.html.BEAN in any scope
+      非的给jsp加上一个<html:form action="">
+      
+   4.canot find 'rcordid'在bean里面看看，还有就是在config.xml里面看看
+         <form-property name="recordid"     type="java.lang.String"/>
+    
+   5.Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/commons/lang/builder/ToStringBuilder
+      //原因：System.out.println(list.toString());
+      
+   6.javax.servlet.jsp.JspException: Cannot find bean under name org.apache.struts.taglib.html.BEAN
+   
+   7.java.sql.SQLException: Invalid parameter index 1.(参数位置错了 )
+   
+   8.[ERROR] DispatchAction - Dispatch[/localizer] to method 'update' returned an exception <java.lang.reflect.InvocationTargetException>java.lang.reflect.InvocationTargetException
+    一般是重启tomcat 
+    
+   9.java.lang.NoClassDefFoundError: org/apache/commons/lang/builder/ToStringBuilder
+    没有在action指定name
+    
+   10.javax.servlet.ServletException: Cannot find bean org.apache.struts.taglib.html.BEAN in any scope
+    没有add页面写<html:form action="">
+    
+    11.Cannot retrieve definition for form bean null on action  iewLocatorHistory?method=getList
+       <html:form>如果些成这样，那么在action里面就需要配置name,如果写成form就不用了
+	   
+	   1 异常 javax.servlet.jsp.JspException: Cannot retrieve mapping for action /Login （/Login是你的action名字） 
+	可能原因:action没有再struts-config.xml 中定义，或没有找到匹配的action，例如在JSP文件中使用 处理:如果出现上述异常，请查看struts-config.xml中的定义部分，有时可能是打错了字符或者是某些不符合规则，可以使用struts console工具来检查。 
+	
+	2 异常 org.apache.jasper.JasperException: Cannot retrieve definition for form bean null 
+	
+	可能原因: 这个异常是因为Struts根据struts-config.xml中的mapping没有找到action期望的form bean。大部分的情况可能是因为在form-bean中设置的name属性和action中设置的name属性不匹配所致。换句话说，action和form都应该各自有一个name属性，并且要精确匹配，包括大小写。这个错误当没有name属性和action关联时也会发生，如果没有在action中指定name属性，那么就没有name属性和action相关联。当然当action制作某些控制时，譬如根据参数值跳转到相应的jsp页面，而不是处理表单数据，这是就不用name属性，这也是action的使用方法之一。
+	
+	3 异常 No action instance for path /xxxx could be created 
+	
+	可能原因 
+	特别提示：因为有很多中情况会导致这个错误的发生，所以推荐大家调高你的web服务器的日志/调试级别，这样可以从更多的信息中看到潜在的、在试图创建action类时发生的错误，这个action类你已经在struts-config.xml中设置了关联（即添加了标签）。 
+	
+	在struts-config.xml中通过action标签的class属性指定的action类不能被找到有很多种原因，例如： 
+	
+	定位编译后的.class文件失败。Failure to place compiled .class file for the action in the classpath (在web开发中，class的的位置在r WEB-INF/classes，所以你的action class必须要在这个目录下。例如你的action类位于WEB-INF/classes/action/Login.class,那么在struts-config.xml中设置action的属性type时就是action.Login). 
+	拼写错误，这个也时有发生，并且不易找到，特别注意第一个字母的大小写和包的名称。 
+	
+	在struts-config.xml中指定的action类没有继承自Stuts的Action类，或者你自定义的Action类没有继承自Struts提供的Action类。 
+	
+	你的action类必须继承自Struts提供的Action类。 
+	
+	你的classpath的问题。例如web server没有发现你的资源文件，资源文件必须在WEB-INF/classes/目录下。 
+	
+	4 异常 javax.servlet.jsp.JspException: No getter method for property username of bean org.apache.struts.taglib.html.BEAN 
+	
+	可能原因 
+	没有位form bean中的某个变量定义getter 方法 
+	
+	这个错误主要发生在表单提交的FormBean中，用struts标记时，在FormBean中必须有一个getUsername()方法。注意字母“U”。 
+	5 Exception javax.servlet.jsp.JspException: Cannot find ActionMappings or ActionFormBeans collection 
+	
+	可能原因 
+	不是标识Struts actionServlet的标记就是映射.do扩展名的标记或者两者都没有在web.xml中声明。 
+	
+	在struts-config.xml中的打字或者拼写错误也可导致这个异常的发生。例如缺少一个标记的关闭符号/>。最好使用struts console工具检查一下。 
+	
+	另外，load-on-startup必须在web.xml中声明，这要么是一个空标记，要么指定一个数值，这个数值用来表servlet运行的优先级，数值越大优先级越低。 
+	
+	还有一个和使用load-on-startup有关的是使用Struts预编译JSP文件时也可能导致这个异常。 
+	
+	6 Exception 
+	javax.servlet.jsp.JspException: Cannot find bean org.apache.struts.taglib.html.BEAN in any scope 
+	Probable Causes 
+	试图在Struts的form标记外使用form的子元素。这常常发生在你在后面使用Struts的html标记。
+	
+	另外要注意可能你不经意使用的无主体的标记，如，这样web 服务器解析时就当作一个无主体的标记，随后使用的所有标记都被认为是在这个标记之外的，如又使用了
+	
+	还有就是在使用taglib引入HTML标记库时，你使用的prefix的值不是html。 
+
+    java.lang.IndexOutOfBoundsException: Index: 1, Size: 0
+    list的下标是从0开始的。添加的时候不需要指定数字
+
+  DispatchAction - Action[/localizer] does not contain method named 'getList'
+   没有getList这个方法
+   
+   java.lang.OutOfMemoryError: Java heap space
+   在JVM中如果98％的时间是用于GC且可用的Heap size 不足2％的时候将抛出此异常信息
+   
+   java.lang.NoSuchMethodError: com.kj133.entity.bo.BantypeBO.save(Ljava/lang/Object;)V
+   如果应用程序试图调用一个类的指定方法(无论是静态还是动态),但是该类不再有该方法的定义,则抛出该异常。 
+   
+   jsp更新sqlserver2000时出错java.sql.datatruncation:data   truncation   
+   读取数据时发生数据截断警告，看看你插入的数据是否超过你数据库要求的长度咯。    	 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <logic:messagesPresent>
+		    <div class="error">
+		        <html:messages id="error">
+		        <bean:write name="error" />
+		        <br/>
+		        </html:messages>
+		    </div>
+		</logic:messagesPresent>
+		<%-- Error Messages --%>
+
+		<%-- Success Messages --%>
+		<logic:messagesPresent message="true">
+		    <div class="message">
+		        <html:messages id="message" message="true">
+		        <bean:write name="message" />
+		        <br/>
+		        </html:messages>
+		    </div>
+		</logic:messagesPresent>
+		<%-- Success Messages --%> 
+水瓶座 16:38:32
+  ActionMessages messages = new ActionMessages();
+      messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+          "message.add"));
+      saveMessages(request, messages);
+    }
+    catch (Exception e) {
+      log.error(e);
+      ActionErrors errors = new ActionErrors();
+      errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+          "message.error.add"));
+      saveErrors(request, errors);
+    } 
+      
+      
+      操作：
+
+·准备资源文件
+
+　待转换的中文资源文件 ApplicationResources_zh.properties 
+
+　转换后的程序中使用的资源文件：ApplicationResources.properties
+
+·DOS命令行进入ApplicationResources.properties所在的文件夹
+
+·运行命令：native2ascii  -encoding GBK  ApplicationResources.properties ApplicationResources_zh.properties 
+///////////
+如果文件夹下面的是？？？
+那就改成中文，并且在config.xml里面写成 <message-resources parameter="/ApplicationResources_zh" />
+每修改一次，就要在文件夹里面把ApplicationResources_zh.properties删除，在重新编译
+
+错误信息：
+
+'native2ascii'不是内部或外部命令,也不是可运行的程序或批处理文件。
+Java 編譯器和其它 Java 工具只能處理含有 Latin-1 和/或 Unicode 編碼（\udddd 記號）字符的文件。native2ascii 將含有其它字符編碼的文件轉換成含 Latin-1 和/或 Unicode 編碼字符的文件。
+
+
+错误原因：
+
+项目在IBM Rational Software Development Platform上开发，该软件安装完毕后不会往[环境变量]中加入jdk运行目录。
+
+
+解决办法：
+
+在[我的电脑]=>[属性]=>[高级]=>[环境变量]=>[系统变量]，编辑[path]，加入jdk运行目录。(如加入“E:\Program Files\IBM\Rational\SDP\6.0\runtimes\base_v6\java\bin”)
+
+
+
+java.lang.OutOfMemoryError: Java heap space
+<style>
+table { 
+table-layout: fixed;
+word-wrap:break-word;
+}
+div { 
+word-wrap:break-word;
+}
+</style> 表格变形
+ 
+ 
+ 
+ 匹配中文字符的正则表达式： [\u4e00-\u9fa5]
+
+匹配双字节字符(包括汉字在内)：[^\x00-\xff]
+
+应用：计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）
+
+String.prototype.len=function(){return this.replace([^\x00-\xff]/g,"aa").length;}
+
+匹配空行的正则表达式：\n[\s| ]*\r
+
+匹配HTML标记的正则表达式：/<(.*)>.*<\/\1>|<(.*) \/>/ 
+
+匹配首尾空格的正则表达式：(^\s*)|(\s*$)
+
+ 
+
+String.prototype.trim = function()
+{
+    return this.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+利用正则表达式分解和转换IP地址：
+
+下面是利用正则表达式匹配IP地址，并将IP地址转换成对应数值的Javascript程序：
+
+function IP2V(ip)
+{
+ re=/(\d+)\.(\d+)\.(\d+)\.(\d+)/g  //匹配IP地址的正则表达式
+if(re.test(ip))
+{
+return RegExp.$1*Math.pow(255,3))+RegExp.$2*Math.pow(255,2))+RegExp.$3*255+RegExp.$4*1
+}
+else
+{
+ throw new Error("Not a valid IP address!")
+}
+}
+
+不过上面的程序如果不用正则表达式，而直接用split函数来分解可能更简单，程序如下：
+
+var ip="10.100.20.168"
+ip=ip.split(".")
+alert("IP值是："+(ip[0]*255*255*255+ip[1]*255*255+ip[2]*255+ip[3]*1))
+
+匹配Email地址的正则表达式：\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*
+
+匹配网址URL的正则表达式：http://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
+
+利用正则表达式去除字串中重复的字符的算法程序：[注：此程序不正确，原因见红色字体]
+
+var s="abacabefgeeii"
+var s1=s.replace(/(.).*\1/g,"$1")
+var re=new RegExp("["+s1+"]","g")
+var s2=s.replace(re,"") 
+alert(s1+s2)  //结果为：abcefgi
+
+=============================== 
+如果var s = "abacabefggeeii" 
+结果就不对了，结果为：abeicfgg 
+正则表达式的能力有限
+
+我原来在CSDN上发贴寻求一个表达式来实现去除重复字符的方法，最终没有找到，这是我能想到的最简单的实现方法。思路是使用后向引用取出包括重复的字符，再以重复的字符建立第二个表达式，取到不重复的字符，两者串连。这个方法对于字符顺序有要求的字符串可能不适用。
+
+得用正则表达式从URL地址中提取文件名的javascript程序，如下结果为page1
+
+s="http://www.9499.net/page1.htm"
+s=s.replace(/(.*\/){0,}([^\.]+).*/ig,"$2")
+alert(s)
+
+利用正则表达式限制网页表单里的文本框输入内容：
+
+用正则表达式限制只能输入中文：onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))"
+
+用正则表达式限制只能输入全角字符： onkeyup="value=value.replace(/[^\uFF00-\uFFFF]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\uFF00-\uFFFF]/g,''))"
+
+用正则表达式限制只能输入数字：onkeyup="value=value.replace(/[^\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
+
+用正则表达式限制只能输入数字和英文：onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
+
+应用：javascript中没有像vbscript那样的trim函数，我们就可以利用这个表达式来实现，如下：
+      
+      
+获取当前时间的前几天时间或者后几天的时间。add(,2)或者add(,-2)	
+public static String Adddate(String strDate, int days) {
+        String[] date = strDate.split("-"); //将要转换的日期字符串拆分成年月日
+        int year, month, day;
+        year = Integer.parseInt(date[0]);
+        month = Integer.parseInt(date[1]) - 1;
+        day = Integer.parseInt(date[2]);
+        GregorianCalendar d = new GregorianCalendar(year, month, day);
+        d.add(Calendar.DATE, -days);
+        Date dd = d.getTime();
+        DateFormat df = DateFormat.getDateInstance();
+        String adddate = df.format(dd);
+        System.out.println(adddate);
+        return adddate;
+    }
+	
+	public static void main(String[] args)throws Exception{
+		Adddate("2007-3-02",3);
+	}	
+	
+	
+左外连接，右外连接，全连接，内连接。四种连接的差异   
+   a表      id    name      b表      id    job    parent_id   
+               1    张3                    1      23      1   
+               2    李四                  2      34      2   
+               3    王武                  3      34      4   
+    
+   a.id同parent_id    存在关系   
+    
+   内连接   
+   select    a.*,b.*    from    a    inner    join    b      on    a.id=b.parent_id   
+    
+   结果是     
+   1    张3                    1      23      1   
+   2    李四                  2      34      2   
+    
+   左连接   
+    
+   select    a.*,b.*    from    a    left    join    b      on    a.id=b.parent_id   
+    
+   结果是     
+   1    张3                    1      23      1   
+   2    李四                  2      34      2   
+   3    王武                  null   
+   右连接   
+   select    a.*,b.*    from    a    right    join    b      on    a.id=b.parent_id   
+    
+   结果是     
+   1    张3                    1      23      1   
+   2    李四                  2      34      2   
+   null                  3      34      4   
+    
+   完全连接   
+    
+   select    a.*,b.*    from    a    full    join    b      on    a.id=b.parent_id   
+    
+    
+   结果是     
+   1    张3                    1      23      1   
+   2    李四                  2      34      2   
+   null                  3      34      4   
+   3    王武                  null 
+   
+   
+   tools.jar是JDK类库中提供的一些工具类集合的jar文件，在我们编写Java   Application和Java   Applet时一般都用不上这些工具类，所以你在ClassPath环境变量中去掉了tools.jar包，你的程序照样能运行，因为你根本没有用到tools.jar里面的类。
+   tools.jar是一个工具包   
+  就像打包成.jar的工具   
+  如果你不用将java程序去打包,你就用不着
+  
+  
+  
+  
+常用log4j配置 
+来源:赛迪blog (2006-06-22 11:45:38) 
+
+ 
+常用log4j配置，一般可以采用两种方式，.properties和.xml,下面举两个简单的例子：
+一、log4j.properties
+### 设置org.zblog域对应的级别INFO,DEBUG,WARN,ERROR和输出地A1，A2 ##
+log4j.category.org.zblog=ERROR,A1 
+log4j.category.org.zblog=INFO,A2 
+log4j.appender.A1=org.apache.log4j.ConsoleAppender 
+### 设置输出地A1，为ConsoleAppender(控制台) ##
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout 
+### 设置A1的输出布局格式PatterLayout,(可以灵活地指定布局模式）##
+log4j.appender.A1.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss,SSS} [%c]-[%p] %m%n 
+### 配置日志输出的格式##
+log4j.appender.A2=org.apache.log4j.RollingFileAppender 
+### 设置输出地A2到文件（文件大小到达指定尺寸的时候产生一个新的文件）##
+log4j.appender.A2.File=E:/study/log4j/zhuwei.html 
+### 文件位置##
+log4j.appender.A2.MaxFileSize=500KB 
+### 文件大小##
+log4j.appender.A2.MaxBackupIndex=1 
+log4j.appender.A2.layout=org.apache.log4j.HTMLLayout 
+##指定采用html方式输出
+二、log4j.xml
+<?xml version="1.0" encoding="GB2312" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<appender name="org.zblog.all" class="org.apache.log4j.RollingFileAppender">
+<!-- 设置通道ID:org.zblog.all和输出方式：org.apache.log4j.RollingFileAppender -->
+   <param name="File" value="E:/study/log4j/all.output.log" /><!-- 设置File参数：日志输出文件名 -->
+   <param name="Append" value="false" /><!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+   <param name="MaxBackupIndex" value="10" /> 
+   <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="%p (%c:%L)- %m%n" /><!-- 设置输出文件项目和格式 -->
+   </layout>
+</appender>
+<appender name="org.zblog.zcw" class="org.apache.log4j.RollingFileAppender">
+   <param name="File" value="E:/study/log4j/zhuwei.output.log" />
+   <param name="Append" value="true" />
+   <param name="MaxFileSize" value="10240" /> <!-- 设置文件大小 -->
+   <param name="MaxBackupIndex" value="10" /> 
+   <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="%p (%c:%L)- %m%n" />
+   </layout>
+</appender>
+<logger name="zcw.log"> <!-- 设置域名限制，即zcw.log域及以下的日志均输出到下面对应的通道中 -->
+   <level value="debug" /><!-- 设置级别 -->
+   <appender-ref ref="org.zblog.zcw" /><!-- 与前面的通道id相对应 -->
+</logger>
+<root> <!-- 设置接收所有输出的通道 -->
+   <appender-ref ref="org.zblog.all" /><!-- 与前面的通道id相对应 -->
+</root>
+</log4j:configuration>
+三、配置文件加载方法：
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
+public class Log4jApp {
+   public static void main(String[] args) {
+       DOMConfigurator.configure("E:/study/log4j/log4j.xml");//加载.xml文件
+       //PropertyConfigurator.configure("E:/study/log4j/log4j.properties");//加载.properties文件
+       Logger log=Logger.getLogger("org.zblog.test");
+       log.info("测试");
+   }
+}
+四、项目使用log4j
+在web 应用中，可以将配置文件的加载放在一个单独的servlet中，并在web.xml中配置该servlet在应用启动时候加载。对于在多人项目中，可以给每一个人设置一个输出通道，这样在每个人在构建Logger时，用自己的域名称，让调试信息输出到自己的log文件中。
+五、常用输出格式
+# -X号:X信息输出时左对齐；
+# %p:日志信息级别
+# %d{}:日志信息产生时间
+# %c:日志信息所在地（类名）
+# %m:产生的日志具体信息
+# %n:输出日志信息换行
+
+
+ 严重: IOException while loading persisted sessions: java.io.EOFException 
+ 是因为保存在硬盘上的session数据读取失败，问题似乎不大，但是如果不处理一下，每次启动都会出现这个问题，处理方法如下：
+
+将work下面的文件清空，主要是*.ser文件，或者只是删除掉session.ser亦可。
+ 
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+window.open ('page.html', 'newwindow', 'height=100, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')//写成一行
+-->
+</SCRIPT> 
+
+　参数解释：
+
+
+<SCRIPT LANGUAGE="javascript"> js脚本开始；
+window.open 弹出新窗口的命令；
+'page.html' 弹出窗口的文件名；
+'newwindow' 弹出窗口的名字（不是文件名），非必须，可用空''代替；
+height=100 窗口高度；
+width=400 窗口宽度；
+top=0 窗口距离屏幕上方的象素值；
+left=0 窗口距离屏幕左侧的象素值；
+toolbar=no 是否显示工具栏，yes为显示；
+menubar，scrollbars 表示菜单栏和滚动栏。
+resizable=no 是否允许改变窗口大小，yes为允许；
+location=no 是否显示地址栏，yes为允许；
+status=no 是否显示状态栏内的信息（通常是文件已经打开），yes为允许；
+</SCRIPT> js脚本结束
+
+ 
+  
+  	/**
+	 * 计算距离当天天数的日期
+	 * @param days
+	 * @return
+	 * @author yuzhe.chen
+	 * @version 创建时间 Jul 4, 2007 10:01:59 AM
+	 */
+	public String dotime(int days){
+		//获取当前日期
+		Calendar cal  = Calendar.getInstance();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String mDate=formatter.format(cal.getTime());
+	    java.util.Date myDate=new java.util.Date();  
+	    long myTime=(myDate.getTime()/1000)+60*60*24*days;
+	    myDate.setTime(myTime*1000);
+	    String mDate2=formatter.format(myDate);
+		return mDate2;
+	} 
+  
+ 
+ declare @i int
+select @i=0
+while(@i<=15)
+ begin
+    insert into c values(@i)
+    select @i=@i+1
+ end
+
+ 
+ 
+ 
+ 
+ 
+ 
+	
+   
+   
+	

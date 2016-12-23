@@ -1,0 +1,230 @@
+一：sql语句：
+---------------------------------------------------------------------------------------------------
+1.a=0.66666666666666666--->a=0.67
+  convert(decimal(38,2),a)
+---------------------------------------------------------------------------------------------------
+2.(当bb为空时)bb=717--->118小时37分  bb=null --->0小时0分
+  isnull (substring(rtrim(bb/60),1,8)+'小时'+substring(rtrim(bb%60),1,8)+'分','0小时0分' )
+---------------------------------------------------------------------------------------------------
+3.(当bb不为空)bb=717--->118小时37分  bb=0 --->0小时0分
+  substring(rtrim(bb/60),1,8)+'小时'+substring(rtrim(bb%60),1,8)+'分'
+---------------------------------------------------------------------------------------------------
+4.数据库中：2008-11-04 13:40:51.997  ----> 2008-11-04 13:40:51
+  convert(varchar(19),recordtime,20) as 记录时间
+  
+///////////////////////////////////////////////////////////////////////////////////////////////////  
+二：java各种方法
+---------------------------------------------------------------------------------------------------
+1.求两个数的百分比 如：2/3=66.67%
+  	private static String getPercent(int fenzi,int fenmu)
+	{
+		double a = fenzi ;
+		double b = fenmu ;
+		BigDecimal a1 = new BigDecimal(Double.toString(a)) ;
+		BigDecimal b1 = new BigDecimal(Double.toString(b)) ;
+		double c = a1.divide(b1,4,BigDecimal.ROUND_HALF_UP).doubleValue();
+		BigDecimal a2 = new BigDecimal(Double.toString(c));
+		BigDecimal b2 = new BigDecimal(Double.toString(100));
+		double c1 = a2.multiply(b2).doubleValue();
+		String d = c1+"%";
+		return d ;
+	}   
+	private static String getPercent2(int a,int b)
+	{
+		DecimalFormat myformat = null;
+		myformat= (DecimalFormat)NumberFormat.getPercentInstance();
+                //0表示加的小数点,00表示两位小数点，你用00试一下你就知道效果
+		myformat.applyPattern("0.00%"); 
+		double rat = (double)a/(double)b;
+		String aa = ""+myformat.format(rat);
+		return aa ;
+	}
+
+---------------------------------------------------------------------------------------------------
+2.关于时间问题：
+ 1)得到当前时间以及当前时间的前N小时：
+ 		/**
+		 * 用这个方法可以得到当前月的前一个或两个月或者后一个或两个月（N个月）正数为向后将来的，
+		 * 负数为向前以前的；天，或小时，等等
+		 * (当前时间的前N小时的时间)
+		 */
+		public void beforeHours()
+		{
+			java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	        java.util.Date date = new java.util.Date();
+	        java.util.Calendar c = Calendar.getInstance();
+	        c.add(Calendar.HOUR, -12);   //此处可以变成年，月，日，分等
+	        String stime = format.format( c.getTime());
+	        String etime = format.format(date);	
+			System.out.println(stime+"  "+etime);
+		}
+
+ 2)得到两个时间的间隔小时数
+	 /***
+		 * 
+		 * 说明：得到两个时间间隔的小时数
+		 * 
+		 * 
+
+		 */
+	  	public int getTimesBetween(String beginTime,String endTime) throws ParseException {
+			int result = 0;
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			 
+			
+			Date btime = format.parse(beginTime);
+			Date etime = format.parse(endTime);
+			
+			long bt = btime.getTime();
+			long et = etime.getTime();
+			result = (int) ((et-bt)/(1000*60));
+			return result;
+		}
+ 3)得到两个日期间隔的天数
+ 		  /**
+		 * 得到两个日期间隔的天数
+		 */
+		public int getDaysBetween (String beginDate, String endDate) throws ParseException {
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date bDate = format.parse(beginDate);
+			Date eDate = format.parse(endDate);
+			Calendar d1 = new GregorianCalendar();
+			d1.setTime(bDate);
+			Calendar d2 = new GregorianCalendar();
+			d2.setTime(eDate);
+	        int days = d2.get(Calendar.DAY_OF_YEAR) - d1.get(Calendar.DAY_OF_YEAR);
+	        int y2 = d2.get(Calendar.YEAR);
+	        if (d1.get(Calendar.YEAR) != y2) {
+	            d1 = (Calendar) d1.clone();
+	            do {
+	                days += d1.getActualMaximum(Calendar.DAY_OF_YEAR);//得到当年的实际天数
+	                d1.add(Calendar.YEAR, 1);
+	            } while (d1.get(Calendar.YEAR) != y2);
+	           
+	        }
+	        return days;
+	        
+	    }
+ 4)得到当前时间的前N天
+       /**time格式yyyy-MM-dd
+	  * 获取当前时间的前i天
+	  * */
+		public String getDay(String time,int i){
+			   String[] date = time.split("-"); //将要转换的日期字符串拆分成年月日
+		       int year, month, day;
+		       year = Integer.parseInt(date[0]);
+		       month = Integer.parseInt(date[1]) - 1;
+		       day = Integer.parseInt(date[2]);
+		       GregorianCalendar d = new GregorianCalendar(year, month, day);
+		       d.add(Calendar.DATE,i);//减7天
+		       Date dd = d.getTime();
+		       DateFormat df = DateFormat.getDateInstance();
+		       String enddate = df.format(dd);
+		       
+		       String endmonth="",endday="";
+		       String yea=enddate.substring(0,4);  		        
+		       String moncoding=enddate.substring(6,7);
+		       
+		       if( moncoding.equals("-") ){//单月 
+		    	   String mon=enddate.substring(5,6);
+		    	   endmonth="0"+mon;
+		    	   if(enddate.length() == 8){//单日 2007-5-1
+		    		   String da=enddate.substring(7,8);
+		    		   endday="0"+da; 
+		    	   }else{//双日 2007-4-30
+		    		   String da=enddate.substring(7,9);
+		    		   endday=da; 
+		    	   }
+		       }else{//双月 
+		    	   String mon=enddate.substring(5,7);
+		    	   endmonth=mon; 
+		    	   if(enddate.length() == 9){//单日 2007-10-1
+		    		   String da=enddate.substring(8,9);
+		    		   endday="0"+da; 
+		    	   }else{//双日 2007-10-30
+		    		   String da=enddate.substring(8,10);
+		    		   endday=da; 
+		    	   }
+		       }
+		       String stime=yea+"-"+endmonth+"-"+endday;
+		       return stime;
+		}
+
+ 5)计算某个月的天数;  
+  	    /**
+		 * 计算每月的天数
+		 * */
+		public int getDaysOfMonth(String month_) {
+		    Calendar cal = Calendar.getInstance();
+		    cal.setTimeInMillis(System.currentTimeMillis());
+		    SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM");
+		    Date d = null;
+		    try {
+		      d = sf.parse(month_);
+		    }
+		    catch (ParseException ex) {
+		       
+		    }
+		    cal.setTime(d);
+		    int month = cal.get(Calendar.MONTH) + 1;
+		    int days = 0;
+		    if (month != 2) {
+		      if (month < 8) {
+		        if (month % 2 != 0) {
+		          days = 31;
+		        }
+		        else {
+		          days = 30;
+		        }
+		      }
+		      else {
+		        if (month % 2 == 0) {
+		          days = 31;
+		        }
+		        else {
+		          days = 30;
+		        }
+		      }
+		    }
+		    else {
+		    	if ( ( (GregorianCalendar) cal).isLeapYear(cal.get(Calendar.YEAR))){
+		        days = 29;
+		      }
+		      else {
+		        days = 28;
+		      }
+		    }
+		    return days;
+		}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////	
+三：js方法
+1.js得到当前时间：
+ <script>
+setInterval("jnkc.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+</script>
+---------------------------------------------------------------------------------------------------
+2.js得到当前时间格式为yyyy-MM-dd HH:mm:ss，此方法中[d==new date();]
+     function   date2str(d){   
+      var   ret=d.getFullYear()+"-"   
+      ret+=("00"+(d.getMonth()+1)).slice(-2)+"-"   
+      ret+=("00"+d.getDate()).slice(-2)+" "   
+      ret+=("00"+d.getHours()).slice(-2)+":"   
+      ret+=("00"+d.getMinutes()).slice(-2)+":"   
+      ret+=("00"+d.getSeconds()).slice(-2)  
+      return   ret   
+      }
+---------------------------------------------------------------------------------------------------       
+3.js得到两个时间的间隔 
+         function check()
+         {
+	         var stime = new Date("2008","06","11","08","30","40"); 
+             var etime = new Date("2008","06","13","12","40","50"); 
+             var DyMilli = 1000 * 60 * 60 * 24 
+
+             var days = Math.round((etime.getTime()-stime.getTime()) / DyMilli); 
+        }			
+---------------------------------------------------------------------------------------------------
+
+
+

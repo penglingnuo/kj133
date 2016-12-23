@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Staffer">
+	<typeAlias alias="Staffer"
+		type="com.telezone.domain.classes.Staffer" />
+	<typeAlias alias="PersonInMine"
+		type="com.telezone.domain.classes.PersonInMine" />
+
+	<select id="selectStafferDepartment" resultClass="Staffer">
+		select distinct department from staffer
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="department">
+				department = #department#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<select id="selectStafferByParameter" parameterClass="Staffer"
+		resultClass="Staffer">
+		select * from staffer
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="stafferid">
+				stafferid = #stafferid#
+			</isNotNull>
+			<isNotNull prepend="and" property="pinyin">
+				pinyin = #pinyin#
+			</isNotNull>
+			<isNotNull prepend="and" property="cardId">
+				cardId = #cardId#
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<!-- 搜索页面使用,第一条模糊搜索人员，第二条搜索人员详细信息 -->
+	<select id="selectStafferBy" parameterClass="Staffer" resultClass="Staffer">
+		select * from staffer s,reportpopedom rp where rp.department=s.department
+		<dynamic >
+			<isNotNull prepend="AND" property="name"> 
+				(rp.userid= '$userid$') 
+			</isNotNull>  
+			<isNotNull prepend="and" property="name"> 
+				((s.stafferid like '$stafferid$%') 
+			</isNotNull> 
+			<isNotNull prepend="OR" property="name"> 
+				(s.cardid like '$cardId$%') 
+			</isNotNull> 
+			<isNotNull prepend="OR" property="name"> 
+				(s.pinyin like '$pinyin$%') 
+			</isNotNull> 
+			<isNotNull prepend="OR" property="name"> 
+				(name like '$name$%') )
+			</isNotNull> 
+		</dynamic>
+	</select>
+	<select id="selectStaffer" resultClass="Staffer">
+		select top 20 s.* from staffer s,reportpopedom r where s.department=r.department
+		<dynamic> 
+			<isNotNull prepend="and" property="name"> 
+				((s.stafferid like '$stafferid$%') 
+			</isNotNull> 
+			<isNotNull prepend="OR" property="name"> 
+				(s.cardid like '$cardId$%') 
+			</isNotNull> 
+			<isNotNull prepend="OR" property="name"> 
+				(s.pinyin like '$pinyin$%') 
+			</isNotNull> 
+			<isNotNull prepend="OR" property="name"> 
+				(s.name like '$name$%') )
+			</isNotNull> 
+			<isNotNull prepend="and" property="userid">
+				r.userid = #userid#
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<!-- 获得班组信息 -->
+	<select id="selectGroupOfStaffer" resultClass="Staffer">
+		
+	</select>
+</sqlMap>

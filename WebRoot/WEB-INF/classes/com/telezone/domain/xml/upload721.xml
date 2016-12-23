@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="upload721">
+	<typeAlias alias="upload721"
+		type="com.telezone.domain.classes.upload721" />
+
+	<select id="selectStafferByParameter" parameterClass="upload721"
+		resultClass="upload721">
+		select * from upload721
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="stationid">
+				stationid = #stationid#
+			</isNotNull>
+		</dynamic>
+		order by starttime
+	</select>
+</sqlMap>

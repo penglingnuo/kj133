@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<action-mappings>
+		<!-- 获得首页地图右侧页面初始化Action -->
+		<action name="getIndexRight" parameter="method"
+			path="/indexright" type="com.telezone.actions.GetIndexRightDataAction">
+			<forward name="success" path="/telezone/index_right.jsp" />
+		</action>
+		
+		<!-- 地图列表更改，获得地图数据的Action -->
+		<action name="MapListChangeAndGetMapData" parameter="method"
+			path="/maplistC" type="com.telezone.actions.MapListChangeAction">
+		</action>
+		
+		<!-- 井下人员各种信息获得的Action -->
+		<action name="PersonInMineAction" parameter="method"
+			path="/workperson" type="com.telezone.actions.PersonInMineAction">
+			<forward name="success" path="/telezone/personInMineDetail.jsp" />
+			<forward name="personInMineArea" path="/telezone/personInMineAreaNumber.jsp" />
+			<forward name="outOfTimeCard" path="/telezone/outOfTimeCard.jsp" />
+			<forward name="search" path="/telezone/search.jsp" />
+		</action>
+		
+		<!-- 瓦斯数据各种信息获得的Action -->
+		<action name="GasAction" parameter="method"
+			path="/gas" type="com.telezone.actions.GasAction">
+		</action>
+		
+		<!-- 区域数据各种信息获得的Action -->
+		<action name="AreaAction" parameter="method"
+			path="/area" type="com.telezone.actions.AreaAction">
+			<forward name="success" path="/telezone/areaDetail.jsp" />
+		</action>
+		
+		<!-- 给基站或者定位器设置坐标的Action -->
+		<action name="SetCoordinateAction" parameter="method"
+			path="/setxy" type="com.telezone.actions.SetCoordinateAction">
+			<forward name="success" path="/telezone/setCoordinate.jsp" />
+		</action>
+		
+		<!-- 井下人员轨迹回放的Action -->
+		<action name="ShowBackupAction" parameter="method"
+			path="/showbackup" type="com.telezone.actions.ShowBackupAction">
+			<forward name="success" path="/telezone/showbackup.jsp" />
+		</action>
+		
+		<!-- 井下人员轨迹回放的Action -->
+		<action name="EscapeLineAction" parameter="method"
+			path="/escapeline" type="com.telezone.actions.EscapeLineAction">
+			<forward name="EscapeLine" path="/telezone/EscapeLine.jsp" />
+		</action>
+		
+		<!-- 判断登录用户是否是集团用户 -->
+		<action name="CompanyAction" parameter="method"
+			path="/company" type="com.telezone.actions.CompanyAction">
+		</action>
+		
+		<!-- 报表权限 -->
+		<action name="ReportPopedomAction" parameter="method"
+			path="/reportpopedom" type="com.telezone.actions.ReportPopedomAction">
+			<forward name="success" path="/telezone/reportpopedom.jsp"></forward>
+		</action>
+		<!-- 部门权限 -->
+		<action name="UserAndDepInfoAction" parameter="method"
+			path="/useranddep" type="com.telezone.actions.UserAndDepInfoAction">
+			<forward name="success" path="/telezone/useranddepinfo.jsp"></forward>
+		</action>
+		
+		<!-- 通用Action，不与任何模块关联， -->
+		<action name="CommonAction" parameter="method"
+			path="/common" type="com.telezone.actions.CommonAction">
+			<forward name="addworkattendanceex" path="/common/addWorkattendanceEx.jsp"></forward>
+		</action>
+		
+		<!-- jsp页面数据统计， -->
+		<action name="IntranetAction" parameter="method"
+			path="/intranet" type="com.telezone.actions.IntranetAction">
+		</action>
+		
+	</action-mappings>
+</struts-config>

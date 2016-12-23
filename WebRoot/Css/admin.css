@@ -1,0 +1,51 @@
+.masthead-title-text {
+	FONT-SIZE: large; MARGIN: 3px 5px 5px 3px; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana,Helvetica, Sans-Serif
+}
+.page-title-text {
+	FONT-WEIGHT: bold; MARGIN: 3px 5px 5px 3px; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif
+}
+.table-title-text {
+	FONT-WEIGHT: bold; MARGIN: 3px 5px 5px 4px; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif
+}
+.table-header-text {
+	FONT-WEIGHT: normal; MARGIN: 3px 5px 1px 15px; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana,Helvetica, Sans-Serif
+}
+.table-label-text {
+	MARGIN: 3px 5px 3px 15px; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif
+}
+.table-normal-text {
+	MARGIN: 3px 5px 3px 15px; COLOR: #000000; FONT-FAMILY: "Times New Roman", Times, serif
+}
+.back-table {
+	MARGIN: 0px 5px 3px; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-Serif; BACKGROUND-COLOR: #9999cc
+}
+.front-table {
+	FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif; BACKGROUND-COLOR: #ffffff
+}
+.page-title-row {
+	FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif; BACKGROUND-COLOR: #7171a5; TEXT-ALIGN: right
+}
+.header-row {
+	FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif; BACKGROUND-COLOR: #9999cc; TEXT-ALIGN: center
+}
+.sort-row {
+	FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif; BACKGROUND-COLOR: #ceceff; TEXT-ALIGN: center
+}
+.line-row {
+	FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif; BACKGROUND-COLOR: #cccccc
+}
+.button {
+	FONT-FAMILY: Arial, Verdana, Helvetica, Sans-Serif; BACKGROUND-COLOR: #ccccff
+}
+A.button-link-text:visited {
+	FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Geneva, Helvetica, Sans-Serif; BACKGROUND-COLOR: #ccccff; TEXT-DECORATION: none
+}
+A.button-link-text:link {
+	FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Geneva, Helvetica, Sans-Serif; BACKGROUND-COLOR: #ccccff; TEXT-DECORATION: none
+}
+A.button-link-text:active {
+	FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Geneva, Helvetica, Sans-Serif; BACKGROUND-COLOR: #ccccff; TEXT-DECORATION: none
+}
+A.button-link-text:hover {
+	FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Geneva, Helvetica, Sans-Serif; BACKGROUND-COLOR: #ccccff; TEXT-DECORATION: underline
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CardBetty">
+	<typeAlias alias="LocatedataEveryTimeMod"
+		type="com.telezone.domain.classes.LocatedataEveryTimeMod" />
+	<typeAlias alias="AlarmInfoObject"
+		type="com.telezone.domain.classes.AlarmInfoObject" />
+
+	<select id="selectCardBetty" resultClass="AlarmInfoObject">
+		<![CDATA[
+			select ai.info as alarmInfo, s.name as stafferName, cr.shortname as subStation 
+				from locatedata_everyTimeMod le
+				right join (
+					select * from WorkattendanceEx we
+						where we.downtime > GetDate() - 0.5
+						and we.uptime is null
+				)t
+				on le.cardid = t.cardid
+				left join alarminfo ai
+				on le.[state] = ai.[state]
+				left join staffer s
+				on le.cardid = s.cardid
+				left join cardreader cr
+				on cr.cardreaderid = le.cardreaderid
+				where le.[state] & 1 > 0 or le.[state] & 2 > 0 or
+				le.[state] & 8 > 0 or le.[state] & 32 > 0 or le.[state] & 8192 > 0
+		]]>
+		<!-- 
+			select ai.info as alarmInfo, s.name as stafferName, cr.shortname as subStation 
+				from locatedata_everyTimeMod le
+				right join(			
+					select * from WorkattendanceEx we
+						where we.downtime > GetDate() - 1.0
+						and we.uptime is null
+				)t
+				on le.cardid = t.cardid
+				left join cardreader cr
+				on le.cardreaderid = cr.cardreaderid
+				left join staffer s
+				on le.cardid = s.cardid
+				left join alarminfo ai
+				on le.[state] = ai.[state]
+				left join recog r
+				on r.cardid = le.cardid
+				where le.[state] & 2 > 0 or le.[state] & 2 > 0
+				and  r.cardmode = 'kge39'
+		 -->
+	</select>
+</sqlMap>

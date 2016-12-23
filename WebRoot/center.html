@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+.divimgvert {
+	background-image: url(images/divimgvert.gif);
+	background-repeat:repeat-y;
+	background-position-y: center;
+	background-position-x: left;
+}
+</style>
+<script type="text/javascript">
+ var displayBar=true;
+ function switchBar(obj){
+  if (displayBar){
+   parent.frame.cols="0,0.5%,*";
+   displayBar=false;
+   obj.src="images/center_open.gif";
+   obj.title="向右";
+  }else{
+   parent.frame.cols="12.5%,0.5%,*";
+   displayBar=true;
+   obj.src="images/center_close.gif";
+   obj.title="";
+  }
+ }
+ </script>
+</head>
+<body  leftmargin="1" topmargin="0"  rightmargin="0" bottommargin="0" bgColor="white" background="Image/right.gif">
+ <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed" >
+	<tr>
+		  <td align="left" height="48%" valign="middle" class="divimgvert" ></td>
+	</tr>
+	<tr>
+   		  <td valign="middle" align="left">
+   		<img src="images/center_close.gif"   style="cursor:hand" title="向左" onClick="switchBar(this)"></td>
+  	</tr>
+  <tr>
+		  <td align="left" height="50%" valign="middle" class="divimgvert" ></td>
+		</tr>
+    <!--
+  <tr>
+   <td valign="left"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   <img src="images/center_close.gif" style="cursor:hand" title="锟截憋拷锟斤拷吖锟斤拷锟剿碉拷" onClick="switchBar(this)"></td>
+  </tr>
+ -->
+ </table>
+ </body>
+</html>

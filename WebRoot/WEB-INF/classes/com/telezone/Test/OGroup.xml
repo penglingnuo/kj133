@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="OGroup">
+	<typeAlias alias="OGroup" type="com.telezone.Test.OGroup" />
+	
+	<select id="selectOGroup" resultClass="OGroup">
+		<![CDATA[ 
+			select * from OGroup
+		]]>
+	</select>
+	
+	<!-- SelectBySql With Full SQL -->
+    <select id="selectBySql" resultClass="OGroup"
+        remapResults="true"
+        parameterClass="java.util.HashMap">
+        <isNotEmpty property="sql">$sql$</isNotEmpty>
+    </select>    
+	
+	
+	<insert id="insertOGroup" parameterClass="OGroup">
+		insert into OGroup(GroupID, GName, Gdescription, DepartmentID, GroupPopedom, QGroupPopedom)
+			values(#groupid#, #gname#, #gdescription#, #departmentid#, #grouppopedom#, #qgrouppopedom#)
+	</insert>
+ 
+ 
+	 <delete id="deleteOGroup" parameterClass="OGroup">
+	 	delete from OGroup where recordid = #recordid#
+	 </delete>
+	 
+</sqlMap>
+    

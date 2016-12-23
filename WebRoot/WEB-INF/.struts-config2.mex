@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/indexright.do" location="0,0" dimension="310,84" />
+  <StrutsActivity path="/maplistC.do" location="650,50" dimension="310,84" />
+  <StrutsActivity path="/workperson.do" location="350,250" dimension="280,84" />
+  <StrutsActivity path="/gas.do" location="650,450" dimension="280,84" />
+  <StrutsActivity path="/area.do" location="350,650" dimension="226,84" />
+  <StrutsActivity path="/setxy.do" location="950,650" dimension="244,88" />
+  <StrutsActivity path="/showbackup.do" location="650,750" dimension="244,88" />
+  <StrutsActivity path="/escapeline.do" location="950,950" dimension="235,88" />
+  <StrutsActivity path="/company.do" location="1250,550" dimension="216,88" />
+  <StrutsActivity path="/reportpopedom.do" location="1250,750" dimension="220,88" />
+  <StrutsActivity path="/common.do" location="350,850" dimension="235,88" />
+  <StrutsActivity path="/intranet.do" location="1250,950" dimension="256,84" />
+  <StrutsActivity path="/telezone/index_right.jsp" location="950,250" dimension="190,48" />
+  <StrutsActivity path="/telezone/search.jsp" location="50,650" dimension="160,48" />
+  <StrutsActivity path="/telezone/personInMineAreaNumber.jsp" location="50,450" dimension="256,48" />
+  <StrutsActivity path="/telezone/outOfTimeCard.jsp" location="50,550" dimension="202,48" />
+  <StrutsActivity path="/telezone/personInMineDetail.jsp" location="50,350" dimension="232,48" />
+  <StrutsActivity path="/telezone/areaDetail.jsp" location="650,650" dimension="145,49" />
+  <StrutsActivity path="/telezone/setCoordinate.jsp" location="50,750" dimension="164,49" />
+  <StrutsActivity path="/telezone/showbackup.jsp" location="50,850" dimension="155,49" />
+  <StrutsActivity path="/telezone/EscapeLine.jsp" location="1250,350" dimension="149,49" />
+  <StrutsActivity path="/telezone/reportpopedom.jsp" location="1250,450" dimension="202,48" />
+  <StrutsActivity path="/common/addWorkattendanceEx.jsp" location="650,950" dimension="204,49" />
+  <StrutsActivity path="/telezone/select.jsp" location="350,550" dimension="160,48" />
+  <StrutsActivity path="/2s/index_right.jsp" location="78,184" dimension="154,48" />
+  <StrutsActivity path="/2s/personInMineDetail.jsp" location="350,150" dimension="196,48" />
+  <StrutsActivity path="/telezone/personInMineArea.jsp" location="950,350" dimension="220,48" />
+  <StrutsActivity path="/common/" location="50,950" dimension="76,49" />
+  <StrutsActivity path="/telezone/addWorkattendanceEx.jsp" location="950,850" dimension="238,48" />
+  <StrutsTransition id="/setxy.do,success,/telezone/setCoordinate.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1072,694" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/area.do,success,/telezone/areaDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="463,692" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/common.do,addworkattendanceex,/common/addWorkattendanceEx.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="467,894" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workperson.do,personInMineArea,/telezone/personInMineAreaNumber.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="460,334" />
+      <AbsolutePoint location="460,474" />
+      <AbsolutePoint location="306,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workperson.do,search,/telezone/search.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="490,292" />
+      <AbsolutePoint location="130,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/escapeline.do,EscapeLine,/telezone/EscapeLine.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1185,994" />
+      <AbsolutePoint location="1209,994" />
+      <AbsolutePoint location="1209,374" />
+      <AbsolutePoint location="1250,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workperson.do,success,/telezone/personInMineDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,292" />
+      <AbsolutePoint location="166,292" />
+      <AbsolutePoint location="166,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/reportpopedom.do,success,/telezone/reportpopedom.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1360,794" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workperson.do,outOfTimeCard,/telezone/outOfTimeCard.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="490,292" />
+      <AbsolutePoint location="151,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/indexright.do,success,/telezone/index_right.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="155,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showbackup.do,success,/telezone/showbackup.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,814" />
+      <AbsolutePoint location="127,814" />
+      <AbsolutePoint location="127,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

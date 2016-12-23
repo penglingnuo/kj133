@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="EscapeLine">
+	<typeAlias alias="EscapeLine"
+		type="com.telezone.domain.classes.EscapeLine" />
+	
+	<select id="selectEscapeLineByParameter" parameterClass="EscapeLine" resultClass="EscapeLine">
+		select pathname,pathinfo,point,mapid from exitpath
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="pathname">
+				pathname = #pathname#
+			</isNotNull>
+			<isNotNull prepend="and" property="mapid">
+				mapid = #mapid#
+			</isNotNull>
+			<isNotNull prepend="and" property="show">
+				show = #show#
+			</isNotNull>
+		</dynamic>
+	</select>
+	<update id="updateEscapeLine" parameterClass="EscapeLine">
+		update exitpath set pathname = #pathname#,pathinfo = #pathinfo# ,show = #show# where pathname = #oldname#
+	</update>
+	<update id="updateEscapeLineWithSameName" parameterClass="EscapeLine">
+		update exitpath set pathinfo = #pathinfo# ,show = #show# where pathname = #oldname#
+	</update>
+	<insert id="insertEscapeLine" parameterClass="EscapeLine">
+		insert into exitpath (pathname,pathinfo,point,mapid,show) values(#pathname#,#pathinfo#,#point#,#mapid#,#show#)
+	</insert>
+</sqlMap>
