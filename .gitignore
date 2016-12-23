@@ -1,0 +1,8 @@
+/.settings
+*.class
+.classpath
+.mymetadata
+.mystrutsdata
+.myumldata
+.project
+

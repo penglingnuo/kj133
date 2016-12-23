@@ -100,7 +100,7 @@ public class WorkAttHisAction extends DispatchAction {
 	    search_workatt.setStarttime(stime+" 00:00:00");
 	    search_workatt.setEndtime(etime+" 23:59:59");
 		try {
-			List gro = lib.group(user);
+			List gro = lib.deptSta(user.getUserid());
 			request.setAttribute("gro_list",gro);
 			
 		} catch (Exception e) {
