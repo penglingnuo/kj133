@@ -1,4 +1,4 @@
-/.settings
+.settings/
 *.class
 .classpath
 .mymetadata
@@ -6,3 +6,4 @@
 .myumldata
 .project
 
+/bin
