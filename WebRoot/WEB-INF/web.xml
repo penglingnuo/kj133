@@ -19,7 +19,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- 设置登录过滤器 
+	<!-- 设置登录过滤器 -->
 	<filter>
 		<filter-name>login</filter-name>
 		<filter-class>com.kj133.util.AuthLoginFilter</filter-class>
@@ -27,7 +27,7 @@
 	<filter-mapping>
 		<filter-name>login</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>-->
+	</filter-mapping>
    
 	<listener>
 		<listener-class>com.kj133.util.SessionListener</listener-class>

@@ -21,6 +21,9 @@
 	<link href="Css/masa.css" rel="stylesheet">
 	<%--背景--%>
 	<script language="javascript">
+		if (top.location != location){
+		 	top.location.href = location.href;
+		 }
          function check(){
             var name=document.all['user.userid'].value;
             var password=document.all['user.opassword'].value;
