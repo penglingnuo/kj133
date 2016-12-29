@@ -96,7 +96,6 @@
 			});
 		}
 	 $(document).ready(function(){
-	 	
 	 	$("#detail").dialog({
 		          		title: "轨迹明细",
 		          		width: 800,
@@ -161,14 +160,13 @@
 		<th align="left">
 			<div style="position:relative;">
 				<span style="margin-left:100px;width:18px;overflow:hidden;">
-					<select style="width:118px;margin-left:-100px"
-					onchange="this.parentNode.nextSibling.value=this.value">
+					<select style="width:118px;margin-left:-100px" property="search_workatt.group"
+					 onchange="this.parentNode.nextSibling.value=this.value" >
+
 						<logic:present name="gro_list">
 							<option value=""></option>
 							<logic:iterate id="aa" name="gro_list">
-								<option value='<bean:write name="aa" property="wordvalue"/>'>
-									<bean:write name="aa" property="wordvalue" />
-								</option>
+								<option value='<bean:write name="aa" property="wordvalue"/>'><bean:write name="aa" property="wordvalue" /></option>
 							</logic:iterate>
 						</logic:present>
 				</select> </span>

@@ -176,10 +176,9 @@
 		<tr>
 			<td align="center">
 				<font style="FONT-FAMILY: 'Courier New'" color="#ffffff">
-					<br>北京天一众合科技发展有限责任公司
+					<br>
 					<br> 
 						<font style="FONT-SIZE: 8pt; FONT-FAMILY: Verdana">
-							Beijing Telezone Technology Co., Ltd &nbsp; 版权所有 2008-2012 &nbsp; 版本 v1.0
 						</font>
 				</font>
 			</td>

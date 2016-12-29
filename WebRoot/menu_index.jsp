@@ -13,7 +13,7 @@
 .a2{BACKGROUND-COLOR: A4B6D7;}
 </style>
 	--%>
-	<title>北京天一众合KJ133矿用人员管理系统</title>
+	<title>KJ133矿用人员管理系统</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<jsp:include flush="true" page="/checkUser.jsp"></jsp:include>
 	<script type="text/javascript" src="js/index.js"></script>

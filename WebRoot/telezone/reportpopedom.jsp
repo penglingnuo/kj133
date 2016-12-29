@@ -35,7 +35,6 @@
 					}
 				}).bind("click", function(){
 					$("#userid div[isColor='1']").css("background-color", "").removeAttr("isColor");
-					alert($(this).text());
 					$("#userid").text($(this).text());
 					
 					$(this).css("background-color", "#F5E1F0");
