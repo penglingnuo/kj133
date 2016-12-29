@@ -102,14 +102,11 @@ String name4=(String)request.getAttribute("name4");
 				<th align="left">
 					<div style="position: relative;">
 						<span style="margin-left: 82px; width: 18px; overflow: hidden;">
-							<select style="width: 118px; margin-left: -100px"
-								onchange="this.parentNode.nextSibling.value=this.value">
+							<select style="width: 118px; margin-left: -100px;height: 21px;" name="ser_viewreader.checkreader">
 								<option value='全部'>全部</option>
 								<option value='正常'>正常</option>
 								<option value='停用'>停用</option>
 							</select> </span>
-						<html:text property="ser_viewreader.checkreader"
-							style="width:82px;position:absolute;left:0px;"></html:text>
 					</div>
 				</th>
 				<th>

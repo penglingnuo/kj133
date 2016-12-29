@@ -22,7 +22,7 @@
   
   <body bgColor="#FFFFFF" background="Image/right.gif">
 	<div>
-   		<font face="Arial Black" color="#000000" size="5">KJ133矿用人员定位安全管理系统</font>
+   		<font face="Arial Black" color="#000000" size="5">板庙子矿人员定位系统</font>
     </div> 
 	<div id="jnkc" align="right" style="padding-right: 50px; padding-bottom: 5px;">
 	</div>

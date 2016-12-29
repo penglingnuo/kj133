@@ -27,12 +27,11 @@ function getMap(mapid) {
 }
 
 $(function(){
-	alert("========init");
-	
 	/**
 	 * 鼠标事件
 	 */
-	$("#keyWord").change( function() {
+	$("#keyWord").keypress( function() {
+		console.log($("#keyWord").val());
 		$.ajax({
 			type: "POST",
 			url: "common.do?method=staffer&tempId=" + Math.random() * 1000000,

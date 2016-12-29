@@ -63,7 +63,7 @@
 						<br>
 						<br>
 						<br>
-						<font face="Arial Black" color="#ffffff" size="6">KJ133矿用人员定位安全管理系统</font>
+						<font face="Arial Black" color="#ffffff" size="6">板庙子矿人员定位系统</font>
 					</p>
 				</td>
 			</tr>

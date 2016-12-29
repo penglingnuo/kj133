@@ -95,34 +95,36 @@
 			  }
 			});
 		}
-	 $(document).ready(function(){
-	 	$("#detail").dialog({
-		          		title: "轨迹明细",
-		          		width: 800,
-		          		height: 460,
-		          		position: "center",
-		          		autoOpen: false
-		          	});
-		//用户名模糊查询
-   	 	$("#name").autocomplete({
-    	source: function(request, response) {
-                $.ajax({
-                    url: "common.do?method=staffer",
-                    dataType: "json",
-                    data: {
-                    	c:$("#name").val()
-                    },
-                    success: function(data) {
-                       var names=[];
-                       $(data.staffer).each(function(i, n){
-                       names.push(this.cardId+"--"+this.name);
-					   });
-					
-						response(names);
-                    }
-                });
-            }
-	}); 
+	$(function(){
+		$("#detail").dialog({
+			          		title: "轨迹明细",
+			          		width: 800,
+			          		height: 460,
+			          		position: "center",
+			          		autoOpen: false
+			          	});
+			//用户名模糊查询
+	   	 	$("#name").autocomplete({
+	    	source: function(request, response) {
+	                $.ajax({
+	                    url: "common.do?method=staffer",
+	                    dataType: "json",
+	                    data: {
+	                    	c:$("#name").val()
+	                    },
+	                    success: function(data) {
+	                       var names=[];
+	                       $(data.staffer).each(function(i, n){
+	                       names.push(this.cardId+"--"+this.name);
+						   });
+						
+							response(names);
+	                    }
+	                });
+	            }
+		}); 
+		//部门下拉框设置值
+		
 }); 
     </script>
 <SCRIPT language="JavaScript">
@@ -160,8 +162,7 @@
 		<th align="left">
 			<div style="position:relative;">
 				<span style="margin-left:100px;width:18px;overflow:hidden;">
-					<select style="width:118px;margin-left:-100px" property="search_workatt.group"
-					 onchange="this.parentNode.nextSibling.value=this.value" >
+					<select style="width:118px;margin-left:-100px;height: 21px;" name="search_workatt.group" >
 
 						<logic:present name="gro_list">
 							<option value=""></option>
@@ -170,8 +171,6 @@
 							</logic:iterate>
 						</logic:present>
 				</select> </span>
-				<html:text property="search_workatt.group"
-					style="width:100px;position:absolute;left:0px;"></html:text>
 			</div>
 		</th>
 

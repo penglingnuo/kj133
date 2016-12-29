@@ -106,7 +106,7 @@
                  <th align="left">
                  <div style="position:relative;">
                  <span style="margin-left:100px;width:18px;overflow:hidden;">
-                 <select  style="width:118px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">
+                 <select  style="width:118px;margin-left:-100px;height: 21px;" name="department_menology.dep">
                  <logic:present name="dep_list">
               		<option value=""></option>
                  	<logic:iterate id="aa" name="dep_list">
@@ -115,7 +115,6 @@
                  </logic:present>
                  </select>
                  </span>
-                 <html:text property="department_menology.dep" style="width:100px;position:absolute;left:0px;"></html:text>
 				</div>
                  </th>               
 

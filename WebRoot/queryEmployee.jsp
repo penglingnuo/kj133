@@ -109,8 +109,7 @@
 				<th align="left">
 			<div style="position:relative;">
 				<span style="margin-left:100px;width:18px;overflow:hidden;">
-					<select style="width:118px;margin-left:-100px"
-					onchange="this.parentNode.nextSibling.value=this.value">
+					<select style="width:118px;margin-left:-100px;height: 21px;" name="search_employee.group">
 						<logic:present name="gro_list">
 							<option value=""></option>
 							<logic:iterate id="aa" name="gro_list">
@@ -120,8 +119,6 @@
 							</logic:iterate>
 						</logic:present>
 				</select> </span>
-				<html:text property="search_employee.group"
-					style="width:100px;position:absolute;left:0px;"></html:text>
 			</div>
 				</th>
 				<th>
